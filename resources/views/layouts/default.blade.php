@@ -122,12 +122,11 @@
             $(e).prop("checked", !0);
         }
     </script>
-    <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn"
-        type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-        <i class="icon ti ti-settings fs-7"></i>
-    </button>
+    <a href="{{ route('create.compaign') }}" class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn" type="button" >
+        <i class=" icon ti ti-plus fs-7"></i>
+    </a>
 
-    <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample"
+    <!-- <div class="offcanvas customizer offcanvas-end" tabindex="-1" id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel">
         <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
             <h4 class="offcanvas-title fw-semibold" id="offcanvasExampleLabel">
@@ -271,7 +270,7 @@
                         class="icon ti ti-border-none fs-7 me-2"></i>Shadow</label>
             </div>
         </div>
-    </div>
+    </div> -->
     @include('includes.footer')
 </div>
 <div class="dark-transparent sidebartoggler"></div>

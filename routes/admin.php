@@ -6,6 +6,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OtpVerificationController;
 use App\Http\Controllers\InfluencerController;
 use App\Http\Controllers\SocialAccountController;
+use App\Http\Controllers\CompaignController;
 
 // Routes for admin with authentication check
 Route::prefix('portal')->middleware('auth')->group(function () {
@@ -21,6 +22,7 @@ Route::prefix('portal')->middleware('auth')->group(function () {
     Route::get('/socail-otp/{ac_type}', [OtpVerificationController::class, 'socail_otp'])->name('socail.otp');
     Route::get('/brand-otp/{otp_type}', [OtpVerificationController::class, 'brand_otp'])->name('brand.otp');
     Route::get('/verified-whatsapp', [OtpVerificationController::class, 'whatsapp_verified'])->name('wt.vefied.store');
+    Route::get('/create-compaign', [CompaignController::class, 'create_compaign'])->name('create.compaign');
     Route::post('/store-influe-phone', [OtpVerificationController::class, 'store_influe_phone'])->name('store.influe.phone');
     Route::post('/verify-opt', [OtpVerificationController::class, 'verify_otp'])->name('verify.otp');
     Route::post('/generate-opt', [OtpVerificationController::class, 'store'])->name('generate.otp');
