@@ -30,6 +30,7 @@ Route::prefix('portal')->middleware('auth')->group(function () {
     Route::post('/store-verify-whatsapp', [OtpVerificationController::class, 'store_verify_whatsapp'])->name('store.verify.whatsapp');
     Route::post('/store-whatsapp', [OtpVerificationController::class, 'store_whatsapp'])->name('store.whatsapp');
 
+    Route::post('/store-compaign', [CompaignController::class, 'store_compaign'])->name('store.compaign');
 });
 
 

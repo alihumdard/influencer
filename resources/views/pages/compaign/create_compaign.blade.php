@@ -32,7 +32,8 @@
                     <div class="card-body wizard-content">
                         <h4 class="card-title">Compaign Details fill it</h4>
                         <p class="card-subtitle mb-3"> Enter proper data and fill it</p>
-                        <form action="#" class="validation-wizard wizard-circle mt-5">
+                        <form action="{{ route('store.compaign') }}" method="POST" id="compaign-form" class="validation-wizard wizard-circle mt-5">
+                            @csrf
                             <!-- Step 1 -->
                             <h6>Step 1</h6>
                             <section>
@@ -111,6 +112,7 @@
                                     </div>
                                 </div>
                             </section>
+
                             <!-- Step 2 -->
                             <h6>Step 2</h6>
                             <section>
@@ -121,19 +123,19 @@
                                             <div class="row">
                                                 <div class="col-3">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="promotion_type_paid" name="promotion_type" value="paid" onchange="toggleAddProductButton()">
+                                                        <input class="form-check-input" type="radio" id="promotion_type_paid" name="promotion_type" value="paid" >
                                                         <label class="form-check-label" for="promotion_type_paid">Paid</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="promotion_type_barter" name="promotion_type" value="barter" onchange="toggleAddProductButton()">
+                                                        <input class="form-check-input" type="radio" id="promotion_type_barter" name="promotion_type" value="barter" >
                                                         <label class="form-check-label" for="promotion_type_barter">Barter</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="promotion_type_paid_barter" name="promotion_type" value="paid+barter" onchange="toggleAddProductButton()">
+                                                        <input class="form-check-input" type="radio" id="promotion_type_paid_barter" name="promotion_type" value="paid+barter">
                                                         <label class="form-check-label" for="promotion_type_paid_barter">Paid + Barter</label>
                                                     </div>
                                                 </div>
@@ -237,54 +239,27 @@
                             <!-- Step 3 -->
                             <h6>Step 3</h6>
                             <section>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="wint1">Interview For :</label>
-                                            <input type="text" class="form-control required" id="wint1" />
+                                <div id="product-container">
+                                    <div class="row product-row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="wint1">Product Name :</label>
+                                                <input type="text" class="form-control required" name="product_name[]" id="product_name" />
+                                            </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="wintType1">Interview Type :</label>
-                                            <select class="form-select required" id="wintType1" data-placeholder="Type to search cities"
-                                                name="wintType1">
-                                                <option value="Banquet">Normal</option>
-                                                <option value="Fund Raiser">Difficult</option>
-                                                <option value="Dinner Party">Hard</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="wLocation1">Location :</label>
-                                            <select class="form-select required" id="wLocation1" name="wlocation">
-                                                <option value="">Select City</option>
-                                                <option value="India">India</option>
-                                                <option value="USA">USA</option>
-                                                <option value="Dubai">Dubai</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="wjobTitle2">Interview Date :</label>
-                                            <input type="date" class="form-control required" id="wjobTitle2" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label>Requirements :</label>
-                                            <div class="c-inputs-stacked">
-                                                <div class="form-check">
-                                                    <input type="radio" id="customRadio16" name="customRadio" class="form-check-input" />
-                                                    <label class="form-check-label" for="customRadio16">Employee</label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input type="radio" id="customRadio17" name="customRadio" class="form-check-input" />
-                                                    <label class="form-check-label" for="customRadio17">Contract</label>
-                                                </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="campaign_banner">Product Image:</label>
+                                                <input type="file" class="form-control" id="product_image" name="product_image[]" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <button type="button" id="add-product" class="btn btn-primary">Add Another Product</button>
                             </section>
+                            
                             <!-- Step 4 -->
-                            <h6>Step 4</h6>
+                            {{-- <h6>Step 4</h6>
                             <section>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -338,7 +313,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                            </section> --}}
+
                         </form>
                     </div>
                 </div>
@@ -360,5 +336,25 @@
 <script src="/assets/js/forms/form-wizard.js"></script>
 
 
-
+<script>
+     $("#add-product").on("click", function() {
+        var newProductRow = `
+            <div class="row product-row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="wint1">Product Name :</label>
+                        <input type="text" class="form-control required" name="product_name[]" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label" for="product_image">Product Image:</label>
+                        <input type="file" class="form-control" name="product_image[]" />
+                    </div>
+                </div>
+            </div>
+        `;
+        $("#product-container").append(newProductRow);
+    });
+</script>
 @endPushOnce
