@@ -127,6 +127,12 @@ $(".tab-wizard").steps({
 
 var form = $(".validation-wizard").show();
 
+// Add a hidden input field to store the current step
+form.append('<input type="hidden" name="current_step" id="current_step" value="0">');
+
+// Flag to track if AJAX request is in progress
+var isSubmitting = false;
+
 $(".validation-wizard").steps({
     headerTag: "h6",
     bodyTag: "section",
@@ -136,24 +142,69 @@ $(".validation-wizard").steps({
         finish: "Submit",
     },
     onStepChanging: function (event, currentIndex, newIndex) {
-        return (
-            currentIndex > newIndex ||
-            (!(3 === newIndex && Number($("#age-2").val()) < 18) &&
-                (currentIndex < newIndex &&
-                    (form.find(".body:eq(" + newIndex + ") label.error").remove(),
-                        form.find(".body:eq(" + newIndex + ") .error").removeClass("error")),
-                    (form.validate().settings.ignore = ":disabled,:hidden"),
-                    form.valid()))
-        );
+        if (currentIndex > newIndex) {
+            return true; // Allow going back
+        }
+
+        // Validate current step before moving to the next step
+        if (currentIndex < newIndex) {
+            // Remove previous error messages
+            form.find(".body:eq(" + newIndex + ") label.error").remove();
+            form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            form.validate().settings.ignore = ":disabled,:hidden";
+
+            // Validate current step
+            if (form.valid() && !isSubmitting) {
+                // Set the current step value
+                $("#current_step").val(newIndex);
+
+                // Prepare data for the current step
+                var stepData = form.serialize();
+                
+                // Set flag to indicate submission in progress
+                isSubmitting = true;
+
+                // Submit the data via AJAX to the same route
+                $.ajax({
+                    url: form.attr('action'), // Use the form's action (route)
+                    method: 'POST',
+                    data: stepData,
+                    success: function(response) {
+                        console.log('Step saved successfully:', response);
+                        // Proceed to the next step
+                        $(".validation-wizard").steps("next");
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error in saving step data:', error);
+                        // Optionally display an error alert
+                        swal.fire({
+                            title: "Error!",
+                            text: "There was an error saving this step.",
+                            icon: "error",
+                        });
+                    },
+                    complete: function() {
+                        // Reset flag after AJAX call is complete
+                        isSubmitting = false;
+                    }
+                });
+
+                return false; // Prevent moving to the next step until AJAX completes
+            }
+        }
+
+        return true; // Allow going back
     },
     onFinishing: function (event, currentIndex) {
         return (form.validate().settings.ignore = ":disabled"), form.valid();
     },
     onFinished: function (event, currentIndex) {
+        $("#current_step").val(3);
+        // Final submission if needed, this could be a different endpoint
         $.ajax({
-            url: form.attr('action'), // Use the form's action
+            url: form.attr('action'), // Use the form's action for final submission
             method: 'POST',
-            data: form.serialize(), // Serialize form data
+            data: form.serialize(), // Serialize all form data
             success: function(response) {
                 swal.fire({
                     title: "Form Submitted!",
@@ -166,8 +217,7 @@ $(".validation-wizard").steps({
                 });
             },
             error: function(xhr, status, error) {
-                console.error('Error in form submission:', error);
-                // Optionally display an error alert
+                console.error('Error in final submission:', error);
                 swal.fire({
                     title: "Error!",
                     text: "There was an error submitting the form.",
@@ -176,23 +226,4 @@ $(".validation-wizard").steps({
             }
         });
     },
-}),
-    $(".validation-wizard").validate({
-        ignore: "input[type=hidden]",
-        errorClass: "text-danger",
-        successClass: "text-success",
-        highlight: function (element, errorClass) {
-            $(element).removeClass(errorClass);
-        },
-        unhighlight: function (element, errorClass) {
-            $(element).removeClass(errorClass);
-        },
-        errorPlacement: function (error, element) {
-            error.insertAfter(element);
-        },
-        rules: {
-            email: {
-                email: !0,
-            },
-        },
-    });
+});
