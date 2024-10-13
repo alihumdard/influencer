@@ -150,10 +150,31 @@ $(".validation-wizard").steps({
         return (form.validate().settings.ignore = ":disabled"), form.valid();
     },
     onFinished: function (event, currentIndex) {
-        swal(
-            "Form Submitted!",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed."
-        );
+        $.ajax({
+            url: form.attr('action'), // Use the form's action
+            method: 'POST',
+            data: form.serialize(), // Serialize form data
+            success: function(response) {
+                swal.fire({
+                    title: "Form Submitted!",
+                    text: "Campaign Created Successfully!",
+                    icon: "success", // Set the icon to success
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload(); // Refresh the page on confirmation
+                    }
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error('Error in form submission:', error);
+                // Optionally display an error alert
+                swal.fire({
+                    title: "Error!",
+                    text: "There was an error submitting the form.",
+                    icon: "error",
+                });
+            }
+        });
     },
 }),
     $(".validation-wizard").validate({
