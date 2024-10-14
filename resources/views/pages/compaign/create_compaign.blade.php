@@ -47,7 +47,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="campaign_banner">Campaign Banner:</label>
-                                            <input type="file" class="form-control" id="campaign_banner" name="campaign_banner" />
+                                            <input type="file" class="form-control" id="campaign_banner" name="campaign_banner" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -229,7 +229,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label class="form-label" for="product_description">Product Description:</label>
+                                            <label class="form-label" for="product_description">Compaign Description:</label>
                                             <textarea class="form-control" id="product_description" name="product_description" rows="10"></textarea>
                                         </div>
                                     </div>
