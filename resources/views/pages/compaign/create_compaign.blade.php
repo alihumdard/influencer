@@ -255,205 +255,205 @@
                     <form action="#" class="validation-wizard wizard-circle mt-5">
                         <!-- Step 1 -->
                         <h6>Step 1</h6>
-                            <section>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="campaign_name">Campaign Name:</label>
-                                            <input type="text" class="form-control" id="campaign_name" name="campaign_name" required />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="campaign_banner">Campaign Banner:</label>
-                                            <input type="file" class="form-control" id="campaign_banner" name="campaign_banner" required />
-                                        </div>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="campaign_name">Campaign Name:</label>
+                                        <input type="text" class="form-control" id="campaign_name" name="campaign_name" required />
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label class="form-label">Influencer Type:</label>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="influencer_type_content_creator" name="influencer_type" value="content_creator">
-                                                        <label class="form-check-label" for="influencer_type_content_creator">Content Creator</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="influencer_type_memers" name="influencer_type" value="memers">
-                                                        <label class="form-check-label" for="influencer_type_memers">Memers</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="influencer_type_influencer" name="influencer_type" value="influencer">
-                                                        <label class="form-check-label" for="influencer_type_influencer">Influencer</label>
-                                                    </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="campaign_banner">Campaign Banner:</label>
+                                        <input type="file" class="form-control" id="campaign_banner" name="campaign_banner" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Influencer Type:</label>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="influencer_type_content_creator" name="influencer_type" value="content_creator">
+                                                    <label class="form-check-label" for="influencer_type_content_creator">Content Creator</label>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label class="form-label">Gender:</label>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="gender_male" name="gender" value="male">
-                                                        <label class="form-check-label" for="gender_male">Male</label>
-                                                    </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="influencer_type_memers" name="influencer_type" value="memers">
+                                                    <label class="form-check-label" for="influencer_type_memers">Memers</label>
                                                 </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="gender_female" name="gender" value="female">
-                                                        <label class="form-check-label" for="gender_female">Female</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="gender_other" name="gender" value="other">
-                                                        <label class="form-check-label" for="gender_other">Other</label>
-                                                    </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="influencer_type_influencer" name="influencer_type" value="influencer">
+                                                    <label class="form-check-label" for="influencer_type_influencer">Influencer</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="campaign_description" class="form-label">Campaign Description:</label>
-                                            <textarea class="form-control" id="campaign_description" name="campaign_description" rows="10"></textarea>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Gender:</label>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="gender_male" name="gender" value="male">
+                                                    <label class="form-check-label" for="gender_male">Male</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="gender_female" name="gender" value="female">
+                                                    <label class="form-check-label" for="gender_female">Female</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="gender_other" name="gender" value="other">
+                                                    <label class="form-check-label" for="gender_other">Other</label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="campaign_description" class="form-label">Campaign Description:</label>
+                                        <textarea class="form-control" id="campaign_description" name="campaign_description" rows="10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                         <!-- Step 2 -->
                         <h6>Step 2</h6>
-                            <section>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label class="form-label">Promotion Type:</label>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="promotion_type_paid" name="promotion_type" value="paid">
-                                                        <label class="form-check-label" for="promotion_type_paid">Paid</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="promotion_type_barter" name="promotion_type" value="barter">
-                                                        <label class="form-check-label" for="promotion_type_barter">Barter</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="promotion_type_paid_barter" name="promotion_type" value="paid+barter">
-                                                        <label class="form-check-label" for="promotion_type_paid_barter">Paid + Barter</label>
-                                                    </div>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Promotion Type:</label>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="promotion_type_paid" name="promotion_type" value="paid">
+                                                    <label class="form-check-label" for="promotion_type_paid">Paid</label>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label class="form-label">Platform:</label>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="platform_instagram" name="platform" value="instagram">
-                                                        <label class="form-check-label" for="platform_instagram">Instagram</label>
-                                                    </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="promotion_type_barter" name="promotion_type" value="barter">
+                                                    <label class="form-check-label" for="promotion_type_barter">Barter</label>
                                                 </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" id="platform_youtube" name="platform" value="youtube">
-                                                        <label class="form-check-label" for="platform_youtube">YouTube</label>
-                                                    </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="promotion_type_paid_barter" name="promotion_type" value="paid+barter">
+                                                    <label class="form-check-label" for="promotion_type_paid_barter">Paid + Barter</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Platform:</label>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="platform_instagram" name="platform" value="instagram">
+                                                    <label class="form-check-label" for="platform_instagram">Instagram</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="platform_youtube" name="platform" value="youtube">
+                                                    <label class="form-check-label" for="platform_youtube">YouTube</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label class="form-label">Region:</label>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="region_north_america" name="region[]" value="north_america">
-                                                        <label class="form-check-label" for="region_north_america">North America</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="region_europe" name="region[]" value="europe">
-                                                        <label class="form-check-label" for="region_europe">Europe</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="region_asia" name="region[]" value="asia">
-                                                        <label class="form-check-label" for="region_asia">Asia</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="region_africa" name="region[]" value="africa">
-                                                        <label class="form-check-label" for="region_africa">Africa</label>
-                                                    </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Region:</label>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="region_north_america" name="region[]" value="north_america">
+                                                    <label class="form-check-label" for="region_north_america">North America</label>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label class="form-label">Language:</label>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="language_english" name="language[]" value="english">
-                                                        <label class="form-check-label" for="language_english">English</label>
-                                                    </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="region_europe" name="region[]" value="europe">
+                                                    <label class="form-check-label" for="region_europe">Europe</label>
                                                 </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="language_french" name="language[]" value="french">
-                                                        <label class="form-check-label" for="language_french">French</label>
-                                                    </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="region_asia" name="region[]" value="asia">
+                                                    <label class="form-check-label" for="region_asia">Asia</label>
                                                 </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="language_spanish" name="language[]" value="spanish">
-                                                        <label class="form-check-label" for="language_spanish">Spanish</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="language_mandarin" name="language[]" value="mandarin">
-                                                        <label class="form-check-label" for="language_mandarin">Mandarin</label>
-                                                    </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="region_africa" name="region[]" value="africa">
+                                                    <label class="form-check-label" for="region_africa">Africa</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="product_description">Compaign Description:</label>
-                                            <textarea class="form-control" id="product_description" name="product_description" rows="10"></textarea>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Language:</label>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="language_english" name="language[]" value="english">
+                                                    <label class="form-check-label" for="language_english">English</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="language_french" name="language[]" value="french">
+                                                    <label class="form-check-label" for="language_french">French</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="language_spanish" name="language[]" value="spanish">
+                                                    <label class="form-check-label" for="language_spanish">Spanish</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="language_mandarin" name="language[]" value="mandarin">
+                                                    <label class="form-check-label" for="language_mandarin">Mandarin</label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="product_description">Compaign Description:</label>
+                                        <textarea class="form-control" id="product_description" name="product_description" rows="10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                         <!-- Step 3 -->
                         <h6>Step 3</h6>
                         <section>
@@ -760,7 +760,7 @@
                                         </div>
                                     </div>
                                 </div>
-            
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
@@ -838,285 +838,289 @@
                             <!-- Step 3 -->
                             <h6>Step 3</h6>
                             <section class="product-sec">
-                                <form class=" g-3 mt-3 needs-validation" id="product_detail_from" method="post" action="{{ route('admin.storeProduct') }}" novalidate enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{  $product['id'] ?? '' }}">
-                                    <input type="hidden" name="duplicate" value="{{  $duplicate ?? 'no' }}">
-                                    <div class="row gy-4">
-                                        <div class=" col-md-6 extra-images">
-                                            <label class="form-label">Extra Images</label>
-                                            <!-- below containerrrrrrrrrrrrrrrrrrrrrrrr -->
-                                            <div class="upload__box">
-                                                <div class="upload__btn-box">
-                                                    <div class="upload__img-wrap">
-                                                        <label class="upload__btn" id="uploadbtn" for="product_images">
-                                                            <p>+</p>
-                                                            <input type="file" multiple data-max_length="5" id="product_images" name="images" class="upload__inputfile">
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- below containerrrrrrrrrrrrrrrrrrrrrrrr -->
-                                            <div style="margin-top: 10px;margin-bottom:5px">
-                                                <div class="row" style="padding-right: 12px;">
-                                                    @foreach($product['product_attributes'] ?? [] as $key => $val1)
-                                                    @php
-                                                    $src = ($val1['image']) ? $val1['image'] : '';
-                                                    @endphp
-                                                    @if($src)
-                                                    <div class="col-sm-2" id="attribute-{{ $val1['id'] }}">
-                                                        <div class="flip-card">
-                                                            <div class="flip-card-inner">
-                                                                <div class="flip-card-front">
-                                                                    <img src="{{ asset('storage/'.$src)}}" alt="Avatar" style="width:100px;height:100px;">
-                                                                </div>
-                                                                <div class="flip-card-back">
-                                                                    <a href="#" class="delete-attribute" data-id="{{ $val1['id'] }}">
-                                                                        <i class="fa fa-trash-o" style="font-size:48px;color:red"></i>
-                                                                    </a>
-                                                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <form class=" g-3 mt-3 needs-validation" id="product_detail_from" method="post" action="{{ route('admin.storeProduct') }}" novalidate enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{  $product['id'] ?? '' }}">
+                                            <input type="hidden" name="duplicate" value="{{  $duplicate ?? 'no' }}">
+                                            <div class="row gy-4">
+                                                <div class=" col-md-6 extra-images">
+                                                    <label class="form-label">Extra Images</label>
+                                                    <!-- below containerrrrrrrrrrrrrrrrrrrrrrrr -->
+                                                    <div class="upload__box">
+                                                        <div class="upload__btn-box">
+                                                            <div class="upload__img-wrap">
+                                                                <label class="upload__btn" id="uploadbtn" for="product_images">
+                                                                    <p>+</p>
+                                                                    <input type="file" multiple data-max_length="5" id="product_images" name="images" class="upload__inputfile">
+                                                                </label>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    @endif
-                                                    @endforeach
+                                                    <!-- below containerrrrrrrrrrrrrrrrrrrrrrrr -->
+                                                    <div style="margin-top: 10px;margin-bottom:5px">
+                                                        <div class="row" style="padding-right: 12px;">
+                                                            @foreach($product['product_attributes'] ?? [] as $key => $val1)
+                                                            @php
+                                                            $src = ($val1['image']) ? $val1['image'] : '';
+                                                            @endphp
+                                                            @if($src)
+                                                            <div class="col-sm-2" id="attribute-{{ $val1['id'] }}">
+                                                                <div class="flip-card">
+                                                                    <div class="flip-card-inner">
+                                                                        <div class="flip-card-front">
+                                                                            <img src="{{ asset('storage/'.$src)}}" alt="Avatar" style="width:100px;height:100px;">
+                                                                        </div>
+                                                                        <div class="flip-card-back">
+                                                                            <a href="#" class="delete-attribute" data-id="{{ $val1['id'] }}">
+                                                                                <i class="fa fa-trash-o" style="font-size:48px;color:red"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @endif
+                                                            @endforeach
 
-                                                </div>
-                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                            <div class="invalid-feedback">Please select product image!</div>
-                                            @error('images')
-                                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6 text-and-gallery-images">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <label class="form-label">Product Title</label>
-                                                    <input class="form-control me-2" type="text" name="title" id="title" value="{{  $product['title'] ?? old('title') }}" placeholder="Product Title" aria-label="Search" required>
-                                                    <div class="invalid-feedback">Please write product title!</div>
-                                                    @error('title')
+                                                    <div class="invalid-feedback">Please select product image!</div>
+                                                    @error('images')
                                                     <div class="alert-danger text-danger ">{{ $message }}</div>
                                                     @enderror
                                                 </div>
-                                                @php
-                                                $path = url('assets/admin/img/upload_btn.png');
-                                                if($product['main_image'] ?? NULL){
-                                                $path = asset('storage/'.$product['main_image']);
-                                                }
-                                                @endphp
-                                                <div class="col-12 mt-2 produt-main-image">
-                                                    <label for="product_main_image" class="form-label">Upload Main Image</label>
-                                                    <div class="d-flex align-items-center" style="gap: 20px; justify-content: space-between;">
-                                                        <input type="file" class="form-control w-100" id="product_main_image" name="main_image" value="{{ ($product['main_image'] ?? NULL) ? 'required' : '' }}" onchange="previewMainImage(this)">
-                                                        <label for="product_main_image" class=" d-block ">
-                                                            <img id="mainImage_preview" src="{{  $path ?? '' }}" class="rounded-circle" alt="no image" style="width: 45px; height: 45px;  cursor:pointer;   object-fit: cover;">
-                                                        </label>
+                                                <div class="col-md-6 text-and-gallery-images">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <label class="form-label">Product Title</label>
+                                                            <input class="form-control me-2" type="text" name="title" id="title" value="{{  $product['title'] ?? old('title') }}" placeholder="Product Title" aria-label="Search" required>
+                                                            <div class="invalid-feedback">Please write product title!</div>
+                                                            @error('title')
+                                                            <div class="alert-danger text-danger ">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                        @php
+                                                        $path = url('assets/admin/img/upload_btn.png');
+                                                        if($product['main_image'] ?? NULL){
+                                                        $path = asset('storage/'.$product['main_image']);
+                                                        }
+                                                        @endphp
+                                                        <div class="col-12 mt-2 produt-main-image">
+                                                            <label for="product_main_image" class="form-label">Upload Main Image</label>
+                                                            <div class="d-flex align-items-center" style="gap: 20px; justify-content: space-between;">
+                                                                <input type="file" class="form-control w-100" id="product_main_image" name="main_image" value="{{ ($product['main_image'] ?? NULL) ? 'required' : '' }}" onchange="previewMainImage(this)">
+                                                                <label for="product_main_image" class=" d-block ">
+                                                                    <img id="mainImage_preview" src="{{  $path ?? '' }}" class="rounded-circle" alt="no image" style="width: 45px; height: 45px;  cursor:pointer;   object-fit: cover;">
+                                                                </label>
+                                                            </div>
+                                                            <div class="invalid-feedback">* Upload product main Image!</div>
+                                                        </div>
+                                                        <div class="col-12 select-product-category">
+                                                            <label for="category_id" class="form-label">Select Product Category</label>
+                                                            <select id="category_id" name="category_id" class="form-select" required>
+                                                                <option value="" selected>Choose...</option>
+                                                                @foreach ($categories ?? [] as $key => $value)
+                                                                <option value="{{ $value['id'] ?? '' }}" {{ (isset($product['category_id']) && $product['category_id'] == $value['id']) ? 'selected' : '' }}>{{ $value['name'] ?? '' }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <div class="invalid-feedback">* Please select product category</div>
+                                                        </div>
                                                     </div>
-                                                    <div class="invalid-feedback">* Upload product main Image!</div>
                                                 </div>
-                                                <div class="col-12 select-product-category">
-                                                    <label for="category_id" class="form-label">Select Product Category</label>
-                                                    <select id="category_id" name="category_id" class="form-select" required>
-                                                        <option value="" selected>Choose...</option>
-                                                        @foreach ($categories ?? [] as $key => $value)
-                                                        <option value="{{ $value['id'] ?? '' }}" {{ (isset($product['category_id']) && $product['category_id'] == $value['id']) ? 'selected' : '' }}>{{ $value['name'] ?? '' }}</option>
-                                                        @endforeach
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="cut_price" class="col-form-label"> Cut Price <span class="cut-price"></span></label>
+                                                    <input type="text" name="cut_price" id="cut_price" value="{{  $product['cut_price'] ?? old('cut_price') }}" class="form-control">
+                                                    <div class="invalid-feedback">Enter Cut Price!</div>
+                                                    @error('cut_price')
+                                                    <div class="alert-danger text-danger ">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="price" class="col-form-label"> Price <span class="extra-text">(Price in UK Pound)</span></label>
+                                                    <input type="text" name="price" id="price" value="{{  $product['price'] ?? old('price') }}" class="form-control" required>
+                                                    <div class="invalid-feedback">Enter product price!</div>
+                                                    @error('price')
+                                                    <div class="alert-danger text-danger ">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="stock" class="col-form-label">Inventory <span class="extra-text">(Available Stock)</span></label>
+                                                    <input type="number" id="stock" name="stock" value="{{  $product['stock'] ?? old('stock') }}" class="form-control" required>
+                                                    <div class="invalid-feedback">Enter product stock!</div>
+                                                    @error('stock')
+                                                    <div class="alert-danger text-danger ">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="stock" class="col-form-label">SKU </label>
+                                                    <input type="text" name="SKU" id="SKU" value="{{  $product['SKU'] ?? old('SKU') }}" class="form-control">
+                                                    <div class="invalid-feedback">Enter avialable stock!</div>
+                                                    @error('SKU')
+                                                    <div class="alert-danger text-danger ">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-4 mt-2">
+                                                    <label for="barcode" class="form-label">Barcode (ISBN, UPC, GTIN, etc.)</label>
+                                                    <input type="text" name="barcode" id="barcode" value="{{  $product['barcode'] ?? old('barcode') }}" class="form-control">
+                                                    <div class="invalid-feedback">Enter GTIN number!</div>
+                                                    @error('barcode')
+                                                    <div class="alert-danger text-danger ">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-4 mt-2">
+                                                    <label for="weight" class="form-label">Weight (gm)</label>
+                                                    <input type="text" name="weight" id="weight" value="{{  $product['weight'] ?? old('weight') }}" class="form-control">
+                                                    <div class="invalid-feedback">Enter product weight!</div>
+                                                    @error('weight')
+                                                    <div class="alert-danger text-danger ">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label for="stock_status" class="col-form-label"> Stock Status </label>
+                                                    <select id="stock_status" name="stock_status" class="form-select" required>
+                                                        <option value="IN" {{ (isset($product['stock_status']) && $product['stock_status'] == 'IN') ? 'selected' : '' }}>IN</option>
+                                                        <option value="OUT" {{ (isset($product['stock_status']) && $product['stock_status'] == 'OUT') ? 'selected' : '' }}>OUT</option>
                                                     </select>
-                                                    <div class="invalid-feedback">* Please select product category</div>
+                                                    <div class="invalid-feedback">Select Stock Status!</div>
+                                                    @error('stock_status')
+                                                    <div class="alert-danger text-danger ">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="cut_price" class="col-form-label"> Cut Price <span class="cut-price"></span></label>
-                                            <input type="text" name="cut_price" id="cut_price" value="{{  $product['cut_price'] ?? old('cut_price') }}" class="form-control">
-                                            <div class="invalid-feedback">Enter Cut Price!</div>
-                                            @error('cut_price')
-                                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label for="price" class="col-form-label"> Price <span class="extra-text">(Price in UK Pound)</span></label>
-                                            <input type="text" name="price" id="price" value="{{  $product['price'] ?? old('price') }}" class="form-control" required>
-                                            <div class="invalid-feedback">Enter product price!</div>
-                                            @error('price')
-                                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="stock" class="col-form-label">Inventory <span class="extra-text">(Available Stock)</span></label>
-                                            <input type="number" id="stock" name="stock" value="{{  $product['stock'] ?? old('stock') }}" class="form-control" required>
-                                            <div class="invalid-feedback">Enter product stock!</div>
-                                            @error('stock')
-                                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="stock" class="col-form-label">SKU </label>
-                                            <input type="text" name="SKU" id="SKU" value="{{  $product['SKU'] ?? old('SKU') }}" class="form-control">
-                                            <div class="invalid-feedback">Enter avialable stock!</div>
-                                            @error('SKU')
-                                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-4 mt-2">
-                                            <label for="barcode" class="form-label">Barcode (ISBN, UPC, GTIN, etc.)</label>
-                                            <input type="text" name="barcode" id="barcode" value="{{  $product['barcode'] ?? old('barcode') }}" class="form-control">
-                                            <div class="invalid-feedback">Enter GTIN number!</div>
-                                            @error('barcode')
-                                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-4 mt-2">
-                                            <label for="weight" class="form-label">Weight (gm)</label>
-                                            <input type="text" name="weight" id="weight" value="{{  $product['weight'] ?? old('weight') }}" class="form-control">
-                                            <div class="invalid-feedback">Enter product weight!</div>
-                                            @error('weight')
-                                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <label for="stock_status" class="col-form-label"> Stock Status </label>
-                                            <select id="stock_status" name="stock_status" class="form-select" required>
-                                                <option value="IN" {{ (isset($product['stock_status']) && $product['stock_status'] == 'IN') ? 'selected' : '' }}>IN</option>
-                                                <option value="OUT" {{ (isset($product['stock_status']) && $product['stock_status'] == 'OUT') ? 'selected' : '' }}>OUT</option>
-                                            </select>
-                                            <div class="invalid-feedback">Select Stock Status!</div>
-                                            @error('stock_status')
-                                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="row mb-5">
-                                        <div class="form-floating col-12  mt-3">
-                                            <textarea class="form-control tinymce-editor" name="short_desc" id="short_desc" placeholder="Product short Description">{{$product['short_desc'] ?? ''}}</textarea>
-                                            <div class="invalid-feedback">Please write product short desc!</div>
-                                            @error('short_desc')
-                                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-5">
-                                        <div class="form-floating col-12  mt-3">
-                                            <textarea class="form-control tinymce-editor" name="desc" id="pro_desc" placeholder="Product main Description" required=''>{{$product['desc'] ?? ''}}</textarea>
-                                            <div class="invalid-feedback">Please write product Main desc!</div>
-                                            @error('desc')
-                                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    {{-- Variant Section --}}
-                                    <div class="container-fluid m-0 ">
-                                        <div class="d-flex justify-content-between col-md-12 align-items-center">
-                                            <div class="variants-div">
-                                                <h4 class="fw-bold">Product Variants</h4>
-                                            </div>
-                                            <div class=" float-end">
-                                                <div class="p-2">
-                                                    <lable id="add_new_row" class="btn btn-success mb-2"><i class="fa fa-plus"></i> Add Variants</lable>
-                                                </div>
-                                                <button type="button" id="add-product" class="btn btn-primary">Add Another Product</button>
-                                            </div>
-                                        </div>
-                                        {{-- existing variants --}}
-                                        <div id="variant_row_existing">
-                                            @if(isset($product['variants']))
-                                            @foreach ($product['variants'] as $variant)
-                                            <div class="row bg-white rounded-3  mb-4 py-2" id="variant_{{ $variant['id'] }}">
-                                                <input type="hidden" value="{{$variant['id']}}" name="exist_vari_id[]">
-                                                <div class="col-12">
-                                                    <hr class="">
-                                                </div>
-                                                <div class="col-md-4 col-sm-12">
-                                                    <div class="p-2">
-                                                        <label for="" class="form-label">Variant Price <span class="vari-price">(Price in UK Pound)</span></label>
-                                                        <input type="text" class="form-control" name="exist_vari_price[]" id="" value="{{ $variant['price']}}" required>
-                                                        <div class="invalid-feedback">Enter variant price!</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-12">
-                                                    <div class="p-2">
-                                                        <label for="" class="form-label">Variant Cut Price <span class="vari-cut-price">(Price in UK Pound)</span></label>
-                                                        <input type="text" class="form-control" name="exist_vari_cut_price[]" id="" value="{{ $variant['cut_price']}}">
-                                                        <div class="invalid-feedback">Enter variant cut price!</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-12">
-                                                    <div class="p-2">
-                                                        <label for="" class="form-label">Variant Name <span class="extra-text"></span></label>
-                                                        <input type="text" class="form-control" name="exist_vari_name[]" id="" value="{{ $variant['title']}}" required>
-                                                        <div class="invalid-feedback">Enter variant title!</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-12 product-md">
-                                                    <div class="p-2">
-                                                        <label for="" class="form-label">Variant Value <span class="extra-text"></span></label>
-                                                        <input type="text" class="form-control" name="exist_vari_value[]" id="" value="{{ $variant['value']}}" required>
-                                                        <div class="invalid-feedback">Enter variant value!</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-12 ">
-                                                    <div class="p-2">
-                                                        <label for="" class="form-label">Inventory <span class="extra-text">(Available Stock)</span></label>
-                                                        <input type="number" class="form-control" name="exist_vari_inventory[]" id="" value="{{ $variant['inventory']}}" required>
-                                                        <div class="invalid-feedback">Enter variant stock!</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-12 ">
-                                                    <div class="p-2">
-                                                        <label for="" class="form-label">weight <span class="extra-text">(gm)</span></label>
-                                                        <input type="text" class="form-control" name="exist_vari_weight[]" id="" value="{{ $variant['weight'] }}">
-                                                        <div class="invalid-feedback">Enter variant weight!</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-12">
-                                                    <div class="p-2">
-                                                        <label for="" class="form-label">Barcode <span class="extra-text">(ISBN, UPC, GTIN, etc.)</span></label>
-                                                        <input type="text" class="form-control" name="exist_vari_barcode[]" id="" value="{{ $variant['barcode']}}">
-                                                        <div class="invalid-feedback">Enter variant barcode!</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-12">
-                                                    <div class="p-2">
-                                                        <label for="" class="form-label">SKU <span class="extra-text">(Stock Keeping Unit)</span></label>
-                                                        <input type="text" class="form-control" name="exist_vari_sku[]" id="" value="{{ $variant['sku']}}">
-                                                        <div class="invalid-feedback">Enter variant stock!</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-12 ">
-                                                    <div class="p-2">
-                                                        <label class="form-label">Select Image</label>
-                                                        <input class="form-control variant-image-exist" name="exist_vari_attr_image[]" type="file" id="">
-                                                        <div class="invalid-feedback">Enter variant image!</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 d-flex justify-content-end col-sm-12 mt-4 ">
-                                                    <div class="p-2 ">
-                                                        <button type="button" class="btn delete-variant btn-danger bg-danger" data-id="{{ $variant['id'] }}" data-token="{{ csrf_token() }}"><i class="fa fa-minus"></i> Remove</button>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <hr class="">
+                                            <div class="row mb-5">
+                                                <div class="form-floating col-12  mt-3">
+                                                    <textarea class="form-control tinymce-editor" name="short_desc" id="short_desc" placeholder="Product short Description">{{$product['short_desc'] ?? ''}}</textarea>
+                                                    <div class="invalid-feedback">Please write product short desc!</div>
+                                                    @error('short_desc')
+                                                    <div class="alert-danger text-danger ">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
-                                            @endforeach
-                                            @endif
-                                        </div>
-                                        <div id="variant_row">
 
-                                        </div>
+                                            <div class="row mb-5">
+                                                <div class="form-floating col-12  mt-3">
+                                                    <textarea class="form-control tinymce-editor" name="desc" id="pro_desc" placeholder="Product main Description" required=''>{{$product['desc'] ?? ''}}</textarea>
+                                                    <div class="invalid-feedback">Please write product Main desc!</div>
+                                                    @error('desc')
+                                                    <div class="alert-danger text-danger ">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            {{-- Variant Section --}}
+                                            <div class="container-fluid m-0 ">
+                                                <div class="d-flex justify-content-between col-md-12 align-items-center">
+                                                    <div class="variants-div">
+                                                        <h4 class="fw-bold">Product Variants</h4>
+                                                    </div>
+                                                    <div class=" float-end">
+                                                        <div class="p-2">
+                                                            <lable id="add_new_row" class="btn btn-success mb-2"><i class="fa fa-plus"></i> Add Variants</lable>
+                                                        </div>
+                                                        <button type="button" id="add-product" class="btn btn-primary">Add Another Product</button>
+                                                    </div>
+                                                </div>
+                                                {{-- existing variants --}}
+                                                <div id="variant_row_existing">
+                                                    @if(isset($product['variants']))
+                                                    @foreach ($product['variants'] as $variant)
+                                                    <div class="row bg-white rounded-3  mb-4 py-2" id="variant_{{ $variant['id'] }}">
+                                                        <input type="hidden" value="{{$variant['id']}}" name="exist_vari_id[]">
+                                                        <div class="col-12">
+                                                            <hr class="">
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12">
+                                                            <div class="p-2">
+                                                                <label for="" class="form-label">Variant Price <span class="vari-price">(Price in UK Pound)</span></label>
+                                                                <input type="text" class="form-control" name="exist_vari_price[]" id="" value="{{ $variant['price']}}" required>
+                                                                <div class="invalid-feedback">Enter variant price!</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12">
+                                                            <div class="p-2">
+                                                                <label for="" class="form-label">Variant Cut Price <span class="vari-cut-price">(Price in UK Pound)</span></label>
+                                                                <input type="text" class="form-control" name="exist_vari_cut_price[]" id="" value="{{ $variant['cut_price']}}">
+                                                                <div class="invalid-feedback">Enter variant cut price!</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12">
+                                                            <div class="p-2">
+                                                                <label for="" class="form-label">Variant Name <span class="extra-text"></span></label>
+                                                                <input type="text" class="form-control" name="exist_vari_name[]" id="" value="{{ $variant['title']}}" required>
+                                                                <div class="invalid-feedback">Enter variant title!</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12 product-md">
+                                                            <div class="p-2">
+                                                                <label for="" class="form-label">Variant Value <span class="extra-text"></span></label>
+                                                                <input type="text" class="form-control" name="exist_vari_value[]" id="" value="{{ $variant['value']}}" required>
+                                                                <div class="invalid-feedback">Enter variant value!</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12 ">
+                                                            <div class="p-2">
+                                                                <label for="" class="form-label">Inventory <span class="extra-text">(Available Stock)</span></label>
+                                                                <input type="number" class="form-control" name="exist_vari_inventory[]" id="" value="{{ $variant['inventory']}}" required>
+                                                                <div class="invalid-feedback">Enter variant stock!</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12 ">
+                                                            <div class="p-2">
+                                                                <label for="" class="form-label">weight <span class="extra-text">(gm)</span></label>
+                                                                <input type="text" class="form-control" name="exist_vari_weight[]" id="" value="{{ $variant['weight'] }}">
+                                                                <div class="invalid-feedback">Enter variant weight!</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12">
+                                                            <div class="p-2">
+                                                                <label for="" class="form-label">Barcode <span class="extra-text">(ISBN, UPC, GTIN, etc.)</span></label>
+                                                                <input type="text" class="form-control" name="exist_vari_barcode[]" id="" value="{{ $variant['barcode']}}">
+                                                                <div class="invalid-feedback">Enter variant barcode!</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12">
+                                                            <div class="p-2">
+                                                                <label for="" class="form-label">SKU <span class="extra-text">(Stock Keeping Unit)</span></label>
+                                                                <input type="text" class="form-control" name="exist_vari_sku[]" id="" value="{{ $variant['sku']}}">
+                                                                <div class="invalid-feedback">Enter variant stock!</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12 ">
+                                                            <div class="p-2">
+                                                                <label class="form-label">Select Image</label>
+                                                                <input class="form-control variant-image-exist" name="exist_vari_attr_image[]" type="file" id="">
+                                                                <div class="invalid-feedback">Enter variant image!</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 d-flex justify-content-end col-sm-12 mt-4 ">
+                                                            <div class="p-2 ">
+                                                                <button type="button" class="btn delete-variant btn-danger bg-danger" data-id="{{ $variant['id'] }}" data-token="{{ csrf_token() }}"><i class="fa fa-minus"></i> Remove</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <hr class="">
+                                                        </div>
+                                                    </div>
+                                                    @endforeach
+                                                    @endif
+                                                </div>
+                                                <div id="variant_row">
+
+                                                </div>
+                                            </div>
+                                            <div class="product-btns mt-4 text-end px-4 d-flex d-md-block">
+                                                <input type="reset" class=" btn btn-secondary bg-secondary rounded-2  px-5 mx-1 fw-bold" value="Cancel">
+                                                <button class="rounded-2 py-2 px-5 fw-bold mt-0">Submit</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="product-btns mt-4 text-end px-4 d-flex d-md-block">
-                                        <input type="reset" class=" btn btn-secondary bg-secondary rounded-2  px-5 mx-1 fw-bold" value="Cancel">
-                                        <button class="rounded-2 py-2 px-5 fw-bold mt-0">Submit</button>
-                                    </div>
-                                </form>
+                                </div>
                             </section>
 
                             <!-- Step 4 -->

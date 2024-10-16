@@ -25,7 +25,7 @@ $(".validation-wizard").steps({
         }
     },
     onFinished: function (event, currentIndex) {
-<<<<<<< HEAD
+        // You can also submit the form here
         if (currentIndex === 4) { // 5th step is the last step
             $("#current_step").val(4);
             // Final submission if needed, this could be a different endpoint
@@ -56,7 +56,7 @@ $(".validation-wizard").steps({
         }
     },
 });
-=======
+
         swal(
             "Form Submitted!",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed."
@@ -82,4 +82,3 @@ $(".validation-wizard").steps({
             },
         },
     });
->>>>>>> c767d299937e1b236d334f972d3e6c4420a6beeb
