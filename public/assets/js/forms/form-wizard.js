@@ -45,11 +45,9 @@ form
         bodyTag: "fieldset",
         transitionEffect: "slideLeft",
         onStepChanging: function (event, currentIndex, newIndex) {
-            // Allways allow previous action even if the current form is not valid!
             if (currentIndex > newIndex) {
                 return true;
             }
-            // Forbid next action on "Warning" step if the user is to young
             if (newIndex === 3 && Number($("#age-2").val()) < 18) {
                 return false;
             }
@@ -158,25 +156,19 @@ $(".validation-wizard").steps({
                 // Set the current step value
                 $("#current_step").val(newIndex);
 
-                // Prepare data for the current step
                 var stepData = form.serialize();
-                
-                // Set flag to indicate submission in progress
-                isSubmitting = true;
+                                isSubmitting = true;
 
-                // Submit the data via AJAX to the same route
                 $.ajax({
                     url: form.attr('action'), // Use the form's action (route)
                     method: 'POST',
                     data: stepData,
                     success: function(response) {
                         console.log('Step saved successfully:', response);
-                        // Proceed to the next step
                         $(".validation-wizard").steps("next");
                     },
                     error: function(xhr, status, error) {
                         console.error('Error in saving step data:', error);
-                        // Optionally display an error alert
                         swal.fire({
                             title: "Error!",
                             text: "There was an error saving this step.",
@@ -184,7 +176,6 @@ $(".validation-wizard").steps({
                         });
                     },
                     complete: function() {
-                        // Reset flag after AJAX call is complete
                         isSubmitting = false;
                     }
                 });
