@@ -7,6 +7,7 @@ use App\Http\Controllers\OtpVerificationController;
 use App\Http\Controllers\InfluencerController;
 use App\Http\Controllers\SocialAccountController;
 use App\Http\Controllers\CompaignController;
+use App\Http\Controllers\ProductController;
 
 // Routes for admin with authentication check
 Route::prefix('portal')->middleware('auth')->group(function () {
@@ -31,6 +32,11 @@ Route::prefix('portal')->middleware('auth')->group(function () {
     Route::post('/store-whatsapp', [OtpVerificationController::class, 'store_whatsapp'])->name('store.whatsapp');
 
     Route::post('/store-compaign', [CompaignController::class, 'store_compaign'])->name('store.compaign');
+    
+    Route::match(['get', 'post'], '/products', [ProductController::class, 'products'])->name('admin.prodcuts');
+    Route::match(['get', 'post'], '/storeProduct', [ProductController::class, 'store_product'])->name('admin.storeProduct');
+    Route::delete('/deleteVariant', [ProductController::class, 'delete_variant'])->name('admin.deleteVariant');
+    Route::match(['get', 'post'], '/deleteProductAttribute', [ProductController::class, 'delete_product_attribute'])->name('admin.deleteProductAttribute');
 });
 
 
