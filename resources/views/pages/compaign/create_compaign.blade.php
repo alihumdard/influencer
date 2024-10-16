@@ -244,6 +244,265 @@
             </div>
         </div>
 
+        <div class="col-12">
+            <!-- ---------------------
+                start Step wizard with validation
+            ---------------- -->
+            <div class="card">
+                <div class="card-body wizard-content">
+                    <h4 class="card-title">Step wizard with validation</h4>
+                    <p class="card-subtitle mb-3"> You can us the validation like what we did </p>
+                    <form action="#" class="validation-wizard wizard-circle mt-5">
+                        <!-- Step 1 -->
+                        <h6>Step 1</h6>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="wfirstName2"> First Name : <span class="danger">*</span>
+                                        </label>
+                                        <input type="text" class="form-control required" id="wfirstName2" name="firstName" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="wlastName2"> Last Name : <span class="danger">*</span>
+                                        </label>
+                                        <input type="text" class="form-control required" id="wlastName2" name="lastName" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="wemailAddress2"> Email Address : <span class="danger">*</span>
+                                        </label>
+                                        <input type="email" class="form-control required" id="wemailAddress2" name="emailAddress" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="wphoneNumber2">Phone Number :</label>
+                                        <input type="tel" class="form-control" id="wphoneNumber2" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="wlocation2"> Select City : <span class="danger">*</span>
+                                        </label>
+                                        <select class="form-select required" id="wlocation2" name="location">
+                                            <option value="">Select City</option>
+                                            <option value="India">India</option>
+                                            <option value="USA">USA</option>
+                                            <option value="Dubai">Dubai</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="wdate2">Date of Birth :</label>
+                                        <input type="date" class="form-control" id="wdate2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Step 2 -->
+                        <h6>Step 2</h6>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="jobTitle2">Company Name :</label>
+                                        <input type="text" class="form-control required" id="jobTitle2" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="webUrl3">Company URL :</label>
+                                        <input type="url" class="form-control required" id="webUrl3" name="webUrl3" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="shortDescription3">Short Description :</label>
+                                        <textarea name="shortDescription" id="shortDescription3" rows="6"
+                                            class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Step 3 -->
+                        <h6>Step 3</h6>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="wint1">Interview For :</label>
+                                        <input type="text" class="form-control required" id="wint1" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="wintType1">Interview Type :</label>
+                                        <select class="form-select required" id="wintType1" data-placeholder="Type to search cities"
+                                            name="wintType1">
+                                            <option value="Banquet">Normal</option>
+                                            <option value="Fund Raiser">Difficult</option>
+                                            <option value="Dinner Party">Hard</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="wLocation1">Location :</label>
+                                        <select class="form-select required" id="wLocation1" name="wlocation">
+                                            <option value="">Select City</option>
+                                            <option value="India">India</option>
+                                            <option value="USA">USA</option>
+                                            <option value="Dubai">Dubai</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="wjobTitle2">Interview Date :</label>
+                                        <input type="date" class="form-control required" id="wjobTitle2" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Requirements :</label>
+                                        <div class="c-inputs-stacked">
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio16" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio16">Employee</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio17" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio17">Contract</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Step 4 -->
+                        <h6>Step 4</h6>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="behName1">Behaviour :</label>
+                                        <input type="text" class="form-control required" id="behName1" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="participants1">Confidance</label>
+                                        <input type="text" class="form-control required" id="participants1" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="participants1">Result</label>
+                                        <select class="form-select required" id="participants1" name="location">
+                                            <option value="">Select Result</option>
+                                            <option value="Selected">Selected</option>
+                                            <option value="Rejected">Rejected</option>
+                                            <option value="Call Second-time"> Call Second-time </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="decisions1">Comments</label>
+                                        <textarea name="decisions" id="decisions1" rows="4" class="form-control"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Rate Interviwer :</label>
+                                        <div class="c-inputs-stacked">
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio11" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio11">1 star</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio12" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio12">2 star</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio13" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio13">3 star</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio14" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio14">4 star</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio15" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio15">5 star</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Step 5 -->
+                        <h6>Step 5</h6>
+                        <section>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="behName1">Behaviour :</label>
+                                        <input type="text" class="form-control required" id="behName1" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="participants1">Confidance</label>
+                                        <input type="text" class="form-control required" id="participants1" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="participants1">Result</label>
+                                        <select class="form-select required" id="participants1" name="location">
+                                            <option value="">Select Result</option>
+                                            <option value="Selected">Selected</option>
+                                            <option value="Rejected">Rejected</option>
+                                            <option value="Call Second-time"> Call Second-time </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="decisions1">Comments</label>
+                                        <textarea name="decisions" id="decisions1" rows="4" class="form-control"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Rate Interviwer :</label>
+                                        <div class="c-inputs-stacked">
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio11" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio11">1 star</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio12" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio12">2 star</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio13" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio13">3 star</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio14" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio14">4 star</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input type="radio" id="customRadio15" name="customRadio" class="form-check-input" />
+                                                <label class="form-check-label" for="customRadio15">5 star</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+            </div>
+            <!-- ---------------------
+                                                  end Step wizard with validation
+                                              ---------------- -->
+        </div>
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -883,6 +1142,57 @@
 <script src="/assets/js/forms/form-wizard.js"></script>
 
 <script>
+    var form = $(".validation-wizard").show();
+
+    $(".validation-wizard").steps({
+            headerTag: "h6",
+            bodyTag: "section",
+            transitionEffect: "fade",
+            titleTemplate: '<span class="step">#index#</span> #title#',
+            labels: {
+                finish: "Submit",
+            },
+            onStepChanging: function(event, currentIndex, newIndex) {
+                return (
+                    currentIndex > newIndex ||
+                    (!(3 === newIndex && Number($("#age-2").val()) < 18) &&
+                        (currentIndex < newIndex &&
+                            (form.find(".body:eq(" + newIndex + ") label.error").remove(),
+                                form.find(".body:eq(" + newIndex + ") .error").removeClass("error")),
+                            (form.validate().settings.ignore = ":disabled,:hidden"),
+                            form.valid()))
+                );
+            },
+            onFinishing: function(event, currentIndex) {
+                return (form.validate().settings.ignore = ":disabled"), form.valid();
+            },
+            onFinished: function(event, currentIndex) {
+                swal(
+                    "Form Submitted!",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed."
+                );
+            },
+        }),
+        $(".validation-wizard").validate({
+            ignore: "input[type=hidden]",
+            errorClass: "text-danger",
+            successClass: "text-success",
+            highlight: function(element, errorClass) {
+                $(element).removeClass(errorClass);
+            },
+            unhighlight: function(element, errorClass) {
+                $(element).removeClass(errorClass);
+            },
+            errorPlacement: function(error, element) {
+                error.insertAfter(element);
+            },
+            rules: {
+                email: {
+                    email: !0,
+                },
+            },
+        });
+
     $("#add-product").on("click", function() {
         var newProductRow = `
             <div class="row product-row">
