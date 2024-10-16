@@ -24,8 +24,6 @@
         color: #fff !important;
     }
 
-
-
     .btn-primary {
         background: #D63388 !important;
         border: 1px solid !important;
@@ -46,9 +44,8 @@
     .btn-dark {
         background: #4a5363;
         margin-right: 10px;
-        }
-        
-        
+    }
+
     html * {
         box-sizing: border-box;
     }
@@ -170,8 +167,7 @@
     .hide {
         display: none !important;
     }
-</style>
-<style>
+
     .flip-card {
         background-color: transparent;
         width: 100px;
@@ -219,9 +215,7 @@
         transform: rotateY(180deg);
         display: flex;
         justify-content: center;
-        /* Center horizontally */
         align-items: center;
-        /* Center vertically */
     }
 </style>
 
@@ -386,6 +380,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
@@ -617,142 +612,135 @@
                                             @enderror
                                         </div>
                                     </div>
-                    </div>
-                    <div class="row mb-5">
-                        <div class="form-floating col-12  mt-3">
-                            <textarea class="form-control tinymce-editor" name="short_desc" id="short_desc" placeholder="Product short Description">{{$product['short_desc'] ?? ''}}</textarea>
-                            <div class="invalid-feedback">Please write product short desc!</div>
-                            @error('short_desc')
-                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
+                                    <div class="row mb-5">
+                                        <div class="form-floating col-12  mt-3">
+                                            <textarea class="form-control tinymce-editor" name="short_desc" id="short_desc" placeholder="Product short Description">{{$product['short_desc'] ?? ''}}</textarea>
+                                            <div class="invalid-feedback">Please write product short desc!</div>
+                                            @error('short_desc')
+                                            <div class="alert-danger text-danger ">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
 
-                    <div class="row mb-5">
-                        <div class="form-floating col-12  mt-3">
-                            <textarea class="form-control tinymce-editor" name="desc" id="pro_desc" placeholder="Product main Description" required=''>{{$product['desc'] ?? ''}}</textarea>
-                            <div class="invalid-feedback">Please write product Main desc!</div>
-                            @error('desc')
-                            <div class="alert-danger text-danger ">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    {{-- Variant Section --}}
-                    <div class="container-fluid m-0 ">
-                        <div class="d-flex justify-content-between col-md-12 align-items-center">
-                            <div class="variants-div">
-                                <h4 class="fw-bold">Product Variants</h4>
-                            </div>
-                            <div class=" float-end">
-                                <div class="p-2">
-                                    <lable id="add_new_row" class="btn btn-success mb-2"><i class="fa fa-plus"></i> Add Variants</lable>
-                                </div>
-                                <button type="button" id="add-product" class="btn btn-primary">Add Another Product</button>
+                                    <div class="row mb-5">
+                                        <div class="form-floating col-12  mt-3">
+                                            <textarea class="form-control tinymce-editor" name="desc" id="pro_desc" placeholder="Product main Description" required=''>{{$product['desc'] ?? ''}}</textarea>
+                                            <div class="invalid-feedback">Please write product Main desc!</div>
+                                            @error('desc')
+                                            <div class="alert-danger text-danger ">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    {{-- Variant Section --}}
+                                    <div class="container-fluid m-0 ">
+                                        <div class="d-flex justify-content-between col-md-12 align-items-center">
+                                            <div class="variants-div">
+                                                <h4 class="fw-bold">Product Variants</h4>
+                                            </div>
+                                            <div class=" float-end">
+                                                <div class="p-2">
+                                                    <lable id="add_new_row" class="btn btn-success mb-2"><i class="fa fa-plus"></i> Add Variants</lable>
+                                                </div>
+                                                <button type="button" id="add-product" class="btn btn-primary">Add Another Product</button>
+                                            </div>
+                                        </div>
+                                        {{-- existing variants --}}
+                                        <div id="variant_row_existing">
+                                            @if(isset($product['variants']))
+                                            @foreach ($product['variants'] as $variant)
+                                            <div class="row bg-white rounded-3  mb-4 py-2" id="variant_{{ $variant['id'] }}">
+                                                <input type="hidden" value="{{$variant['id']}}" name="exist_vari_id[]">
+                                                <div class="col-12">
+                                                    <hr class="">
+                                                </div>
+                                                <div class="col-md-4 col-sm-12">
+                                                    <div class="p-2">
+                                                        <label for="" class="form-label">Variant Price <span class="vari-price">(Price in UK Pound)</span></label>
+                                                        <input type="text" class="form-control" name="exist_vari_price[]" id="" value="{{ $variant['price']}}" required>
+                                                        <div class="invalid-feedback">Enter variant price!</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12">
+                                                    <div class="p-2">
+                                                        <label for="" class="form-label">Variant Cut Price <span class="vari-cut-price">(Price in UK Pound)</span></label>
+                                                        <input type="text" class="form-control" name="exist_vari_cut_price[]" id="" value="{{ $variant['cut_price']}}">
+                                                        <div class="invalid-feedback">Enter variant cut price!</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12">
+                                                    <div class="p-2">
+                                                        <label for="" class="form-label">Variant Name <span class="extra-text"></span></label>
+                                                        <input type="text" class="form-control" name="exist_vari_name[]" id="" value="{{ $variant['title']}}" required>
+                                                        <div class="invalid-feedback">Enter variant title!</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12 product-md">
+                                                    <div class="p-2">
+                                                        <label for="" class="form-label">Variant Value <span class="extra-text"></span></label>
+                                                        <input type="text" class="form-control" name="exist_vari_value[]" id="" value="{{ $variant['value']}}" required>
+                                                        <div class="invalid-feedback">Enter variant value!</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12 ">
+                                                    <div class="p-2">
+                                                        <label for="" class="form-label">Inventory <span class="extra-text">(Available Stock)</span></label>
+                                                        <input type="number" class="form-control" name="exist_vari_inventory[]" id="" value="{{ $variant['inventory']}}" required>
+                                                        <div class="invalid-feedback">Enter variant stock!</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12 ">
+                                                    <div class="p-2">
+                                                        <label for="" class="form-label">weight <span class="extra-text">(gm)</span></label>
+                                                        <input type="text" class="form-control" name="exist_vari_weight[]" id="" value="{{ $variant['weight'] }}">
+                                                        <div class="invalid-feedback">Enter variant weight!</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12">
+                                                    <div class="p-2">
+                                                        <label for="" class="form-label">Barcode <span class="extra-text">(ISBN, UPC, GTIN, etc.)</span></label>
+                                                        <input type="text" class="form-control" name="exist_vari_barcode[]" id="" value="{{ $variant['barcode']}}">
+                                                        <div class="invalid-feedback">Enter variant barcode!</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12">
+                                                    <div class="p-2">
+                                                        <label for="" class="form-label">SKU <span class="extra-text">(Stock Keeping Unit)</span></label>
+                                                        <input type="text" class="form-control" name="exist_vari_sku[]" id="" value="{{ $variant['sku']}}">
+                                                        <div class="invalid-feedback">Enter variant stock!</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12 ">
+                                                    <div class="p-2">
+                                                        <label class="form-label">Select Image</label>
+                                                        <input class="form-control variant-image-exist" name="exist_vari_attr_image[]" type="file" id="">
+                                                        <div class="invalid-feedback">Enter variant image!</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 d-flex justify-content-end col-sm-12 mt-4 ">
+                                                    <div class="p-2 ">
+                                                        <button type="button" class="btn delete-variant btn-danger bg-danger" data-id="{{ $variant['id'] }}" data-token="{{ csrf_token() }}"><i class="fa fa-minus"></i> Remove</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <hr class="">
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                            @endif
+                                        </div>
+                                        <div id="variant_row">
+
+                                        </div>
+                                    </div>
+                                    <div class="product-btns mt-4 text-end px-4 d-flex d-md-block">
+                                        <input type="reset" class=" btn btn-secondary bg-secondary rounded-2  px-5 mx-1 fw-bold" value="Cancel">
+                                        <button class="rounded-2 py-2 px-5 fw-bold mt-0">Submit</button>
+                                    </div>
+                                </form>
                             </section>
 
                             <!-- Step 4 -->
                             <h6>Step 4</h6>
-                            </div>
-                        </div>
-                        {{-- existing variants --}}
-                        <div id="variant_row_existing">
-                            @if(isset($product['variants']))
-                            @foreach ($product['variants'] as $variant)
-                            <div class="row bg-white rounded-3  mb-4 py-2" id="variant_{{ $variant['id'] }}">
-                                <input type="hidden" value="{{$variant['id']}}" name="exist_vari_id[]">
-                                <div class="col-12">
-                                    <hr class="">
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="p-2">
-                                        <label for="" class="form-label">Variant Price <span class="vari-price">(Price in UK Pound)</span></label>
-                                        <input type="text" class="form-control" name="exist_vari_price[]" id="" value="{{ $variant['price']}}" required>
-                                        <div class="invalid-feedback">Enter variant price!</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="p-2">
-                                        <label for="" class="form-label">Variant Cut Price <span class="vari-cut-price">(Price in UK Pound)</span></label>
-                                        <input type="text" class="form-control" name="exist_vari_cut_price[]" id="" value="{{ $variant['cut_price']}}">
-                                        <div class="invalid-feedback">Enter variant cut price!</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="p-2">
-                                        <label for="" class="form-label">Variant Name <span class="extra-text"></span></label>
-                                        <input type="text" class="form-control" name="exist_vari_name[]" id="" value="{{ $variant['title']}}" required>
-                                        <div class="invalid-feedback">Enter variant title!</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12 product-md">
-                                    <div class="p-2">
-                                        <label for="" class="form-label">Variant Value <span class="extra-text"></span></label>
-                                        <input type="text" class="form-control" name="exist_vari_value[]" id="" value="{{ $variant['value']}}" required>
-                                        <div class="invalid-feedback">Enter variant value!</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12 ">
-                                    <div class="p-2">
-                                        <label for="" class="form-label">Inventory <span class="extra-text">(Available Stock)</span></label>
-                                        <input type="number" class="form-control" name="exist_vari_inventory[]" id="" value="{{ $variant['inventory']}}" required>
-                                        <div class="invalid-feedback">Enter variant stock!</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12 ">
-                                    <div class="p-2">
-                                        <label for="" class="form-label">weight <span class="extra-text">(gm)</span></label>
-                                        <input type="text" class="form-control" name="exist_vari_weight[]" id="" value="{{ $variant['weight'] }}">
-                                        <div class="invalid-feedback">Enter variant weight!</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="p-2">
-                                        <label for="" class="form-label">Barcode <span class="extra-text">(ISBN, UPC, GTIN, etc.)</span></label>
-                                        <input type="text" class="form-control" name="exist_vari_barcode[]" id="" value="{{ $variant['barcode']}}">
-                                        <div class="invalid-feedback">Enter variant barcode!</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="p-2">
-                                        <label for="" class="form-label">SKU <span class="extra-text">(Stock Keeping Unit)</span></label>
-                                        <input type="text" class="form-control" name="exist_vari_sku[]" id="" value="{{ $variant['sku']}}">
-                                        <div class="invalid-feedback">Enter variant stock!</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12 ">
-                                    <div class="p-2">
-                                        <label class="form-label">Select Image</label>
-                                        <input class="form-control variant-image-exist" name="exist_vari_attr_image[]" type="file" id="">
-                                        <div class="invalid-feedback">Enter variant image!</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 d-flex justify-content-end col-sm-12 mt-4 ">
-                                    <div class="p-2 ">
-                                        <button type="button" class="btn delete-variant btn-danger bg-danger" data-id="{{ $variant['id'] }}" data-token="{{ csrf_token() }}"><i class="fa fa-minus"></i> Remove</button>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <hr class="">
-                                </div>
-                            </div>
-                            @endforeach
-                            @endif
-                        </div>
-                        <div id="variant_row">
-
-                        </div>
-                    </div>
-                    <div class="product-btns mt-4 text-end px-4 d-flex d-md-block">
-                        <input type="reset" class=" btn btn-secondary bg-secondary rounded-2  px-5 mx-1 fw-bold" value="Cancel">
-                        <button class="rounded-2 py-2 px-5 fw-bold mt-0">Submit</button>
-                    </div>
-
-                </div>
-                </form>
-                </section>
-
-                <!-- Step 4 -->
-                {{-- <h6>Step 4</h6>
                             <section>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -879,15 +867,8 @@
             </div>
         </div>
     </div>
-                            </section> --}}
+</div>
 
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
 <script>
     function handleColorTheme(e) {
         $("html").attr("data-color-theme", e);
@@ -896,22 +877,14 @@
 </script>
 @stop
 
-    <script>
-        function handleColorTheme(e) {
-            $("html").attr("data-color-theme", e);
-            $(e).prop("checked", !0);
-        }
-    </script>
-    @stop
+@pushOnce('scripts')
+<script src="/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
+<script src="/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/assets/js/forms/form-wizard.js"></script>
 
-    @pushOnce('scripts')
-    <script src="/assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
-    <script src="/assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="/assets/js/forms/form-wizard.js"></script>
-
-    <script>
-        $("#add-product").on("click", function() {
-            var newProductRow = `
+<script>
+    $("#add-product").on("click", function() {
+        var newProductRow = `
             <div class="row product-row">
                 <div class="col-md-6">
                     <div class="mb-3">
@@ -927,35 +900,31 @@
                 </div>
             </div>
         `;
-            $("#product-container").append(newProductRow);
+        $("#product-container").append(newProductRow);
+    });
+
+    const addBtns = document.querySelectorAll(".add-btn");
+    const formTemplate = document.querySelector(".form-container");
+
+    addBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const parentCard = btn.closest(".card");
+            const existingForm = parentCard.querySelector(".form-container");
+
+            if (existingForm) {
+                // Toggle visibility if form already exists
+                existingForm.style.display =
+                    existingForm.style.display === "none" ? "block" : "none";
+            } else {
+                // Clone form and append to the card
+                const formClone = formTemplate.cloneNode(true);
+                formClone.style.display = "block";
+                parentCard.appendChild(formClone);
+            }
         });
+    });
 
-
-        const addBtns = document.querySelectorAll(".add-btn");
-        const formTemplate = document.querySelector(".form-container");
-
-
-        addBtns.forEach((btn) => {
-            btn.addEventListener("click", (e) => {
-                e.preventDefault();
-                const parentCard = btn.closest(".card");
-                const existingForm = parentCard.querySelector(".form-container");
-
-                if (existingForm) {
-                    // Toggle visibility if form already exists
-                    existingForm.style.display =
-                        existingForm.style.display === "none" ? "block" : "none";
-                } else {
-                    // Clone form and append to the card
-                    const formClone = formTemplate.cloneNode(true);
-                    formClone.style.display = "block";
-                    parentCard.appendChild(formClone);
-                }
-            });
-        });
-    </script>
-    @endPushOnce
-<script>
     jQuery(document).ready(function() {
         ImgUpload();
 
