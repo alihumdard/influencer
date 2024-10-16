@@ -196,34 +196,38 @@ $(".validation-wizard").steps({
         return true; // Allow going back
     },
     onFinishing: function (event, currentIndex) {
-        return (form.validate().settings.ignore = ":disabled"), form.valid();
+        if (currentIndex === 4) { // 5th step is the last step
+            return (form.validate().settings.ignore = ":disabled"), form.valid();
+        }
     },
     onFinished: function (event, currentIndex) {
-        $("#current_step").val(3);
-        // Final submission if needed, this could be a different endpoint
-        $.ajax({
-            url: form.attr('action'), // Use the form's action for final submission
-            method: 'POST',
-            data: form.serialize(), // Serialize all form data
-            success: function(response) {
-                swal.fire({
-                    title: "Form Submitted!",
-                    text: "Campaign Created Successfully!",
-                    icon: "success", // Set the icon to success
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        location.reload(); // Refresh the page on confirmation
-                    }
-                });
-            },
-            error: function(xhr, status, error) {
-                console.error('Error in final submission:', error);
-                swal.fire({
-                    title: "Error!",
-                    text: "There was an error submitting the form.",
-                    icon: "error",
-                });
-            }
-        });
+        if (currentIndex === 4) { // 5th step is the last step
+            $("#current_step").val(4);
+            // Final submission if needed, this could be a different endpoint
+            $.ajax({
+                url: form.attr('action'), // Use the form's action for final submission
+                method: 'POST',
+                data: form.serialize(), // Serialize all form data
+                success: function(response) {
+                    swal.fire({
+                        title: "Form Submitted!",
+                        text: "Campaign Created Successfully!",
+                        icon: "success", // Set the icon to success
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload(); // Refresh the page on confirmation
+                        }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error in final submission:', error);
+                    swal.fire({
+                        title: "Error!",
+                        text: "There was an error submitting the form.",
+                        icon: "error",
+                    });
+                }
+            });
+        }
     },
 });
