@@ -884,7 +884,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="campaign_name">loho Name:</label>
+                                                        <label class="form-label" for="campaign_name">logo Name:</label>
                                                         <input type="text" class="form-control" id="campaign_name" name="campaign_name" required />
                                                     </div>
                                                 </div>
@@ -907,6 +907,32 @@
                                                         <label class="form-label" for="campaign_banner">Campaign Banner:</label>
                                                         <input type="file" class="form-control" id="campaign_banner" name="campaign_banner" required />
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="tags">Tags:</label>
+                                                        <input type="text" class="form-control" id="tags" name="tags" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="payment">per 1 million view payment:</label>
+                                                        <input type="number" class="form-control" id="payment" name="payment" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label class="form-label" for="description">Decription</label>
+                                                    <textarea class="form-control" rows="3" placeholder="Write Description Here......."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col mt-3">
+                                                    <label class="form-label" for="sample_video">Upload Sample Video</label>
+                                                    <input class="form-control form-control-file" type="file" id="sample_video" name="sample_video"/>
                                                 </div>
                                             </div>
                                         </section>
