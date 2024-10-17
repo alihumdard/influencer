@@ -198,6 +198,22 @@
         position: relative;
         padding-bottom: 100%;
     }
+
+    @media only screen and (max-width: 375px) {
+        
+          .step-container .step-circle{
+                width: 40px;
+                height: 40px;
+          }   
+      }
+
+      @media only screen and (max-width: 320px) {
+        
+        .step-container .step-circle{
+              width: 30px;
+              height: 30px;
+        }   
+    }
 </style>
 
 <div class="body-wrapper">
@@ -244,6 +260,9 @@
                             </div>
                         </div>
 
+                      
+
+
                         <div id="multi-step-form" class="row justify-content-center">
                             <div class="col-md-10">
                                 <div class="step step-1">
@@ -267,19 +286,19 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Influencer Type:</label>
                                                     <div class="row">
-                                                        <div class="col-3">
+                                                        <div class="col-lg-3 col-md-6 col-sm-4">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="radio" id="influencer_type_content_creator" name="influencer_type" value="content_creator">
                                                                 <label class="form-check-label" for="influencer_type_content_creator">Content Creator</label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-3">
+                                                        <div class="col-sm-4">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="radio" id="influencer_type_memers" name="influencer_type" value="memers">
                                                                 <label class="form-check-label" for="influencer_type_memers">Memers</label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-3">
+                                                        <div class="col-sm-4">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="radio" id="influencer_type_influencer" name="influencer_type" value="influencer">
                                                                 <label class="form-check-label" for="influencer_type_influencer">Influencer</label>
@@ -292,19 +311,19 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Gender:</label>
                                                     <div class="row">
-                                                        <div class="col-3">
+                                                        <div class="col-lg-3 col-sm-4">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="radio" id="gender_male" name="gender" value="male">
                                                                 <label class="form-check-label" for="gender_male">Male</label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-3">
+                                                        <div class="col-lg-3 col-sm-4">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="radio" id="gender_female" name="gender" value="female">
                                                                 <label class="form-check-label" for="gender_female">Female</label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-3">
+                                                        <div class="col-lg-3 col-sm-4">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="radio" id="gender_other" name="gender" value="other">
                                                                 <label class="form-check-label" for="gender_other">Other</label>
