@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('compaigns', function (Blueprint $table) {
-            $table->tinyInteger('is_draft')->after('languages')->default(1);
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('compaigns', function (Blueprint $table) {
-            $table->dropColumn('is_draft');
-        });
+        Schema::dropIfExists('categories');
     }
 };

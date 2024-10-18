@@ -21,7 +21,8 @@ return new class extends Migration
             $table->enum('promotion_type', ['paid', 'barter', 'paid+barter']);
             $table->enum('platform', ['instagram', 'youtube']);
             $table->json('regions')->nullable(); 
-            $table->json('languages')->nullable(); 
+            $table->json('languages')->nullable();
+            $table->tinyInteger('is_draft')->default(1); 
             $table->json('follower_ranges')->nullable(); 
             $table->unsignedBigInteger('created_by'); 
             $table->unsignedBigInteger('updated_by')->nullable(); 

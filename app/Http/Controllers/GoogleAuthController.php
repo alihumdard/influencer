@@ -30,12 +30,16 @@ class GoogleAuthController extends Controller
     public function redirectToGoogle($role = null)
     {
         session(['role' => $role]);
-        return Socialite::driver('google')->redirect();
+
+        return Socialite::driver('google')
+        ->scopes(['openid', 'profile', 'email'])
+        ->redirect();
     }
 
     public function handleGoogleCallback()
     {
         try {
+
             $googleUser = Socialite::driver('google')->user();
             $role = session('role');
 
@@ -52,15 +56,21 @@ class GoogleAuthController extends Controller
                     'password' => Hash::make(Str::random(8)),
                 ]);
             }
+            if($user){
+                Auth::login($user);
+                if (Auth::check()) {
+                    return redirect()->route('admin.index');
+                } else {
 
-            Auth::login($user);
-            if ($user->role == user_roles(3)) {
-                return redirect()->route('admin.index');
-            } else {
-                return redirect()->route('admin.index');
+                return redirect()->route('login', ['role' => 'brand'])->withErrors(['msg' => 'Something went wrong with Google authentication.']);
+                }
+            }else{
+                return redirect()->route('login', ['role' => 'brand'])->withErrors(['msg' => 'Something went wrong with Google authentication.']);
             }
-        } catch (\Exception $e) {
-            return redirect()->route('login')->withErrors(['msg' => 'Something went wrong with Google authentication.']);
-        }
+
+            } catch (\Exception $e) {
+                dd($e);
+                return redirect()->route('login', ['role' => 'brand'])->withErrors(['msg' => 'Something went wrong with Google authentication.']);
+            }
     }
 }
