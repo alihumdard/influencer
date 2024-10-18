@@ -371,7 +371,7 @@
                                             </div>
                                         </form>
                                         <div class="d-flex justify-content-end mt-2">
-                                            <button type="submit" form="form_step_1" class="btn px-5 btn-primary next-step fw-bold">Next</button>
+                                            <button type="button" class="btn px-5 btn-primary next-step fw-bold">Next</button>
                                         </div>
                                     </section>
                                 </div>
@@ -1311,7 +1311,6 @@
         $('#multi-step-form').find('.step').slice(1).hide();
 
         $(".next-step").click(function(e) {
-            e.event.preventDefault();
             if (currentStep < 5) {
                 $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
                 currentStep++;
