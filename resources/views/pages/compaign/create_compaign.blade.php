@@ -293,7 +293,8 @@
                             <div class="col-md-10">
                                 <div class="step step-1">
                                     <section>
-                                        <form action="">
+                                        <form action="{{ route('store.compaign') }}" id="form_step_1" method="POST" enctype="multipart/form-data">
+                                            @csrf
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
@@ -369,123 +370,10 @@
                                                 </div>
                                             </div>
                                         </form>
+                                        <div class="d-flex justify-content-end mt-2">
+                                            <button type="submit" form="form_step_1" class="btn px-5 btn-primary next-step fw-bold">Next</button>
+                                        </div>
                                     </section>
-                                    <div class="d-flex justify-content-end mt-2">
-                                        <button type="button" class="btn px-5 btn-primary next-step fw-bold">Next</button>
-                                    </div>
-                                </div>
-
-                                <div class="step step-2">
-                                    <div class="mb-3">
-                                        <section>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" id="campaign_name"
-                                                        name="campaign_name" required />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label" for="campaign_banner">Campaign
-                                                        Banner:</label>
-                                                    <input type="file" class="form-control float-right"
-                                                        id="campaign_banner" name="campaign_banner" required />
-                                                </div>
-                                            </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Influencer Type:</label>
-                                                <div class="row">
-                                                    <div class="col-3">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                id="influencer_type_content_creator"
-                                                                name="influencer_type" value="content_creator">
-                                                            <label class="form-check-label"
-                                                                for="influencer_type_content_creator">Content
-                                                                Creator</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                id="influencer_type_memers" name="influencer_type"
-                                                                value="memers">
-                                                            <label class="form-check-label"
-                                                                for="influencer_type_memers">Memers</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                id="influencer_type_influencer"
-                                                                name="influencer_type" value="influencer">
-                                                            <label class="form-check-label"
-                                                                for="influencer_type_influencer">Influencer</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Gender:</label>
-                                                <div class="row">
-                                                    <div class="col-3">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                id="gender_male" name="gender" value="male">
-                                                            <label class="form-check-label"
-                                                                for="gender_male">Male</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                id="gender_female" name="gender" value="female">
-                                                            <label class="form-check-label"
-                                                                for="gender_female">Female</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                id="gender_other" name="gender" value="other">
-                                                            <label class="form-check-label"
-                                                                for="gender_other">Other</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <<<<<<<<< Temporary merge branch 1
-                                            <div class="col-md-12">
-                                            <div class="mb-3">
-                                                <label for="campaign_description" class="form-label">Campaign
-                                                    Description:</label>
-                                                <textarea class="form-control" id="campaign_description" name="campaign_description" rows="10"></textarea>
-                                            </div>
-                                            <div class="col">
-                                                <label class="form-label" for="description">Decription</label>
-                                                <textarea class="form-control" rows="3" placeholder="Write Description Here......."></textarea>
-                                            </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col mt-3">
-                                            <label class="form-label" for="sample_video">Upload Sample Video</label>
-                                            <input class="form-control form-control-file" type="file" id="sample_video" name="sample_video" />
-                                        </div>
-                                    </div>
-                                    </section>
-                                    <div class="d-flex justify-content-end mt-2">
-                                        <button type="button"
-                                            class="btn px-5 btn-primary next-step fw-bold">Next</button>
-                                    </div>
                                 </div>
 
                                 <div class="step step-2">
@@ -1355,22 +1243,20 @@
                                                     <textarea class="form-control" rows="3" placeholder="Write Description Here......."></textarea>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col mt-3">
+                                                    <label class="form-label" for="sample_video">Upload Sample
+                                                        Video</label>
+                                                    <input class="form-control form-control-file" type="file"
+                                                        id="sample_video" name="sample_video" />
+                                                </div>
+                                            </div>
+                                        </section>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="col mt-3">
-                                            <label class="form-label" for="sample_video">Upload Sample
-                                                Video</label>
-                                            <input class="form-control form-control-file" type="file"
-                                                id="sample_video" name="sample_video" />
-                                        </div>
+                                    <hr class="mb-5" />
+                                    <div class="d-flex justify-content-end mt-2  ">
+                                        <button type="button" class="btn px-4 btn-dark fw-bold mx-2 prev-step">Previous</button>
                                     </div>
-                                    </section>
-                                </div>
-                                <hr class="mb-5" />
-                                <div class="d-flex justify-content-end mt-2  ">
-                                    <button type="button"
-                                        class="btn px-4 btn-dark fw-bold mx-2 prev-step">Previous</button>
                                 </div>
                             </div>
                         </div>
@@ -1378,17 +1264,15 @@
                 </div>
             </div>
         </div>
+
+
     </div>
-
-
-</div>
 </div>
 
 @stop
 
 @pushOnce('scripts')
 <script>
-    // Tag input functionality
     function handleTagInput(event) {
         const tagInput = document.getElementById('tag-input');
         const tagContainer = document.getElementById('tag-input-container');
@@ -1409,8 +1293,9 @@
     function removeTag(element) {
         element.parentElement.remove();
     }
-    // Tag input functionality Ends Here
+
     var currentStep = 1;
+
     var updateProgressBar;
 
     function displayStep(stepNumber) {
@@ -1425,7 +1310,8 @@
     $(document).ready(function() {
         $('#multi-step-form').find('.step').slice(1).hide();
 
-        $(".next-step").click(function() {
+        $(".next-step").click(function(e) {
+            e.event.preventDefault();
             if (currentStep < 5) {
                 $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
                 currentStep++;
