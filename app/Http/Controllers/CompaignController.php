@@ -31,7 +31,7 @@ class CompaignController extends Controller
         if (!$campaignDetail) {
             $campaignDetail = new Compaign();
             $campaignDetail->name = $request->campaign_name;
-            dd($campaignDetail->name = $request->campaign_name);
+            $campaignDetail->name = $request->campaign_name;
             $campaignDetail->campaign_banner = $request->campaign_banner;
             $campaignDetail->influencer_type = $request->influencer_type;
             $campaignDetail->gender = $request->gender;
