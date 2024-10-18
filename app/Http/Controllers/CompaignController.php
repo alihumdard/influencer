@@ -16,6 +16,14 @@ class CompaignController extends Controller
 
     public function store_compaign(Request $request)
     {
+        $request->validate([
+            'campaign_name' => 'required|string|max:255',
+            'influencer_type' => 'required|string',
+            'gender' => 'required',
+            'campaign_description' => 'required|string',
+            'campaign_banner' => 'nullable|image|max:2048',
+        ]);
+
         $currentStep = $request->input('current_step');
 
         $campaignDetail = Compaign::where('is_draft', 1)->first();
