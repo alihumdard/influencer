@@ -4,7 +4,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Quill CSS for the Text Editor -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    <!-- Quill JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <style>
         .form-container {
@@ -57,6 +61,76 @@
             flex: 1;
             min-width: 100px;
         }
+
+        /* Text Editor Styling */
+        .quill-container {
+            height: 200px;
+            background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #444;
+            color: #fff;
+        }
+
+        /* White Toolbar Buttons and Icons */
+        .ql-toolbar button {
+            color: white !important;
+        }
+
+        .ql-toolbar button:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .ql-toolbar .ql-stroke,
+        .ql-toolbar .ql-fill {
+            stroke: white;
+            fill: #1e1e1e;
+        }
+
+        .ql-toolbar {
+            background: #333;
+            border: none;
+            border-bottom: 1px solid #444;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .ql-container {
+            background-color: #1e1e1e;
+            border: none;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .ql-editor {
+            padding: 15px;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #eaeaea;
+        }
+
+        .ql-editor:focus {
+            outline: none;
+        }
+
+        .ql-editor::placeholder {
+            color: #bbb;
+            opacity: 0.8;
+        }
+
+        /* Custom Scrollbar */
+        .ql-editor::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .ql-editor::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .ql-editor::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Text Editor Styling Ends Here */
 
         .bg-dark {
             background: #D63388 !important;
@@ -1245,8 +1319,10 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <label class="form-label" for="description">Decription</label>
-                                                        <textarea class="form-control" rows="3" placeholder="Write Description Here......."></textarea>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Description</label>
+                                                            <div id="editor" class="quill-container"></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -1271,8 +1347,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
@@ -1302,6 +1376,7 @@
             element.parentElement.remove();
         }
         // Tag input functionality Ends Here
+
         var currentStep = 1;
         var updateProgressBar;
 
@@ -1651,5 +1726,38 @@
                 });
             });
         });
+        // Initialize Quill Text Editor
+        var quill = new Quill('#editor', {
+            theme: 'snow',
+            placeholder: 'Enter description...',
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'underline', 'strike'], // Toggle buttons
+                    [{
+                        'header': 1
+                    }, {
+                        'header': 2
+                    }], // Header levels
+                    [{
+                        'list': 'ordered'
+                    }, {
+                        'list': 'bullet'
+                    }],
+                    [{
+                        'indent': '-1'
+                    }, {
+                        'indent': '+1'
+                    }], // Outdent/Indent
+                    [{
+                        'color': []
+                    }, {
+                        'background': []
+                    }], // Color and background
+                    ['link', 'image'], // Add links and images
+                    ['clean'] // Remove formatting
+                ]
+            }
+        });
+        // Initialize Quill Text Editor Ends Here
     </script>
 @endPushOnce
