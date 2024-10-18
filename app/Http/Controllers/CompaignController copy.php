@@ -19,10 +19,6 @@ class CompaignController extends Controller
 
         $request->validate([
             'campaign_name' => 'required|string|max:255',
-            'campaign_banner' => 'required|string|max:255',
-            'influencer_type' => 'required|string|max:255',
-            'gender' => 'required|string|max:255',
-            'campaign_description' => 'required|string|max:255',
         ]);
 
         $currentStep = $request->input('current_step');
@@ -32,16 +28,12 @@ class CompaignController extends Controller
         if (!$campaignDetail) {
             $campaignDetail = new Compaign();
             $campaignDetail->name = $request->campaign_name;
-            dd($campaignDetail->name = $request->campaign_name);
-            $campaignDetail->campaign_banner = $request->campaign_banner;
-            $campaignDetail->influencer_type = $request->influencer_type;
-            $campaignDetail->gender = $request->gender;
-            $campaignDetail->campaign_description = $request->campaign_description;
+            // $campaignDetail->name = $request->campaign_banner;
+            // $campaignDetail->name = $request->influencer_type;
+            // $campaignDetail->name = $request->gender;
+            // $campaignDetail->name = $request->campaign_description;
             $campaignDetail->is_draft = 1; // Set to draft
         }
-
- 
-
 
         switch ($currentStep) {
             case 1:
@@ -52,6 +44,7 @@ class CompaignController extends Controller
                 }
 
                 $campaignDetail->name = $request->campaign_name;
+                // dd($campaignDetail->name = $request->campaign_name);
                 $campaignDetail->banner = $imageName ?? NULL;
                 $campaignDetail->influencer_type = $request->influencer_type;
                 $campaignDetail->gender = $request->gender;
@@ -59,8 +52,8 @@ class CompaignController extends Controller
                 $campaignDetail->is_draft = 1;
                 $campaignDetail->created_by = Auth::user()->id;
 
-                dd($campaignDetail);
                 $campaignDetail->save();
+                dd($campaignDetail);
 
                 break;
             case 2:
