@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
 use App\Models\Compaign;
 use App\Models\CompaignProduct;
 use Illuminate\Http\Request;
@@ -11,7 +12,8 @@ class CompaignController extends Controller
 {
     public function create_compaign()
     {
-        return view('pages.compaign.create_compaign');
+        $categories = Categorie::all();
+        return view('pages.compaign.create_compaign', compact('categories'));
     }
 
     public function store_compaign(Request $request)
@@ -31,7 +33,7 @@ class CompaignController extends Controller
         if (!$campaignDetail) {
             $campaignDetail = new Compaign();
             $campaignDetail->name = $request->campaign_name;
-            dd($campaignDetail->name = $request->campaign_name);
+            $campaignDetail->name = $request->campaign_name;
             $campaignDetail->campaign_banner = $request->campaign_banner;
             $campaignDetail->influencer_type = $request->influencer_type;
             $campaignDetail->gender = $request->gender;
@@ -39,7 +41,7 @@ class CompaignController extends Controller
             $campaignDetail->is_draft = 1; // Set to draft
         }
 
- 
+
 
 
         switch ($currentStep) {

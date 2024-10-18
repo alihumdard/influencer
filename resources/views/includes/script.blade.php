@@ -9,3 +9,4 @@
 
 <script src="/assets/js/sidebarmenu.js"></script>
 <script src="/assets/js/theme.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
