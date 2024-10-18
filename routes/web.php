@@ -16,3 +16,8 @@ Route::get('/logout', [WebController::class, 'logout'])->name('logout');
 
 include __DIR__ . '/admin.php';
 
+
+
+Route::get('/influencer-profile', function(){
+    return view('pages.profile.influencer');
+});
