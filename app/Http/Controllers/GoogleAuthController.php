@@ -26,14 +26,14 @@ class GoogleAuthController extends Controller
         $this->role = user_roles(3);
         return $this->redirectToGoogle($this->role);
     }
-    
+
     public function redirectToGoogle($role = null)
     {
         session(['role' => $role]);
+
         return Socialite::driver('google')
         ->scopes(['openid', 'profile', 'email'])
         ->redirect();
-
     }
 
     public function handleGoogleCallback()

@@ -16,13 +16,12 @@ class CompaignController extends Controller
 
     public function store_compaign(Request $request)
     {
-
         $request->validate([
             'campaign_name' => 'required|string|max:255',
-            'campaign_banner' => 'required|string|max:255',
-            'influencer_type' => 'required|string|max:255',
-            'gender' => 'required|string|max:255',
-            'campaign_description' => 'required|string|max:255',
+            'influencer_type' => 'required|string',
+            'gender' => 'required',
+            'campaign_description' => 'required|string',
+            'campaign_banner' => 'nullable|image|max:2048',
         ]);
 
         $currentStep = $request->input('current_step');
