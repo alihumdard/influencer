@@ -8,10 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon icon-->
-    <link
-        rel="shortcut icon"
-        type="image/png"
-        href="/assets/images/logos/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="/assets/images/logos/favicon.png" />
 
     <!-- Core Css -->
     <link rel="stylesheet" href="/assets/css/styles.css" />
@@ -34,19 +31,34 @@
                             <img src="assets/images/logos/light-logo.svg" class="light-logo" alt="Logo-light" />
                         </a>
                         <!-- Ensure image visibility on smaller screens -->
-                        <div class="d-flex align-items-center justify-content-center" style="height: calc(100vh - 80px);">
-                            <img src="/assets/images/backgrounds/Influencer-amico.png" alt="" class="img-fluid" width="100%" style="max-width: 500px;">
+                        <div class="d-flex align-items-center justify-content-center"
+                            style="height: calc(100vh - 80px);">
+                            <img src="/assets/images/backgrounds/Influencer-amico.png" alt="" class="img-fluid"
+                                width="100%" style="max-width: 500px;">
                         </div>
                     </div>
+
                     <div class="col-lg-6 col-xl-6 col-xxl-6">
-                        <div class="card mb-0 shadow-none rounded-0 min-vh-100 h-100 text-white" style="background-color: rgb(178, 1, 99)">
+                        <div class="card mb-0 shadow-none rounded-0 min-vh-100 h-100 text-white"
+                            style="background-color: rgb(178, 1, 99)">
                             <div class="d-flex align-items-center w-100 h-100">
                                 <div class="card-body">
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger text-white">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <div class="col-12 mb-3">
                                         <form>
                                             <div class="col-12 mb- mb-sm-0">
-                                                <a class="btn btn-lg btn-light text-dark border fw-normal d-flex align-items-center justify-content-center rounded-2 py-2" href="{{ route('login.brand') }}" role="button">
-                                                    <img src="/assets/images/svgs/google-icon.svg" alt="" class="img-fluid me-2" width="18" height="18">
+                                                <a class="btn btn-lg btn-light text-dark border fw-normal d-flex align-items-center justify-content-center rounded-2 py-2"
+                                                    href="{{ route('login.brand') }}" role="button">
+                                                    <img src="/assets/images/svgs/google-icon.svg" alt=""
+                                                        class="img-fluid me-2" width="18" height="18">
                                                     <span class="d-none d-sm-block me-1 flex-shrink-0">Continue
                                                         With</span>Google
                                                 </a>
@@ -55,7 +67,8 @@
                                     </div>
                                     <div class="mb-5">
                                         <p class="mb-0">
-                                            Please provide the email address associated with your account, and we will send you a link to access and review the updated Agreement & Conditions.
+                                            Please provide the email address associated with your account, and we will
+                                            send you a link to access and review the updated Agreement & Conditions.
                                             <a class="btn btn-link fw-bold text-white" href="#">View Details</a>
                                         </p>
                                     </div>
