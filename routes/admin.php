@@ -34,12 +34,18 @@ Route::prefix('portal')->middleware('auth')->group(function () {
     Route::post('/store-compaign-step1', [CompaignController::class, 'store_compaign_setp_1'])->name('store.step1.compaign');
     Route::post('/store-compaign-step2', [CompaignController::class, 'store_compaign_setp_2'])->name('store.step2.compaign');
     Route::match(['get', 'post'], '/storeReel', [CompaignController::class, 'store_reel'])->name('store.reel');
-
+    Route::delete('/campaign/delete-draft/{id}', [CompaignController::class, 'delete_draft_compaign'])->name('compaign.delete');
 
     Route::match(['get', 'post'], '/products', [ProductController::class, 'products'])->name('admin.prodcuts');
     Route::match(['get', 'post'], '/storeProduct', [ProductController::class, 'store_product'])->name('admin.storeProduct');
     Route::delete('/deleteVariant', [ProductController::class, 'delete_variant'])->name('admin.deleteVariant');
     Route::match(['get', 'post'], '/deleteProductAttribute', [ProductController::class, 'delete_product_attribute'])->name('admin.deleteProductAttribute');
+
+    Route::post('/store-compaign-reel', [CompaignController::class, 'store_compaign_reel'])->name('store.compaign.reel');
+    Route::post('/store-compaign-story', [CompaignController::class, 'store_compaign_story'])->name('store.compaign.story');
+    Route::post('/store-compaign-video', [CompaignController::class, 'store_compaign_video'])->name('store.compaign.video');
+    Route::post('/store-compaign-post', [CompaignController::class, 'store_compaign_post'])->name('store.compaign.post');
+    Route::post('/store-compaign-logo', [CompaignController::class, 'store_compaign_logo'])->name('store.compaign.logo');
 });
 
 
