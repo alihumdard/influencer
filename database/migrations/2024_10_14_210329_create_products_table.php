@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-
             $table->id();
             $table->string('title');
             $table->json('product_images')->nullable();
@@ -21,16 +20,13 @@ return new class extends Migration
             $table->decimal('cut_price', 8, 2)->nullable();
             $table->decimal('price', 8, 2);
             $table->integer('stock')->default(0);
-            $table->varchar('stock_status')->nullable();
+            $table->string('stock_status')->nullable();
             $table->string('sku')->unique();
             $table->string('barcode')->unique();
             $table->decimal('weight')->default(0.00);
             $table->boolean('status')->default(1);
             $table->text('description')->nullable();
             $table->text('short_description')->nullable();
-
-
-            // $table->foreignId('brand_id')->constrained()->onDelete('cascade');
             $table->string('mpn')->nullable();
             $table->string('gtin')->nullable();
             $table->string('gtin_type')->nullable();
@@ -40,6 +36,7 @@ return new class extends Migration
             $table->string('model_number')->nullable();
             $table->string('origin')->nullable();
             $table->integer('shipped_quantity')->default(0);
+            // $table->foreignId('brand_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
