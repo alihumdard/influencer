@@ -24,24 +24,30 @@ class ProductController extends Controller
             'short_description' => 'nullable|string',
             'description' => 'nullable|string',
 
-            'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webm,svg,webp|max:2048',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webm,svg,webp|max:2048',
         ]);
 
-        // Handle main image upload
         $mainImagePath = null;
         if ($request->hasFile('main_image')) {
             $mainImage = $request->file('main_image');
-            $mainImagePath = $mainImage->store('products', 'public');
+            $mainImageName = time() . '_' . uniqid('', true) . '.' . $mainImage->getClientOriginalExtension();
+            $mainImage->storeAs('product_images/main_images', $mainImageName, 'public');
+            $mainImagePath = 'product_images/main_images/' . $mainImageName;
         }
 
-        // Handle additional images upload
         $imagePaths = [];
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                $imagePaths[] = $image->store('products', 'public');
+                $imageName = time() . '_' . $image->getClientOriginalName();
+                $image->storeAs('product_images', $imageName, 'public'); 
+                $extImagePath = 'product_images/' . $imageName;
+                $imagePaths[] = $extImagePath;
             }
         }
+
+
+
 
         // Create the product
         $product = Product::create([
