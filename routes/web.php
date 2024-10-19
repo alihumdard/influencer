@@ -30,3 +30,8 @@ Route::get('/brand-profile', function(){
 Route::get('/products-listing', function(){
     return view('pages.products.listing');
 });
+
+Route::get('/about', function(){
+    return view('pages.profile.about');
+});
+
