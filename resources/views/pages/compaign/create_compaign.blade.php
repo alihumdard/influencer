@@ -283,7 +283,6 @@
                                     <div class="step-circle step-circle-2">2</div>
                                     <div class="step-circle step-circle-3">3</div>
                                     <div class="step-circle step-circle-4">4</div>
-                                    <div class="step-circle step-circle-5">5</div>
                                 </div>
                             </div>
                         </div>
@@ -404,7 +403,7 @@
                                         <section>
                                             <form action="{{ route('store.step2.compaign') }}" id="form_step_2" method="POST" enctype="multipart/form-data">
                                                 @csrf
-                                                <input type="hidden" name="id" class="campaign_id">
+                                                <input type="hidden" name="id" class="campaign_id" value="{{ $compaign ? $compaign->id : ''}}">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="mb-3">
@@ -1039,11 +1038,75 @@
                                                             <button class="btn btn-primary rounded-2 py-2 px-5 fw-bold mt-0">Save Product</button>
                                                         </div>
                                                     </form>
+                                                    
                                                 </div>
                                             </div>
                                         </section>
                                     </div>
                                     <hr class="mb-5" />
+                                    <div class="col-md-4 single-note-item all-category">
+                                        <div class="card card-body">
+                                          <span class="side-stick"></span>
+                                          <h6 class="note-title text-truncate w-75 mb-0" data-noteheading="Book a Ticket for Movie"> Book a
+                                            Ticket for Movie </h6>
+                                          <p class="note-date fs-2">11 March 2009</p>
+                                          <div class="note-content">
+                                            <p class="note-inner-content" data-notecontent="Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis."> Blandit
+                                              tempus porttitor aasfs. Integer posuere erat a ante venenatis. </p>
+                                          </div>
+                                          <div class="d-flex align-items-center">
+                                            <a href="javascript:void(0)" class="link me-1">
+                                              <i class="ti ti-star fs-4 favourite-note"></i>
+                                            </a>
+                                            <a href="javascript:void(0)" class="link text-danger ms-2">
+                                              <i class="ti ti-trash fs-4 remove-note"></i>
+                                            </a>
+                                            <div class="ms-auto">
+                                              <div class="category-selector btn-group">
+                                                <a class="nav-link category-dropdown label-group p-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                                                  <div class="category">
+                                                    <div class="category-business"></div>
+                                                    <div class="category-social"></div>
+                                                    <div class="category-important"></div>
+                                                    <span class="more-options text-dark">
+                                                      <i class="ti ti-dots-vertical fs-5"></i>
+                                                    </span>
+                                                  </div>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right category-menu">
+                                                  <a class="
+                                                          note-business
+                                                          badge-group-item badge-business
+                                                          dropdown-item
+                                                          position-relative
+                                                          category-business
+                                                          d-flex
+                                                          align-items-center
+                                                        " href="javascript:void(0);">Business</a>
+                                                  <a class="
+                                                          note-social
+                                                          badge-group-item badge-social
+                                                          dropdown-item
+                                                          position-relative
+                                                          category-social
+                                                          d-flex
+                                                          align-items-center
+                                                        " href="javascript:void(0);"> Social</a>
+                                                  <a class="
+                                                          note-important
+                                                          badge-group-item badge-important
+                                                          dropdown-item
+                                                          position-relative
+                                                          category-important
+                                                          d-flex
+                                                          align-items-center
+                                                        " href="javascript:void(0);"> Important</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
                                     <div class="d-flex justify-content-end mt-2  ">
                                         <!-- <button type="button" class="btn px-4 btn-dark fw-bold mx-2 prev-step">Previous</button> -->
                                         <button type="button" data-form="next_move" class="btn px-5 btn-primary next-step mx-1 ">Next</button>
@@ -1065,6 +1128,74 @@
                                                                     <button class="btn btn-secondary ms-auto add-btn">Add</button>
                                                                 </div>
                                                             </div>
+                                                            <!-- Hidden Reels Form Template -->
+                                                            <div class="form-container bg-dark text-white p-4 mt-3">
+                                                                <form class="g-3 mt-3 needs-validation" id="reelForm" method="post" action="{{ route('store.compaign.reel') }}" novalidate enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <input type="hidden" name="campaign_id" class="campaign_id" value="{{ $compaign ? $compaign->id : ''}}">
+                                                                    <div class="bg-white p-5 rounded shadow-lg w-100 max-w-md mx-auto">
+                                                                        <h2 class="h5 fw-bold mb-4">Add Reel</h2>
+
+                                                                        <!-- Reel Type -->
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Reel Type:</label>
+                                                                            <div class="row">
+                                                                                <div class="col-3">
+                                                                                    <div class="form-check">
+                                                                                        <input class="form-check-input " type="radio"
+                                                                                            id="repost-reel" name="reel_type"
+                                                                                            value="repost">
+                                                                                        <label class="form-check-label text-muted"
+                                                                                            for="repost-reel">Repost Reel</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-3">
+                                                                                    <div class="form-check">
+                                                                                        <input class="form-check-input" type="radio"
+                                                                                            id="shoot-reel" name="reel_type"
+                                                                                            value="shoot">
+                                                                                        <label class="form-check-label text-muted"
+                                                                                            for="shoot-reel">Shoot Reel</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- Description Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="description" class="form-label">Description (Optional)</label>
+                                                                            <textarea name="description" id="description" class="form-control" rows="3" placeholder="Describe the campaign..."></textarea>
+                                                                        </div>
+
+                                                                        <!-- Instagram Page Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="instagramPage" class="form-label">Brand Instagram Page</label>
+                                                                            <input type="text" name="instagram_page" id="instagramPage" class="form-control" placeholder="Enter Instagram page URL" />
+                                                                        </div>
+
+                                                                        <!-- Tags Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="tags" class="form-label">Tags</label>
+                                                                            <input type="text" name="tags" id="tags" class="form-control" placeholder="Enter tags, separated by commas" />
+                                                                        </div>
+
+                                                                        <!-- Reel Script Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="script" class="form-label">Enter Script or Upload Reel</label>
+                                                                            <input type="text" name="script" id="script" class="form-control" placeholder="Enter reel script" />
+                                                                        </div>
+
+                                                                        <!-- Reel upload field -->
+
+                                                                        <div class="input-group mb-3">
+                                                                            <input type="file" name="file" class="form-control mt-3" id="campaign_banner" name="campaign_banner" />
+                                                                        </div>
+
+                                                                        <!-- Submit Button -->
+                                                                        <button class="btn btn-primary w-100 mt-3">Submit</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
 
                                                             <!-- Story Card -->
                                                             <div class="card bg-dark text-white mb-3 p-3 story-card">
@@ -1073,6 +1204,74 @@
                                                                     <span class="ms-2">Story</span>
                                                                     <button class="btn btn-secondary ms-auto add-btn">Add</button>
                                                                 </div>
+                                                            </div>
+                                                            <!-- Hidden Story Form Template -->
+                                                            <div class="form-container bg-dark text-white p-4 mt-3">
+                                                                <form class="g-3 mt-3 needs-validation" id="storyForm" method="post" action="{{ route('store.compaign.story') }}" novalidate enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <input type="hidden" name="campaign_id" class="campaign_id" value="{{ $compaign ? $compaign->id : ''}}">
+                                                                    <div class="bg-white p-5 rounded shadow-lg w-100 max-w-md mx-auto">
+                                                                        <h2 class="h5 fw-bold mb-4">Add Story</h2>
+
+                                                                        <!-- Reel Type -->
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Story Type:</label>
+                                                                            <div class="row">
+                                                                                <div class="col-3">
+                                                                                    <div class="form-check">
+                                                                                        <input class="form-check-input " type="radio"
+                                                                                            id="repost-story" name="story_type"
+                                                                                            value="repost">
+                                                                                        <label class="form-check-label text-muted"
+                                                                                            for="repost-story">Repost Story</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-3">
+                                                                                    <div class="form-check">
+                                                                                        <input class="form-check-input" type="radio"
+                                                                                            id="shoot-story" name="story_type"
+                                                                                            value="shoot">
+                                                                                        <label class="form-check-label text-muted"
+                                                                                            for="shoot-story">Shoot Story</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- Description Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="description" class="form-label">Description (Optional)</label>
+                                                                            <textarea name="description" id="description" class="form-control" rows="3" placeholder="Describe the campaign..."></textarea>
+                                                                        </div>
+
+                                                                        <!-- Instagram Page Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="instagramPage" class="form-label">Brand Instagram Page</label>
+                                                                            <input type="text" name="instagram_page" id="instagramPage" class="form-control" placeholder="Enter Instagram page URL" />
+                                                                        </div>
+
+                                                                        <!-- Tags Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="tags" class="form-label">Tags</label>
+                                                                            <input type="text" name="tags" id="tags" class="form-control" placeholder="Enter tags, separated by commas" />
+                                                                        </div>
+
+                                                                        <!-- Reel Script Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="script" class="form-label">Enter Script or Upload Story</label>
+                                                                            <input type="text" name="script" id="script" class="form-control" placeholder="Enter reel script" />
+                                                                        </div>
+
+                                                                        <!-- Reel upload field -->
+
+                                                                        <div class="input-group mb-3">
+                                                                            <input type="file" name="file" class="form-control mt-3" id="campaign_banner" name="campaign_banner" />
+                                                                        </div>
+
+                                                                        <!-- Submit Button -->
+                                                                        <button class="btn btn-primary w-100 mt-3">Submit</button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
 
                                                             <!-- Video Card -->
@@ -1083,6 +1282,74 @@
                                                                     <button class="btn btn-secondary ms-auto add-btn">Add</button>
                                                                 </div>
                                                             </div>
+                                                            <!-- Hidden Video Form Template -->
+                                                            <div class="form-container bg-dark text-white p-4 mt-3">
+                                                                <form class="g-3 mt-3 needs-validation" id="videoForm" method="post" action="{{ route('store.compaign.video') }}" novalidate enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <input type="hidden" name="campaign_id" class="campaign_id" value="{{ $compaign ? $compaign->id : ''}}">
+                                                                    <div class="bg-white p-5 rounded shadow-lg w-100 max-w-md mx-auto">
+                                                                        <h2 class="h5 fw-bold mb-4">Add Video</h2>
+
+                                                                        <!-- Reel Type -->
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Video Type:</label>
+                                                                            <div class="row">
+                                                                                <div class="col-3">
+                                                                                    <div class="form-check">
+                                                                                        <input class="form-check-input " type="radio"
+                                                                                            id="repost-video" name="video_type"
+                                                                                            value="repost">
+                                                                                        <label class="form-check-label text-muted"
+                                                                                            for="repost-video">Repost Video</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-3">
+                                                                                    <div class="form-check">
+                                                                                        <input class="form-check-input" type="radio"
+                                                                                            id="shoot-video" name="video_type"
+                                                                                            value="shoot">
+                                                                                        <label class="form-check-label text-muted"
+                                                                                            for="shoot-video">Shoot Video</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- Description Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="description" class="form-label">Description (Optional)</label>
+                                                                            <textarea name="description" id="description" class="form-control" rows="3" placeholder="Describe the campaign..."></textarea>
+                                                                        </div>
+
+                                                                        <!-- Instagram Page Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="instagramPage" class="form-label">Brand Instagram Page</label>
+                                                                            <input type="text" name="instagram_page" id="instagramPage" class="form-control" placeholder="Enter Instagram page URL" />
+                                                                        </div>
+
+                                                                        <!-- Tags Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="tags" class="form-label">Tags</label>
+                                                                            <input type="text" name="tags" id="tags" class="form-control" placeholder="Enter tags, separated by commas" />
+                                                                        </div>
+
+                                                                        <!-- Reel Script Field -->
+                                                                        <div class="mb-3">
+                                                                            <label for="script" class="form-label">Enter Script or Upload Reel</label>
+                                                                            <input type="text" name="script" id="script" class="form-control" placeholder="Enter reel script" />
+                                                                        </div>
+
+                                                                        <!-- Reel upload field -->
+
+                                                                        <div class="input-group mb-3">
+                                                                            <input type="file" name="file" class="form-control mt-3" id="campaign_banner" name="campaign_banner" />
+                                                                        </div>
+
+                                                                        <!-- Submit Button -->
+                                                                        <button class="btn btn-primary w-100 mt-3">Submit</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
 
                                                             <!-- Post Card -->
                                                             <div class="card bg-dark text-white mb-3 p-3 post-card">
@@ -1092,71 +1359,141 @@
                                                                     <button class="btn btn-secondary ms-auto add-btn">Add</button>
                                                                 </div>
                                                             </div>
-
-                                                            <!-- Hidden Form Template -->
+                                                            <!-- Hidden Post Form Template -->
                                                             <div class="form-container bg-dark text-white p-4 mt-3">
-                                                                <form>
+                                                                <form class="g-3 mt-3 needs-validation" id="postForm" method="post" action="{{ route('store.compaign.post') }}" novalidate enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <input type="hidden" name="campaign_id" class="campaign_id" value="{{ $compaign ? $compaign->id : ''}}">
                                                                     <div class="bg-white p-5 rounded shadow-lg w-100 max-w-md mx-auto">
-                                                                        <h2 class="h5 fw-bold mb-4">Add Reel</h2>
+                                                                        <h2 class="h5 fw-bold mb-4">Add Post</h2>
 
-                                                                        <!-- Buttons Row -->
-                                                                        <div class="d-flex mb-4">
-                                                                            <button
-                                                                                id="shootReelBtn"
-                                                                                class="btn btn-dark text-white w-50 btn-left">
-                                                                                Shoot Reel
-                                                                            </button>
-                                                                            <button
-                                                                                id="repostReelBtn"
-                                                                                class="btn btn-secondary text-dark w-50 btn-right">
-                                                                                Repost Reel
-                                                                            </button>
+                                                                        <!-- Reel Type -->
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label">Post Type:</label>
+                                                                            <div class="row">
+                                                                                <div class="col-3">
+                                                                                    <div class="form-check">
+                                                                                        <input class="form-check-input " type="radio"
+                                                                                            id="repost-post" name="post_type"
+                                                                                            value="repost">
+                                                                                        <label class="form-check-label text-muted"
+                                                                                            for="repost-post">Repost Post</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-3">
+                                                                                    <div class="form-check">
+                                                                                        <input class="form-check-input" type="radio"
+                                                                                            id="shoot-post" name="post_type"
+                                                                                            value="shoot">
+                                                                                        <label class="form-check-label text-muted"
+                                                                                            for="shoot-post">Shoot Post</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
 
                                                                         <!-- Description Field -->
                                                                         <div class="mb-3">
                                                                             <label for="description" class="form-label">Description (Optional)</label>
-                                                                            <textarea
-                                                                                id="description"
-                                                                                class="form-control"
-                                                                                rows="3"
-                                                                                placeholder="Describe the campaign..."></textarea>
+                                                                            <textarea name="description" id="description" class="form-control" rows="3" placeholder="Describe the campaign..."></textarea>
                                                                         </div>
 
                                                                         <!-- Instagram Page Field -->
                                                                         <div class="mb-3">
                                                                             <label for="instagramPage" class="form-label">Brand Instagram Page</label>
-                                                                            <input
-                                                                                type="text"
-                                                                                id="instagramPage"
-                                                                                class="form-control"
-                                                                                placeholder="Enter Instagram page URL" />
+                                                                            <input type="text" name="instagram_page" id="instagramPage" class="form-control" placeholder="Enter Instagram page URL" />
                                                                         </div>
 
                                                                         <!-- Tags Field -->
                                                                         <div class="mb-3">
                                                                             <label for="tags" class="form-label">Tags</label>
-                                                                            <input
-                                                                                type="text"
-                                                                                id="tags"
-                                                                                class="form-control"
-                                                                                placeholder="Enter tags, separated by commas" />
+                                                                            <input type="text" name="tags" id="tags" class="form-control" placeholder="Enter tags, separated by commas" />
                                                                         </div>
 
                                                                         <!-- Reel Script Field -->
                                                                         <div class="mb-3">
                                                                             <label for="script" class="form-label">Enter Script or Upload Reel</label>
-                                                                            <input
-                                                                                type="text"
-                                                                                id="script"
-                                                                                class="form-control"
-                                                                                placeholder="Enter reel script" />
+                                                                            <input type="text" name="script" id="script" class="form-control" placeholder="Enter reel script" />
                                                                         </div>
 
                                                                         <!-- Reel upload field -->
 
                                                                         <div class="input-group mb-3">
-                                                                            <input type="file" class="form-control mt-3" id="campaign_banner" name="campaign_banner" />
+                                                                            <input type="file" name="file" class="form-control mt-3" id="campaign_banner" name="campaign_banner" />
+                                                                        </div>
+
+                                                                        <!-- Submit Button -->
+                                                                        <button class="btn btn-primary w-100 mt-3">Submit</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+
+                                                            <!-- Logo Card -->
+                                                            <div class="card bg-dark text-white mb-3 p-3 logo-card">
+                                                                <div class="d-flex flex-row align-items-center">
+                                                                    <i class="far fa-newspaper"></i>
+                                                                    <span class="ms-2">Logo</span>
+                                                                    <button class="btn btn-secondary ms-auto add-btn">Add</button>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Hidden Logo Form Template -->
+                                                            <div class="form-container bg-dark text-white p-4 mt-3">
+                                                                <form class="g-3 mt-3 needs-validation" id="logoForm" method="post" action="{{ route('store.compaign.logo') }}" novalidate enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <input type="hidden" name="campaign_id" class="campaign_id" value="{{ $compaign ? $compaign->id : ''}}">
+                                                                    <div class="bg-white p-5 rounded shadow-lg w-100 max-w-md mx-auto">
+                                                                        <h2 class="h5 fw-bold mb-4">Add Logo</h2>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="mb-3">
+                                                                                    <label class="form-label" for="campaign_name">Logo Name:</label>
+                                                                                    <input type="text" class="form-control" id="logo_name"
+                                                                                        name="logo_name" required />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="mb-3">
+                                                                                    <label class="form-label" for="campaign_banner">Logo
+                                                                                        file:</label>
+                                                                                    <input type="file" class="form-control"
+                                                                                        id="logo_file" name="logo_file" required />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="mb-3">
+                                                                                    <label class="form-label">Tags</label>
+                                                                                    <div class="tag-input-container" id="tag-input-container">
+                                                                                        <input type="text" id="tag-input"
+                                                                                            placeholder="Enter Tags"
+                                                                                            onkeydown="handleTagInput(event)" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="mb-3">
+                                                                                    <label for="payment" class="form-label">Per 1 Million Views
+                                                                                        Payment</label>
+                                                                                    <input type="text" id="payment" name="payment" class="form-control"
+                                                                                        placeholder="Enter Payment Details" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <label class="form-label" for="description">Decription</label>
+                                                                                <textarea name="description" class="form-control" rows="3" placeholder="Write Description Here......."></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col mt-3">
+                                                                                <label class="form-label" for="sample_video">Upload Sample
+                                                                                    Video</label>
+                                                                                <input class="form-control form-control-file" type="file"
+                                                                                    id="sample_video" name="sample_video" />
+                                                                            </div>
                                                                         </div>
 
                                                                         <!-- Submit Button -->
@@ -1172,91 +1509,7 @@
                                     </div>
                                     <hr class="mb-5" />
                                     <div class="d-flex justify-content-end mt-2  ">
-                                        <button type="button"
-                                            class="btn px-4 btn-dark fw-bold mx-2 prev-step">Previous</button>
-                                        <button type="button"
-                                            class="btn px-5 btn-primary next-step mx-1 ">Next</button>
-                                    </div>
-                                </div>
-
-                                <div class="step step-5">
-                                    <div class="mb-3">
-                                        <section>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="campaign_name">Logo Name:</label>
-                                                        <input type="text" class="form-control" id="campaign_name"
-                                                            name="campaign_name" required />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="campaign_banner">Logo
-                                                            file:</label>
-                                                        <input type="file" class="form-control"
-                                                            id="campaign_banner" name="campaign_banner" required />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="campaign_name">Campaign
-                                                            Name:</label>
-                                                        <input type="text" class="form-control" id="campaign_name"
-                                                            name="campaign_name" required />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="campaign_banner">Campaign
-                                                            Banner:</label>
-                                                        <input type="file" class="form-control"
-                                                            id="campaign_banner" name="campaign_banner" required />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Tags</label>
-                                                        <div class="tag-input-container" id="tag-input-container">
-                                                            <input type="text" id="tag-input"
-                                                                placeholder="Enter Tags"
-                                                                onkeydown="handleTagInput(event)" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-                                                        <label for="payment" class="form-label">Per 1 Million Views
-                                                            Payment</label>
-                                                        <input type="text" id="payment" class="form-control"
-                                                            placeholder="Enter Payment Details" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <label class="form-label" for="description">Decription</label>
-                                                    <textarea class="form-control" rows="3" placeholder="Write Description Here......."></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col mt-3">
-                                                    <label class="form-label" for="sample_video">Upload Sample
-                                                        Video</label>
-                                                    <input class="form-control form-control-file" type="file"
-                                                        id="sample_video" name="sample_video" />
-                                                </div>
-                                            </div>
-                                        </section>
-                                    </div>
-                                    <hr class="mb-5" />
-                                    <div class="d-flex justify-content-end mt-2  ">
-                                        <button type="button"
-                                            class="btn px-4 btn-dark fw-bold mx-2 prev-step">Previous</button>
+                                        <button type="button" class="btn px-4 btn-dark fw-bold mx-2 prev-step">Previous</button>
                                     </div>
                                 </div>
                             </div>
@@ -1277,6 +1530,37 @@
     $(document).ready(function() {
 
         var currentStep = 1;
+
+        @if ($compaign)
+            if (confirm('A draft campaign is available. Do you want to continue with the draft?')) {
+                currentStep = @json($compaign->current_step);
+                $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
+                setTimeout(function() {
+                    $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
+                    $(".step-" + currentStep).show().addClass("animate__animated animate__fadeInRight");
+                    updateProgressBar();
+                }, 500);
+            } else {
+                currentStep = 1;
+
+                $.ajax({
+                    url: '{{ route("compaign.delete", $compaign->id) }}',
+                    type: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Draft campaign deleted. You can start fresh.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                    }
+                });
+            }
+        @endif
+
         var updateProgressBar;
 
         $('#multi-step-form').find('.step').slice(1).hide();
@@ -1285,7 +1569,7 @@
             e.preventDefault();
             var form_id = $(this).attr('data-form');
             if (form_id == 'next_move') {
-                if (currentStep < 5) {
+                if (currentStep < 4) {
                     $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
                     currentStep++;
                     setTimeout(function() {
@@ -1320,7 +1604,7 @@
 
                             currentStep = response.current_step;
 
-                            if (currentStep < 5) {
+                            if (currentStep < 4) {
                                 $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
                                 setTimeout(function() {
                                     $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
@@ -1377,7 +1661,7 @@
 
 
         function displayStep(stepNumber) {
-            if (stepNumber >= 1 && stepNumber <= 5) {
+            if (stepNumber >= 1 && stepNumber <= 4) {
                 $(".step-" + currentStep).hide();
                 $(".step-" + stepNumber).show();
                 currentStep = stepNumber;
@@ -1386,7 +1670,7 @@
         }
 
         updateProgressBar = function() {
-            var progressPercentage = ((currentStep - 1) / 4) * 100;
+            var progressPercentage = ((currentStep - 1) / 3) * 100;
             $(".progress-bar").css("width", progressPercentage + "%");
             $(".step-circle").removeClass("step-circle-filled");
             $(".step-circle-" + currentStep).addClass("step-circle-filled");
@@ -1418,21 +1702,31 @@
         }
 
         const addBtns = document.querySelectorAll(".add-btn");
-        const formTemplate = document.querySelector(".form-container");
+        const formContainers = document.querySelectorAll(".form-container");
 
+        // Iterate over each "Add" button
         addBtns.forEach((btn) => {
             btn.addEventListener("click", (e) => {
                 e.preventDefault();
+                
+                // Find the parent card of the button (reel, story, post, or video)
                 const parentCard = btn.closest(".card");
-                const existingForm = parentCard.querySelector(".form-container");
-
-                if (existingForm) {
-                    existingForm.style.display =
-                        existingForm.style.display === "none" ? "block" : "none";
+                
+                // Get the card type dynamically by matching the class that ends with "-card"
+                const cardType = [...parentCard.classList].find(className => className.endsWith("-card")).split("-")[0];
+                
+                // Find the corresponding form for the clicked card type
+                const formContainer = [...formContainers].find(container => 
+                    container.previousElementSibling && 
+                    container.previousElementSibling.classList.contains(cardType + "-card")
+                );
+                
+                // Toggle visibility of the form for this specific card
+                if (formContainer.style.display === "none" || formContainer.style.display === "") {
+                    formContainers.forEach(form => form.style.display = "none"); // Hide any other forms
+                    formContainer.style.display = "block";
                 } else {
-                    const formClone = formTemplate.cloneNode(true);
-                    formClone.style.display = "block";
-                    parentCard.appendChild(formClone);
+                    formContainer.style.display = "none";
                 }
             });
         });
@@ -1719,6 +2013,131 @@
 
                 }
 
+            });
+        });
+
+        $('#reelForm').on('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: '{{ route("store.compaign.reel") }}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if(response.status == 'success'){ 
+                        toastr.success('Reel data saved successfully!');
+                        $('#reelForm')[0].reset();
+                    }
+                    else{
+                        toastr.error('Some Error Occur!');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    toastr.error('Error submitting reel.');
+                }
+            });
+        });
+
+        $('#storyForm').on('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: '{{ route("store.compaign.story") }}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if(response.status == 'success'){ 
+                        toastr.success('Story data saved successfully!');
+                        $('#storyForm')[0].reset();
+                    }
+                    else{
+                        toastr.error('Some Error Occur!');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    toastr.error('Error submitting video.');
+                }
+            });
+        });
+
+        $('#videoForm').on('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: '{{ route("store.compaign.video") }}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if(response.status == 'success'){ 
+                        toastr.success('Video data saved successfully!');
+                        $('#videoForm')[0].reset();
+                    }
+                    else{
+                        toastr.error('Some Error Occur!');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    toastr.error('Error submitting video.');
+                }
+            });
+        });
+
+        $('#postForm').on('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: '{{ route("store.compaign.post") }}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if(response.status == 'success'){ 
+                        toastr.success('Post data saved successfully!');
+                        $('#postForm')[0].reset();
+                    }
+                    else{
+                        toastr.error('Some Error Occur!');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    toastr.error('Error submitting post.');
+                }
+            });
+        });
+
+        $('#logoForm').on('submit', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: '{{ route("store.compaign.logo") }}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if(response.status == 'success'){ 
+                        toastr.success('Logo data saved successfully!');
+                        $('#logoForm')[0].reset();
+                    }
+                    else{
+                        toastr.error('Some Error Occur!');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    toastr.error('Error submitting logo.');
+                }
             });
         });
     });
