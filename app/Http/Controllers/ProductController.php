@@ -2,12 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Product;
 use App\Models\Variant;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    public function products()
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+    
+        $user = auth()->user();
+        if ($user) {
+            $page_name = 'products';
+            if (!view_permission($page_name)) {
+                return redirect()->back();
+            }
+            $products = Product::all();
+    
+            if ($user->role == user_roles('1')) {
+                $products = Product::all();
+            } elseif ($user->role == user_roles('2')) {
+                $products = Product::where('created_by', $user->id)->get();
+            }
+    
+            $data['products'] = $products;
+            $data['user'] = $user;
+            return view('pages.products.listing', $data);
+        } else {
+            return redirect()->route('home');
+        }
+    }
+    
+
     public function store_product(Request $request)
     {
         // Validate the request
@@ -40,14 +73,11 @@ class ProductController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->storeAs('product_images', $imageName, 'public'); 
+                $image->storeAs('product_images', $imageName, 'public');
                 $extImagePath = 'product_images/' . $imageName;
                 $imagePaths[] = $extImagePath;
             }
         }
-
-
-
 
         // Create the product
         $product = Product::create([

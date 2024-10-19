@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('sku')->unique();
             $table->string('barcode')->unique();
             $table->decimal('weight')->default(0.00);
-            $table->boolean('status')->default(1);
             $table->text('description')->nullable();
             $table->text('short_description')->nullable();
             $table->string('mpn')->nullable();
@@ -36,8 +35,11 @@ return new class extends Migration
             $table->string('model_number')->nullable();
             $table->string('origin')->nullable();
             $table->integer('shipped_quantity')->default(0);
-            // $table->foreignId('brand_id')->constrained()->onDelete('cascade');
+            $table->boolean('status')->default(1);
+            $table->unsignedBigInteger('created_by'); 
+            $table->unsignedBigInteger('updated_by')->nullable(); 
             $table->timestamps();
+            // $table->foreignId('brand_id')->constrained()->onDelete('cascade');
         });
     }
 
