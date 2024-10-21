@@ -233,7 +233,7 @@
 
             /* Form Group */
             .form-group {
-                margin-bottom: 30px;
+                margin-bottom: 10px;
             }
 
             .form-group label {
@@ -283,11 +283,6 @@
                 transition: background 0.3s ease, color 0.3s ease;
                 width: 60px !important;
             }
-
-            /* .form-check-input:checked {
-                                                            background-color: #ca5a98;
-                                                            border-color: #ca5a98;
-                                                        } */
 
             .btn-change:hover {
                 background-color: #b04a83;
@@ -372,123 +367,6 @@
                 border-color: #ca5a98;
             }
 
-            .capsule {
-                width: 15% !important;
-                height: 40px;
-                font-size: small;
-                margin: 5px 5px;
-                background: #fff;
-                color: #B20163;
-                border-color: #ca5a98;
-                box-shadow: 0px 10px 20px rgba(202, 90, 152, 0.5);
-                border-radius: 20px;
-                padding: 6px;
-                border: none;
-                font-weight: 900;
-            }
-
-            .capsule:hover {
-                background-color: #b04a83;
-                color: #fff;
-                transition: 0.3s all ease;
-            }
-
-            /**************** Mobile Responsivness *******************/
-
-            @media (width: 320px) {
-                .form-container {
-                    padding: 10px;
-                }
-
-                .form-container h1 {
-                    font-size: 1.5rem;
-                    color: #B20163;
-                }
-
-                .avatar {
-                    width: 100px;
-                    height: 100px;
-                }
-
-                .form-control {
-                    margin-bottom: 7px;
-                    border-radius: 10px;
-                    padding: 12px;
-                }
-
-                .form-group {
-                    display: flex;
-                    margin-bottom: 12px;
-                    flex-direction: column;
-                    margin-top: 5px;
-                }
-
-                .form-group .btn-change {
-                    width: 100px !important;
-                    background: #B20163;
-                }
-
-                .btn-change {
-                    padding: 15px 20px;
-                    font-weight: bold;
-                }
-
-                .gender-buttons .btn-primary {
-                    border-color: #ca5a98;
-                    background-color: #B20163;
-                }
-
-                .gender-buttons .btn {
-                    width: 82% !important;
-                    margin: 0 auto;
-                    font-size: 0.7rem;
-                }
-
-                .gender-buttons .btn-outline-secondary {
-                    font-size: 0.8rem;
-                    width: 83% !important;
-                }
-
-                .capsule {
-                    width: 100% !important;
-                }
-
-                .submit-btn {
-                    font-size: 0.5rem;
-                }
-
-                #whatsapp {
-                    margin: 15px;
-                }
-
-                .d-flex {
-                    flex-direction: column;
-                }
-
-                .form-group label {
-                    font-weight: 900;
-                    font-size: 0.8rem;
-                }
-
-                .text-light {
-                    font-size: 0.8rem;
-                }
-
-                .user-info h2 {
-                    font-size: 1.5rem;
-                }
-
-                .user-info p {
-                    font-size: 0.8rem;
-                }
-
-                .img-fluid {
-                    margin-top: 10px;
-                }
-            }
-
-            /**************** MObile Responsiveness Ends Here **************/
-
             /* Social Card Css */
 
             .social-card {
@@ -561,37 +439,10 @@
             .btn-custom-secondary:hover {
                 background-color: #d199bb;
             }
-
-            /* Media Quries */
-
-            @media (max-width: 768px) {
-                .social-card {
-                    padding: 1.5rem;
-                }
-
-                .social-item {
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
-
-                .social-item div {
-                    margin-bottom: 1rem;
-                }
-
-                .btn-group {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
-                }
-
-                .btn-group button {
-                    width: 100%;
-                }
-            }
-
+           
             /* Social Card Css Ends Here */
 
-            /* Payment Card Css */
+            /* Payment Card Css starts Here*/
 
             .form-container_2 {
                 background-color: #fff;
@@ -599,7 +450,6 @@
                 box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
                 padding: 40px;
                 max-width: 1250px;
-                width: 100%;
                 position: relative;
                 display: none;
             }
@@ -671,22 +521,12 @@
                 }
             }
 
-            @media (max-width: 576px) {
-                .form-container {
-                    padding: 20px;
-                }
-
-                .navigation-buttons {
-                    flex-direction: column;
-                    gap: 10px;
-                }
-            }
-
             /* Button Checkbox Styling */
             .checkbox-button {
                 position: relative;
                 width: 18%;
                 height: 40px;
+                margin: 5px 0;
                 background-color: #ffff;
                 border: 2px solid transparent;
                 border-radius: 30px;
@@ -738,6 +578,176 @@
                 height: 12px;
                 fill: white;
             }
+            /**************** Mobile Responsivness *******************/
+
+            @media (max-width: 576px) {
+                .form-container {
+                    padding: 30px 15px;
+                }
+                .toast{
+                    right: 0;
+                }
+                .form-container_2 {
+                    width: 112%;
+                    margin-left: -10px;
+                    margin-top: 30px !important;
+                }
+
+                .step-header {
+                    font-size: x-small;
+                }
+
+                .form-container h1 {
+                    font-size: 1.5rem;
+                    color: #B20163;
+                }
+
+                .avatar {
+                    width: 100px;
+                    height: 100px;
+                }
+
+                .form-control {
+                    margin-bottom: 7px;
+                    border-radius: 10px;
+                    padding: 12px;
+                }
+
+                .form-group {
+                    display: flex;
+                    margin-bottom: 12px;
+                    flex-direction: column;
+                    margin-top: 5px;
+                }
+
+                .form-group .btn-change {
+                    width: 100px !important;
+                    background: #B20163;
+                }
+
+                .btn-change {
+                    padding: 15px 20px;
+                    font-weight: bold;
+                }
+
+                .gender-buttons .btn-primary {
+                    border-color: #ca5a98;
+                    background-color: #B20163;
+                }
+
+                .gender-buttons .btn {
+                    width: 82% !important;
+                    margin: 0 auto;
+                    font-size: 0.7rem;
+                }
+
+                .gender-buttons .btn-outline-secondary {
+                    font-size: 0.8rem;
+                    width: 83% !important;
+                }
+
+                .submit-btn {
+                    font-size: 0.5rem;
+                }
+
+                #whatsapp {
+                    margin: 15px;
+                }
+
+                .d-flex {
+                    flex-direction: column;
+                }
+
+                .form-group label {
+                    font-weight: 900;
+                    font-size: 0.8rem;
+                }
+
+                .text-light {
+                    font-size: 0.8rem;
+                }
+
+                .user-info h2 {
+                    font-size: 1.5rem;
+                }
+
+                .user-info p {
+                    font-size: 0.8rem;
+                }
+
+                .img-fluid {
+                    margin-top: 10px;
+                }
+                .checkbox-button {
+                    width: 100% !important;
+                    font-size: small;
+                    margin: 5px 0;
+                }
+
+                .social-item {
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                }
+
+                .social-card {
+                    padding: 0.8rem;
+                }
+
+                .btn-group {
+                    flex-direction: column;
+                    border-radius: 7px;
+                    gap: 5px;
+                    margin-top: 24px;
+                }
+                .navigation-buttons {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+            }
+            @media (min-width: 577px) and (max-width: 768px) {
+                .checkbox-button {
+                    width: 154px !important;
+                    font-size: 10px;
+                    margin: 5px 0;
+                }
+
+                .social-card {
+                    padding: 0.8rem;
+                }
+
+                .social-item {
+                    flex-direction: row;
+                    align-items: center;
+                    width: 100%;
+                }
+
+                .social-item div {
+                    margin-bottom: 1rem;
+                }
+
+                .btn-group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+
+                .btn-group button {
+                    width: 100%;
+                    margin: 0;
+                }
+
+            }
+
+            @media (min-width: 767px) and (max-width: 992px) {
+                .checkbox-button {
+                    margin: 5px 0;
+                    width: 160px !important;
+                    font-size: 13px;
+                }
+            }
+
+            /**************** MObile Responsiveness Ends Here **************/
         </style>
     </head>
 
