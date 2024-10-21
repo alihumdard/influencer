@@ -24,6 +24,8 @@ Route::prefix('portal')->middleware('auth')->group(function () {
     Route::get('/brand-otp/{otp_type}', [OtpVerificationController::class, 'brand_otp'])->name('brand.otp');
     Route::get('/verified-whatsapp', [OtpVerificationController::class, 'whatsapp_verified'])->name('wt.vefied.store');
     Route::get('/create-compaign', [CompaignController::class, 'create_compaign'])->name('create.compaign');
+    Route::get('/create-category', [CompaignController::class, 'create_new_category'])->name('category.create');
+
     Route::post('/store-influe-phone', [OtpVerificationController::class, 'store_influe_phone'])->name('store.influe.phone');
     Route::post('/verify-opt', [OtpVerificationController::class, 'verify_otp'])->name('verify.otp');
     Route::post('/generate-opt', [OtpVerificationController::class, 'store'])->name('generate.otp');
@@ -47,5 +49,3 @@ Route::prefix('portal')->middleware('auth')->group(function () {
     Route::post('/store-compaign-post', [CompaignController::class, 'store_compaign_post'])->name('store.compaign.post');
     Route::post('/store-compaign-logo', [CompaignController::class, 'store_compaign_logo'])->name('store.compaign.logo');
 });
-
-

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Compaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class ProductController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-    
+
         $user = auth()->user();
         if ($user) {
             $page_name = 'products';
@@ -25,13 +26,13 @@ class ProductController extends Controller
                 return redirect()->back();
             }
             $products = Product::all();
-    
+
             if ($user->role == user_roles('1')) {
                 $products = Product::all();
             } elseif ($user->role == user_roles('2')) {
                 $products = Product::where('created_by', $user->id)->get();
             }
-    
+
             $data['products'] = $products;
             $data['user'] = $user;
             return view('pages.products.listing', $data);
@@ -39,7 +40,7 @@ class ProductController extends Controller
             return redirect()->route('home');
         }
     }
-    
+
 
     public function store_product(Request $request)
     {
@@ -94,7 +95,11 @@ class ProductController extends Controller
             'description' => $validatedData['description'],
             'main_image' => $mainImagePath,
             'product_images' => $imagePaths, // Store image paths as JSON
+            'created_by' => auth()->id(),
         ]);
+
+        $campaign = Compaign::findOrFail($request->campaign_id);
+        $campaign->products()->syncWithoutDetaching([$product->id]);
 
         // Create the variants
         foreach ($validatedData['variant_name'] ?? [] as $index => $variant_name) {

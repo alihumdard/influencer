@@ -25,4 +25,9 @@ class Compaign extends Model
         'is_draft',
         'current_step',
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }
