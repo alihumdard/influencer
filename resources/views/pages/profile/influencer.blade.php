@@ -254,20 +254,22 @@
 
             /* Input Fields */
             .form-control {
-                border-radius: 10px;
-                padding: 15px;
-                border: none;
-                background-color: #fff;
-                color: #333;
-                box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+                border-radius: 10px !important;
+                padding: 15px !important;
+                border: 1px solid #F0CBE0 !important;
+                background-color: #fff !important;
+                color: #333 !important;
+                box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1) !important;
                 transition: box-shadow 0.3s ease;
             }
 
             .form-control:focus {
-                box-shadow: 0px 30px 30px rgba(202, 90, 152, 0.4);
+                box-shadow: 0px 30px 60px rgba(202, 90, 152, 0.4) !important;
                 outline: none;
                 border: 1px solid #ca5a98;
                 color: #fff;
+                font-weight: bold;
+                background: #F0CBE0;
             }
 
             /* WhatsApp Change Button */
@@ -282,10 +284,10 @@
                 width: 60px !important;
             }
 
-            .form-check-input:checked {
-                background-color: #ca5a98;
-                border-color: #ca5a98;
-            }
+            /* .form-check-input:checked {
+                                                background-color: #ca5a98;
+                                                border-color: #ca5a98;
+                                            } */
 
             .btn-change:hover {
                 background-color: #b04a83;
@@ -599,10 +601,11 @@
                 max-width: 1250px;
                 width: 100%;
                 position: relative;
+                display: none;
             }
 
             .step-header {
-                background-color: #ca5a98;
+                background-color: #B20163;
                 color: #fff;
                 padding: 10px 20px;
                 border-radius: 30px;
@@ -677,6 +680,63 @@
                     flex-direction: column;
                     gap: 10px;
                 }
+            }
+
+            /* Button Checkbox Styling */
+            .checkbox-button {
+                position: relative;
+                width: 18%;
+                height: 40px;
+                background-color: #ffff;
+                border: 2px solid transparent;
+                border-radius: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+                color: #B20163;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .checkbox-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(202, 90, 152, 0.4);
+            }
+
+            /* Selected State */
+            .checkbox-button.selected {
+                background-color: #ca5a98;
+                color: white;
+                border-color: #b04a83;
+            }
+
+            /* Checkmark Icon Styling */
+            .checkbox-button .checkmark {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.3s;
+                visibility: hidden;
+            }
+
+            .checkbox-button.selected .checkmark {
+                visibility: visible;
+                background-color: #b04a83;
+            }
+
+            .checkmark svg {
+                width: 12px;
+                height: 12px;
+                fill: white;
             }
         </style>
     </head>
@@ -778,10 +838,37 @@
                                         Communication</label>
                                 </div>
                                 <!-- Gender Selection -->
-                                <div class="form-group gender-buttons d-flex justify-content-between">
-                                    <button type="button" class="btn btn-primary">Male</button>
+                                <div class="form-group gender-buttons d-flex gap-1">
+                                    <div class="checkbox-button" data-index="0">
+                                        Male
+                                        <div class="checkmark">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox-button" data-index="1">
+                                        Female
+                                        <div class="checkmark">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox-button" data-index="2">
+                                        Other
+                                        <div class="checkmark">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    {{-- <button type="button" class="btn btn-primary">Male</button>
                                     <button type="button" class="btn btn-outline-secondary">Female</button>
-                                    <button type="button" class="btn btn-outline-secondary">Other</button>
+                                    <button type="button" class="btn btn-outline-secondary">Other</button> --}}
                                 </div>
                                 <!-- Date of Birth -->
                                 <div class="form-group">
@@ -803,56 +890,295 @@
                                 <!-- Profile Type -->
                                 <div class="form-group">
                                     <label for="primary-mobile">Profile Type</label>
-                                    <div class="form-group gender-buttons d-flex flex-wrap gap-1">
-                                        <button type="button" class="capsule">Creator</button>
-                                        <button type="button" class="capsule">Buisness</button>
-                                        <button type="button" class="capsule">Theme Page</button>
-                                        <button type="button" class="capsule">Other</button>
+                                    <div class="form-group gender-buttons d-flex gap-1">
+                                        <div class="checkbox-button" data-index="0">
+                                            Creator
+                                            <div class="checkmark">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="checkbox-button" data-index="1">
+                                            Buisness
+                                            <div class="checkmark">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="checkbox-button" data-index="2">
+                                            Theme Page
+                                            <div class="checkmark">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="checkbox-button" data-index="2">
+                                            Other
+                                            <div class="checkmark">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                </svg>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Content Categories -->
-                                <div class="form-group">
-                                    <label for="primary-mobile">Content Language</label>
-                                    <div class="form-group gender-buttons d-flex flex-wrap">
-                                        <button type="button" class="capsule">English</button>
-                                        <button type="button" class="capsule">Urdu</button>
-                                        <button type="button" class="capsule">Bengali</button>
-                                        <button type="button" class="capsule">Marathi</button>
-                                        <button type="button" class="capsule">Telgu</button>
-                                        <button type="button" class="capsule">Tamil</button>
-                                        <button type="button" class="capsule">Malaylam</button>
-                                        <button type="button" class="capsule">Gujrati</button>
-                                        <button type="button" class="capsule">Kannada</button>
-                                        <button type="button" class="capsule">Odia</button>
-                                        <button type="button" class="capsule">Punjabi</button>
-                                        <button type="button" class="capsule">Hindi</button>
+                                    <!-- Content Categories -->
+                                    <div class="form-group">
+                                        <label for="primary-mobile">Content Language</label>
+                                        <div class="form-group gender-buttons d-flex flex-wrap gap-1">
+                                            <div class="checkbox-button" data-index="0">
+                                                Urdu
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="1">
+                                                Bengali
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Marathi
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Telgu
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Tamil
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Malaylam
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Gujrati
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Kannada
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Odia
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Punjabi
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Hindi
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Content Categories -->
-                                <div class="form-group">
-                                    <label for="primary-mobile">Content Categories</label>
-                                    <small class="text-light">This number is used for login and cannot be edited</small>
-                                    <div class="form-group gender-buttons d-flex flex-wrap">
-                                        <button type="button" class="capsule">Comedy</button>
-                                        <button type="button" class="capsule">Meme</button>
-                                        <button type="button" class="capsule">Decor</button>
-                                        <button type="button" class="capsule">Wedding</button>
-                                        <button type="button" class="capsule">Buisness</button>
-                                        <button type="button" class="capsule">Automobile</button>
-                                        <button type="button" class="capsule">Education</button>
-                                        <button type="button" class="capsule">sports</button>
-                                        <button type="button" class="capsule">Books</button>
-                                        <button type="button" class="capsule">Parenting</button>
-                                        <button type="button" class="capsule">Self-Improvment</button>
-                                        <button type="button" class="capsule">Animal/pet</button>
-                                        <button type="button" class="capsule">Luxury</button>
-                                        <button type="button" class="capsule">Finance</button>
-                                        <button type="button" class="capsule">Gadgets & Tech</button>
-                                        <button type="button" class="capsule">Entertainment</button>
+                                    <!-- Content Categories -->
+                                    <div class="form-group">
+                                        <label for="primary-mobile">Content Categories</label>
+                                        <small class="text-light">This number is used for login and cannot be
+                                            edited</small>
+                                        <div class="form-group gender-buttons d-flex flex-wrap gap-1">
+                                            <div class="checkbox-button" data-index="0">
+                                                Meme
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="0">
+                                                Decor
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="0">
+                                                Wedding
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="0">
+                                                Buisness
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="0">
+                                                Automobile
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="1">
+                                                Education
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                sports
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Books
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Parenting
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Self-Improvment
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Animal/pet
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Luxury
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Finance
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Gadgets & Tech
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="checkbox-button" data-index="2">
+                                                Entertainment
+                                                <div class="checkmark">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div> 
                                     </div>
+                                    <!-- Save Button -->
+                                    <button type="submit" class="submit-btn btn btn-primary mt-4">SAVE CHANGES</button>
                                 </div>
-                                <!-- Save Button -->
-                                <button type="submit" class="submit-btn btn btn-primary mt-4">SAVE CHANGES</button>
                             </form>
                         </div>
                     </div>
@@ -900,19 +1226,20 @@
                         <h6 class="mb-2">INCOMPLETE</h6>
                         <div class="d-flex justify-content-between align-items-center">
                             <span>Payments</span>
-                            <span class="edit-link">EDIT</span>
+                            <span class="edit-link" id="editButton_3">EDIT</span>
                         </div>
 
                         {{-- -------------------------- Pyament Section ------------------------------ --}}
 
-                        <div class="form-container_2" style="display: block">
+                        <div class="form-container_2 mt-3">
                             <div class="step-indicator" id="step-indicator">1</div>
 
                             <!-- Step 1: ID Verification -->
                             <div id="step-1" class="step active">
                                 <div class="step-header mb-4">STEP 01 - ID Verification</div>
                                 <label for="aadhaar" class="form-label">Aadhar Card Number</label>
-                                <input id="aadhaar" type="text" class="form-control" placeholder="Enter Aadhar Number" />
+                                <input id="aadhaar" type="number" class="form-control"
+                                    placeholder="Enter Aadhar Number" required />
                                 <button class="btn-custom-primary w-100 mt-3">Get OTP</button>
                             </div>
 
@@ -920,41 +1247,70 @@
                             <div id="step-2" class="step d-none">
                                 <div class="step-header mb-4">STEP 02 - Pan Card Details</div>
                                 <p class="text-muted">Pan card details and Bank details sholud be of hte same person</p>
-                                <label for="aadhaar" class="form-label">Pan Card Number</label>
-                                <input id="aadhaar" type="text" class="form-control" placeholder="Enter Pan Card Number" />
-                                <label for="aadhaar" class="form-label">Name On Pan Card</label>
-                                <input id="aadhaar" type="text" class="form-control" placeholder="Enter Name On Pan Card" />
-                                <label for="dob">Date of Birth</label>
-                                <input type="date" id="dob" class="form-control" />
+                                <div class="form-group">
+                                    <label for="aadhaar" class="form-label">Pan Card Number</label>
+                                    <input id="aadhaar" type="text" class="form-control"
+                                        placeholder="Enter Pan Card Number" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="aadhaar" class="form-label">Name On Pan Card</label>
+                                    <input id="aadhaar" type="text" class="form-control"
+                                        placeholder="Enter Name On Pan Card" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="dob">Date of Birth</label>
+                                    <input type="date" id="dob" class="form-control" required />
+                                </div>
                                 <button class="btn-custom-primary w-100 mt-3">Verify</button>
                             </div>
 
                             <!-- Step 3: Address Verification -->
                             <div id="step-3" class="step d-none">
                                 <div class="step-header mb-4">STEP 03 - Address Verification</div>
-                                <label for="Label" class="form-label">Label</label>
-                                <input id="Label" type="text" class="form-control" placeholder="ex:home" />
-                                <label for="Name" class="form-label">Name</label>
-                                <input id="Name" type="text" class="form-control" placeholder="Enter Name" />
-                                <label for="Phone Number" class="form-label">Phone Number</label>
-                                <input id="Phone Number" type="text" class="form-control" placeholder="Enter Phone Number" />
-                                <label for="Address Line 1" class="form-label">Address Line 1</label>
-                                <textarea id="Address Line 1" class="form-control" rows="4" placeholder="Enter Address Line 1"></textarea>
-                                <label for="Address Line 2" class="form-label">Address Line 2</label>
-                                <textarea id="Address Line 2" class="form-control" rows="4" placeholder="Enter Address Line 2"></textarea>
-                                <label for="Landmark" class="form-label">Landmark (Optional)</label>
-                                <input id="Landmark" type="text" class="form-control" placeholder="Enter City" />
-                                <label for="Pincode" class="form-label">Pincode</label>
-                                <input id="Pincode" type="text" class="form-control" placeholder="Enter City" />
-                                <label for="City" class="form-label">City</label>
-                                <input id="City" type="text" class="form-control" placeholder="Enter City" />
-                                <label for="State" class="form-label">State</label>
-                                <input id="State" type="text" class="form-control" placeholder="Enter State" />
-
-                                
+                                <div class="form-group">
+                                    <label for="Label" class="form-label">Label</label>
+                                    <input id="Label" type="text" class="form-control" placeholder="ex:home"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name" class="form-label">Name</label>
+                                    <input id="Name" type="text" class="form-control" placeholder="Enter Name"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Phone Number" class="form-label">Phone Number</label>
+                                    <input id="Phone Number" type="text" class="form-control"
+                                        placeholder="Enter Phone Number" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Address Line 1" class="form-label">Address Line 1</label>
+                                    <textarea id="Address Line 1" class="form-control" rows="4" placeholder="Enter Address Line 1" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Address Line 2" class="form-label">Address Line 2</label>
+                                    <textarea id="Address Line 2" class="form-control" rows="4" placeholder="Enter Address Line 2" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Landmark" class="form-label">Landmark (Optional)</label>
+                                    <input id="Landmark" type="text" class="form-control" placeholder="Enter City"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Pincode" class="form-label">Pincode</label>
+                                    <input id="Pincode" type="text" class="form-control" placeholder="Enter City"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="City" class="form-label">City</label>
+                                    <input id="City" type="text" class="form-control" placeholder="Enter City"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="State" class="form-label">State</label>
+                                    <input id="State" type="text" class="form-control" placeholder="Enter State"
+                                        required />
+                                </div>
                             </div>
-
-
                             <!-- Navigation Buttons -->
                             <div class="navigation-buttons">
                                 <button id="prev-btn" class="btn-custom-secondary px-4" disabled>Previous</button>
@@ -1000,6 +1356,19 @@
             });
         });
 
+        document.addEventListener('DOMContentLoaded', function() {
+            const editButton = document.getElementById('editButton_3');
+            const myForm = document.getElementsByClassName('form-container_2')[0];
+
+            editButton.addEventListener('click', function() {
+                if (myForm.style.display === 'none' || myForm.style.display === '') {
+                    myForm.style.display = 'block';
+                } else {
+                    myForm.style.display = 'none';
+                }
+            });
+        });
+
         // Multistep js
 
         const steps = document.querySelectorAll(".step");
@@ -1028,12 +1397,25 @@
             }, 3000);
         }
 
+        function validateStep() {
+            const inputs = steps[currentStep].querySelectorAll("input[required]");
+            for (const input of inputs) {
+                if (!input.value.trim()) {
+                    showToast("Please fill all required fields.");
+                    return false;
+                }
+            }
+            return true;
+        }
+
         nextBtn.addEventListener("click", () => {
             if (currentStep < steps.length - 1) {
-                currentStep++;
-                showStep(currentStep);
-                showToast("Your progress is saved. Moving to the next step.");
-            } else {
+                if (validateStep()) {
+                    currentStep++;
+                    showStep(currentStep);
+                    showToast("Your progress is saved. Moving to the next step.");
+                }
+            } else if (validateStep()) {
                 showToast("Your data is saved. Returning to the first step.");
                 currentStep = 0;
                 showStep(currentStep);
@@ -1048,5 +1430,13 @@
         });
 
         showStep(currentStep);
+
+        const buttons = document.querySelectorAll('.checkbox-button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('selected');
+            });
+        });
     </script>
 @endPushOnce
