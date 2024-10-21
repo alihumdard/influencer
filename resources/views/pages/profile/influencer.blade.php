@@ -285,9 +285,9 @@
             }
 
             /* .form-check-input:checked {
-                                                background-color: #ca5a98;
-                                                border-color: #ca5a98;
-                                            } */
+                                                            background-color: #ca5a98;
+                                                            border-color: #ca5a98;
+                                                        } */
 
             .btn-change:hover {
                 background-color: #b04a83;
@@ -1174,7 +1174,7 @@
                                                     </svg>
                                                 </div>
                                             </div>
-                                        </div> 
+                                        </div>
                                     </div>
                                     <!-- Save Button -->
                                     <button type="submit" class="submit-btn btn btn-primary mt-4">SAVE CHANGES</button>
@@ -1209,7 +1209,33 @@
                                     </div>
                                 </div>
                                 <div class="btn-group">
-                                    <button class="btn-custom-secondary btn-sm">Authorize</button>
+                                    <button class="btn-custom-secondary btn-sm">Edit</button>
+                                    <button class="btn-custom-secondary btn-sm">Remove</button>
+                                </div>
+                            </div>
+
+                            <!-- Link YouTube Button -->
+                            <div class="mt-4">
+                                <button class="btn-custom-primary btn-lg w-100">Link Instagram</button>
+                            </div>
+                        </div>
+                        <div class="social-card mt-4">
+                            <div class="social-header text-center mb-4">
+                                <h2>Youtube Channels</h2>
+                                <p>Link your social accounts to collaborate and grow</p>
+                            </div>
+
+                            <!-- Instagram Account Section -->
+                            <div class="social-item">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://placehold.co/40?text=📷" alt="Instagram" />
+                                    <div>
+                                        <span class="d-block font-weight-bold">@alihumdard.dev</span>
+                                        <small class="text-muted">Followers: 8</small>
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn-custom-secondary btn-sm">Edit</button>
                                     <button class="btn-custom-secondary btn-sm">Remove</button>
                                 </div>
                             </div>
@@ -1219,6 +1245,7 @@
                                 <button class="btn-custom-primary btn-lg w-100">Link YouTube</button>
                             </div>
                         </div>
+                        <!-- social card section Ends Here -->
                     </div>
 
                     <!-- Payments Section -->
@@ -1344,17 +1371,21 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            const editButton = document.getElementById('editButton_1');
-            const myForm = document.getElementsByClassName('social-card')[0];
+            const editButton = document.getElementById('editButton_1'); // Select the edit button
+            const socialCards = document.querySelectorAll('.social-card'); // Select both cards
 
             editButton.addEventListener('click', function() {
-                if (myForm.style.display === 'none' || myForm.style.display === '') {
-                    myForm.style.display = 'block';
-                } else {
-                    myForm.style.display = 'none';
-                }
+                socialCards.forEach(card => {
+                    // Toggle each card's visibility
+                    if (card.style.display === 'none' || card.style.display === '') {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
         });
+
 
         document.addEventListener('DOMContentLoaded', function() {
             const editButton = document.getElementById('editButton_3');

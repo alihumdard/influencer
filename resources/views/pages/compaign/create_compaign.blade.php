@@ -268,7 +268,11 @@
                 </div>
             </div>
         </div>
-
+        {{-- Alert strat --}}
+        <div class="alert alert-success" role="alert">
+            A simple success alert—check it out!
+          </div>
+          {{-- Alerts Ends --}}
         <div class="col-12">
             <div class="card">
                 <div class="card-body ">
@@ -1264,8 +1268,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 
