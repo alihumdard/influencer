@@ -20,9 +20,15 @@ class Product extends Model
         'description',
         'main_image',
         'product_images',
+        'created_by',
     ];
 
     protected $casts = [
         'product_images' => 'array',
     ];
+
+    function campaign()
+    {
+        return $this->belongsToMany(Compaign::class);
+    }
 }

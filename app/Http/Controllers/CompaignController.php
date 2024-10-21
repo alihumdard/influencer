@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Logo;
 use App\Models\Post;
+use App\Models\Product;
 use App\Models\Reel;
 use App\Models\Story;
 use App\Models\Video;
@@ -11,6 +12,7 @@ use App\Models\Compaign;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use App\Models\CompaignProduct;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class CompaignController extends Controller
@@ -19,8 +21,8 @@ class CompaignController extends Controller
     {
         $userId = Auth::user()->id;
         $categories = Categorie::all();
-        $compaign = Compaign::where('is_draft', 1)->where('created_by', $userId)->first();
-        
+        $compaign = Compaign::where('is_draft', 1)->where('created_by', $userId)->with('products')->first();
+
         return view('pages.compaign.create_compaign', compact('categories', 'compaign'));
     }
 
@@ -106,7 +108,7 @@ class CompaignController extends Controller
             'instagram_page' => 'required|string|max:255',
             'tags' => 'nullable|string',
             'script' => 'nullable|string',
-            'campaign_banner' => 'image|mimes:jpeg,png,jpg,gif,webm,svg,webp', 
+            'campaign_banner' => 'image|mimes:jpeg,png,jpg,gif,webm,svg,webp',
         ]);
 
         if ($request->hasFile('campaign_banner')) {
@@ -224,7 +226,7 @@ class CompaignController extends Controller
 
     public function store_compaign_reel(Request $request)
     {
-        
+
         $request->validate([
             'campaign_id' => 'required',
             'reel_type' => 'required|string|max:255',
@@ -257,7 +259,7 @@ class CompaignController extends Controller
 
     public function store_compaign_story(Request $request)
     {
-        
+
         $request->validate([
             'campaign_id' => 'required',
             'story_type' => 'required|string|max:255',
@@ -266,7 +268,7 @@ class CompaignController extends Controller
             'tags' => 'nullable|string',
             'script' => 'nullable|string',
         ]);
-        
+
         $story = Story::create([
             'campaign_id' => $request->campaign_id,
             'story_type' => $request->story_type,
@@ -289,7 +291,7 @@ class CompaignController extends Controller
 
     public function store_compaign_video(Request $request)
     {
-        
+
         $request->validate([
             'campaign_id' => 'required',
             'video_type' => 'required|string|max:255',
@@ -298,7 +300,7 @@ class CompaignController extends Controller
             'tags' => 'nullable|string',
             'script' => 'nullable|string',
         ]);
-        
+
         $video = Video::create([
             'campaign_id' => $request->campaign_id,
             'video_type' => $request->video_type,
@@ -321,7 +323,7 @@ class CompaignController extends Controller
 
     public function store_compaign_post(Request $request)
     {
-        
+
         $request->validate([
             'campaign_id' => 'required',
             'post_type' => 'required|string|max:255',
@@ -330,7 +332,7 @@ class CompaignController extends Controller
             'tags' => 'nullable|string',
             'script' => 'nullable|string',
         ]);
-        
+
         $post = Post::create([
             'campaign_id' => $request->campaign_id,
             'post_type' => $request->post_type,
@@ -353,14 +355,14 @@ class CompaignController extends Controller
 
     public function store_compaign_logo(Request $request)
     {
-        
+
         $request->validate([
             'campaign_id' => 'required',
             'logo_name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'tags' => 'nullable|string',
         ]);
-        
+
         $logo = Logo::create([
             'campaign_id' => $request->campaign_id,
             'logo_name' => $request->logo_name,
@@ -392,5 +394,25 @@ class CompaignController extends Controller
         }
 
         return response()->json(['success' => false, 'message' => 'Draft campaign not found.']);
+    }
+
+    public function create_new_category(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $slug = Str::slug($request->name);
+
+        $category = Categorie::create([
+            'title' => $request->name,
+            'slug' => $slug,
+        ]);
+
+        $option = '<option value="' . $category->id . '" selected>' . $category->title . '</option>';
+
+        if ($category) {
+            return response()->json(['success' => true, 'option' => $option, 'message' => 'Category created successfully.']);
+        }
     }
 }
