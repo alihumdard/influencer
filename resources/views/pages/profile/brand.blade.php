@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', 'Dashboard')
+@section('title', 'Brand')
 @section('content')
 
 <div class="body-wrapper">
@@ -8,7 +8,7 @@
             <div class="card-body px-4 py-5">
                 <div class="row align-items-center">
                     <div class="col-9">
-                        <h4 class="fw-semibold mb-8 text-white" > brand profile</h4>
+                        <h4 class="fw-semibold mb-8 text-white" > Brand Profile</h4>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb text-white">
                                 <li class="breadcrumb-item ">

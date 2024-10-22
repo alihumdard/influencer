@@ -74,6 +74,8 @@ function view_permission($page_name)
             switch ($page_name) {
                 case 'dashboard':
                 case 'products':
+                case 'settings':
+                
                     return true;
                 default:
                     return false;
@@ -82,6 +84,7 @@ function view_permission($page_name)
         case 'Influencer':
             switch ($page_name) {
                 case 'dashboard':
+                case 'settings':
                     return true;
                 default:
                     return false;

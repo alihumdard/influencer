@@ -25,14 +25,12 @@ class ProductController extends Controller
             if (!view_permission($page_name)) {
                 return redirect()->back();
             }
-            $products = Product::all();
 
             if ($user->role == user_roles('1')) {
-                $products = Product::all();
+                $products = Product::with('categories')->get();
             } elseif ($user->role == user_roles('2')) {
-                $products = Product::where('created_by', $user->id)->get();
+                $products = Product::with('categories')->where('created_by', $user->id)->get();
             }
-
             $data['products'] = $products;
             $data['user'] = $user;
             return view('pages.products.listing', $data);
