@@ -586,6 +586,11 @@
                                             <section class="product-sec">
                                                 <div class="row">
                                                     <div class="col">
+
+                                                        <input type="search" class="form-control" placeholder="Search Product" id="search_product" autocomplete="off">
+                                                        <div id="product_list"></div> <!-- This is where the search results will be displayed -->
+                                                        
+
                                                         <form class=" g-3 mt-3 needs-validation" id="product_detail_from"
                                                             method="post" action="{{ route('admin.storeProduct') }}"
                                                             enctype="multipart/form-data">
@@ -596,6 +601,7 @@
                                                                 value="{{ $duplicate ?? 'no' }}">
                                                             <input type="hidden" name="campaign_id"
                                                                 value="{{ $compaign ? $compaign->id : '' }}">
+                                                            <input type="hidden" name="product_id" id="product_id">
                                                             <div class="row gy-4">
                                                                 <div class=" col-md-6 extra-images">
                                                                     <label class="form-label">Extra Images</label>
@@ -667,9 +673,9 @@
                                                                             <input class="form-control me-2"
                                                                                 type="text" name="title"
                                                                                 id="title"
-                                                                                value="{{ $product['title'] ?? old('title') }}"
+                                                                                value=""
                                                                                 placeholder="Product Title"
-                                                                                aria-label="Search" required>
+                                                                                aria-label="Search" >
                                                                             <div class="invalid-feedback">Please write
                                                                                 product title!</div>
                                                                             @error('title')
@@ -700,7 +706,7 @@
                                                                                 class="form-label">Select Product
                                                                                 Category</label>
                                                                             <select id="category_id" name="category_id"
-                                                                                class="form-select" required>
+                                                                                class="form-select" >
                                                                                 <option value="" selected>Choose...
                                                                                 </option>
                                                                                 @foreach ($categories ?? [] as $key => $value)
@@ -782,7 +788,7 @@
                                                                     <input type="number" name="price" id="price"
                                                                         value="{{ $product['price'] ?? old('price') }}"
                                                                         class="form-control" step="0.01"
-                                                                        min="0" required>
+                                                                        min="0" >
                                                                     <div class="invalid-feedback">Enter product price!
                                                                     </div>
                                                                     @error('price')
@@ -797,7 +803,7 @@
                                                                             Stock)</span></label>
                                                                     <input type="number" id="stock" name="stock"
                                                                         value="{{ $product['stock'] ?? old('stock') }}"
-                                                                        class="form-control" required>
+                                                                        class="form-control" >
                                                                     <div class="invalid-feedback">Enter product stock!
                                                                     </div>
                                                                     @error('stock')
@@ -853,7 +859,7 @@
                                                                     <label for="stock_status" class="col-form-label">
                                                                         Stock Status </label>
                                                                     <select id="stock_status" name="stock_status"
-                                                                        class="form-select" required>
+                                                                        class="form-select" >
                                                                         <option value="IN"
                                                                             {{ isset($product['stock_status']) && $product['stock_status'] == 'IN' ? 'selected' : '' }}>
                                                                             IN</option>
@@ -886,7 +892,7 @@
                                                             <div class="row mb-5">
                                                                 <div class="form-floating col-12  mt-3">
                                                                     <textarea class="form-control tinymce-editor" name="description" id="description"
-                                                                        placeholder="Product main Description" required=''>{{ $product['desc'] ?? '' }}</textarea>
+                                                                        placeholder="Product main Description">{{ $product['desc'] ?? '' }}</textarea>
                                                                     <div class="invalid-feedback">Please write product Main
                                                                         desc!</div>
                                                                     @error('description')
@@ -1105,8 +1111,7 @@
                                                 @if (count($compaign->products) > 0)
                                                     @foreach ($compaign->products as $item)
                                                         <div class="col-md-4 single-note-item all-category">
-
-                                                            <div class="card card-body">
+                                                            <div class="card card-body" id="product-card-{{ $item->id }}">
                                                                 <span class="side-stick"></span>
                                                                 <h6 class="note-title text-truncate w-75 mb-0"
                                                                     data-noteheading="Book a Ticket for Movie">
@@ -1121,7 +1126,7 @@
                                                                     {{-- <a href="javascript:void(0)" class="link me-1">
                                                                     <i class="ti ti-star fs-4 favourite-note"></i>
                                                                 </a> --}}
-                                                                    <a href="javascript:void(0)" class="link text-danger">
+                                                                    <a href="javascript:void(0)" type="button" class="link text-danger delete-product" data-id="{{ $item->id }}">
                                                                         <i class="ti ti-trash fs-4 remove-note"></i>
                                                                     </a>
                                                                     <div class="ms-auto">
@@ -1151,7 +1156,7 @@
                                                                     d-flex
                                                                     align-items-center
                                                                     "
-                                                                                    href="javascript:void(0);">Edit</a>
+                                                                    href="javascript:void(0);">Edit</a>
                                                                                 <a class="
                                                                     note-social
                                                                     badge-group-item badge-social
@@ -1159,9 +1164,9 @@
                                                                     position-relative
                                                                     category-social
                                                                     d-flex
-                                                                    align-items-center
+                                                                    align-items-center duplicate-product
                                                                     "
-                                                                                    href="javascript:void(0);">
+                                                                                    href="javascript:void(0);" data-id="{{ $item->id }}">
                                                                                     Duplicate</a>
                                                                                 <a class="
                                                                     note-important
@@ -1780,7 +1785,205 @@
 
 @pushOnce('scripts')
     <script>
-        
+  $(document).ready(function(){
+        // Trigger live search on keyup event
+        $('#search_product').on('keyup', function(){
+            var query = $(this).val();
+
+            // If query is not empty, make the AJAX call
+            if(query != '') {
+                $.ajax({
+                    url: "{{ route('product.liveSearch') }}", // Route for live search
+                    method: 'GET',
+                    data: {search: query},
+                    success: function(data){
+                        $('#product_list').html(data); // Populate results
+                    }
+                });
+            } else {
+                $('#product_list').html(''); // Clear results if query is empty
+            }
+        });
+
+        // Make product title selectable
+        $(document).on('click', '.product-item', function(){
+            var title = $(this).data('title');
+            $('#search_product').val(title); // Set selected title in the input
+            $('#product_list').html(''); // Clear the search results dropdown
+        });
+    }); 
+
+
+function getProduct(target) {
+        var productId = $(target).data('id');
+        $.ajax({
+            url: "{{ route('product.get') }}",
+            type: 'GET',
+            data: { product_id: productId },
+            success: function(response) {
+                console.log(response);
+                $('#product_id').val(response.id);
+                $('#title').val(response.title);
+                $('#mainImage_preview').attr('src', '/storage/' + response.main_image); // Append base URL to main image path 
+                $('#category_id').val(response.category_id);
+                $('#cut_price').val(response.cut_price);
+                $('#price').val(response.price);
+                $('#stock').val(response.stock);
+                $('#SKU').val(response.sku);
+                $('#stock_status').val(response.stock_status);
+                $('#barcode').val(response.barcode);
+                $('#weight').val(response.weight);
+                $('#description').val(response.description);
+                $('#short_description').val(response.short_description);
+
+                if (response.variants.length > 0) {
+    response.variants.forEach(function(variant) {
+        var new_row = `<div class="row bg-white rounded-3 mb-4 py-2">
+            <div class="col-12">
+                <hr class="">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="p-2">
+                    <label for="" class="form-label">Variant Price <span class="extra-text">(Price in UK Pound)</span></label>
+                    <input type="hidden" class="form-control" name="variant_id[]" value="${variant.id}">
+                    <input type="number" class="form-control" name="variant_price[]" value="${variant.variant_price}" step="0.01" min="0" required>
+                    <div class="invalid-feedback">Enter variant price!</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="p-2">
+                    <label for="" class="form-label">Variant Cut Price <span class="extra-text">(Price in UK Pound)</span></label>
+                    <input type="number" class="form-control" name="variant_cut_price[]" value="${variant.variant_cut_price}" step="0.01" min="0">
+                    <div class="invalid-feedback">Enter variant cut price!</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="p-2">
+                    <label for="" class="form-label">Variant Name <span class="extra-text"></span></label>
+                    <input type="text" class="form-control" name="variant_name[]" value="${variant.variant_name}" required>
+                    <div class="invalid-feedback">Enter variant title!</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 product-md">
+                <div class="p-2">
+                    <label for="" class="form-label">Variant Value <span class="extra-text"></span></label>
+                    <input type="text" class="form-control" name="variant_value[]" value="${variant.variant_value}" required>
+                    <div class="invalid-feedback">Enter variant value!</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="p-2">
+                    <label for="" class="form-label">Inventory <span class="extra-text">(Available Stock)</span></label>
+                    <input type="number" class="form-control" name="variant_inventory[]" value="${variant.variant_inventory}" required>
+                    <div class="invalid-feedback">Enter variant stock!</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="p-2">
+                    <label for="" class="form-label">Weight <span class="extra-text">(gm)</span></label>
+                    <input type="number" class="form-control" name="variant_weight[]" value="${variant.variant_weight}" step="0.01" min="0">
+                    <div class="invalid-feedback">Enter variant weight!</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="p-2">
+                    <label for="" class="form-label">Barcode <span class="extra-text">(ISBN, UPC, GTIN, etc.)</span></label>
+                    <input type="text" class="form-control" name="variant_barcode[]" value="${variant.variant_barcode}">
+                    <div class="invalid-feedback">Enter variant barcode!</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="p-2">
+                    <label for="" class="form-label">SKU <span class="extra-text">(Stock Keeping Unit)</span></label>
+                    <input type="text" class="form-control" name="variant_sku[]" value="${variant.variant_sku}">
+                    <div class="invalid-feedback">Enter variant SKU!</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="p-2">
+                    <label class="form-label">Select Image</label>
+                    <input class="form-control variant-image" name="variant_attr_image[]" type="file">
+                    <div class="invalid-feedback">Enter variant image!</div>
+                </div>
+            </div>
+            <div class="col-md-12 d-flex justify-content-end col-sm-12 mt-4">
+                <div class="p-2">
+                    <button type="button" class="btn remove_row btn-danger bg-danger"><i class="fa fa-minus"></i> Remove</button>
+                </div>
+            </div>
+            <div class="col-12">
+                <hr class="">
+            </div>
+        </div>`;
+
+        // Append the new row with the prefilled data
+        $('#variant_row').append(new_row);
+    });
+}
+
+
+
+                
+            },
+            error: function(xhr) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
+
+
+
+$(document).on('click', '.delete-product', function () {
+    var productId = $(this).data('id'); // Get the product ID from the button
+
+    if (confirm('Are you sure you want to delete this product?')) {
+        $.ajax({
+            url: '{{ route('product.list.delete') }}',  // URL to your route
+            type: 'DELETE',                            // Use DELETE request
+            data: {
+                product_id: productId,                  // Pass the product ID
+                _token: '{{ csrf_token() }}'            // CSRF token
+            },
+            success: function (response) {
+                if (response.success) {
+                    $('#product-card-' + productId).fadeOut('slow');
+                    toastr.success('Product deleted successfully.');
+                } else {
+                    toastr.error('Something went wrong.');
+                }
+            },
+            error: function (xhr) {
+                alert('Error: ' + xhr.statusText);
+            }
+        });
+    }
+});
+$(document).on('click', '.duplicate-product', function () {
+    var productId = $(this).data('id'); // Get the product ID from the button
+
+    if (confirm('Are you sure you want to replicate this product?')) {
+        $.ajax({
+            url: '{{ route('product.duplicate') }}',  // URL to your route
+            type: 'get',
+            data: {
+                product_id: productId,                  // Pass the product ID
+                _token: '{{ csrf_token() }}'            // CSRF token
+            },
+            success: function (response) {
+                if (response.success) {
+                    $('#product-card-' + productId).fadeOut('slow');
+                    toastr.success('Product copied successfully.');
+                } else {
+                    toastr.error('Something went wrong.');
+                }
+            },
+            error: function (xhr) {
+                alert('Error: ' + xhr.statusText);
+            }
+        });
+    }
+});
+
         function previewMainImage(input) {
                 var preview = document.getElementById('mainImage_preview');
                 var file = input.files[0];
@@ -2149,6 +2352,7 @@
                         error: function(error) {
                             if (error.status === 422) { // Unprocessable Entity
                                 const errors = error.responseJSON.errors;
+                                displayErrors(errors);
                                 for (let field in errors) {
                                     console.log('errors[field]', errors[field]);
 
@@ -2184,6 +2388,7 @@
                         <div class="col-md-4 col-sm-12">
                             <div class="p-2">
                                 <label for="" class="form-label">Variant Price <span class="extra-text">(Price in UK Pound)</span></label>
+                                <input type="hidden" class="form-control" name="variant_id[]" value="">
                                 <input type="number" class="form-control" name="variant_price[]" id="" step="0.01"
                                                                         min="0" required>
                                 <div class="invalid-feedback">Enter variant price!</div>
