@@ -22,6 +22,6 @@ Route::get('/influencer-profile', function(){
     return view('pages.profile.influencer');
 });
 
-Route::get('/about', function(){
-    return view('pages.profile.about');
+Route::get('/brand-profile', function(){
+    return view('pages.profile.brand');
 });
