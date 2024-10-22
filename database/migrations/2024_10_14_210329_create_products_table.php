@@ -12,29 +12,34 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-
             $table->id();
-            $table->foreignId('brand_id')->constrained()->onDelete('cascade'); 
-            $table->foreignId('category_id')->constrained()->onDelete('cascade'); 
             $table->string('title');
-            $table->boolean('status')->default(1); 
-            $table->string('sku')->unique(); 
-            $table->string('mpn')->nullable(); 
+            $table->json('product_images')->nullable();
+            $table->string('main_image')->nullable();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->decimal('cut_price', 8, 2)->nullable();
+            $table->decimal('price', 8, 2);
+            $table->integer('stock')->default(0);
+            $table->string('stock_status')->nullable();
+            $table->string('sku')->unique();
+            $table->string('barcode')->unique();
+            $table->decimal('weight')->default(0.00);
+            $table->text('description')->nullable();
+            $table->text('short_description')->nullable();
+            $table->string('mpn')->nullable();
             $table->string('gtin')->nullable();
             $table->string('gtin_type')->nullable();
-            $table->text('description')->nullable();
-            $table->json('product_images')->nullable(); 
-            $table->string('feature_image')->nullable(); 
-            $table->boolean('downloadable')->default(0); 
-            $table->boolean('requires_shipment')->default(1); 
+            $table->boolean('downloadable')->default(0);
+            $table->boolean('requires_shipment')->default(1);
             $table->string('manufacturer')->nullable();
             $table->string('model_number')->nullable();
-            $table->string('origin')->nullable(); 
-            $table->decimal('cut_price', 8, 2)->nullable(); 
-            $table->decimal('price', 8, 2);
-            $table->integer('quantity')->default(0); 
-            $table->integer('shipped_quantity')->default(0); 
+            $table->string('origin')->nullable();
+            $table->integer('shipped_quantity')->default(0);
+            $table->boolean('status')->default(1);
+            $table->unsignedBigInteger('created_by'); 
+            $table->unsignedBigInteger('updated_by')->nullable(); 
             $table->timestamps();
+            // $table->foreignId('brand_id')->constrained()->onDelete('cascade');
         });
     }
 
