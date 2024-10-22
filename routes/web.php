@@ -15,3 +15,4 @@ Route::get('auth/google/callback', [GoogleAuthController::class, 'handleGoogleCa
 Route::get('/logout', [WebController::class, 'logout'])->name('logout');
 
 include __DIR__ . '/admin.php';
+
