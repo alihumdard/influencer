@@ -679,39 +679,22 @@
                                                                             @enderror
                                                                         </div>
                                                                         @php
-                                                                            $path = url(
-                                                                                'assets/admin/img/upload_btn.png',
-                                                                            );
+                                                                            $path = url('assets/images/icons/upload_btn.png');
                                                                             if ($product['main_image'] ?? null) {
-                                                                                $path = asset(
-                                                                                    'storage/' . $product['main_image'],
-                                                                                );
+                                                                                $path = asset('storage/' . $product['main_image']);
                                                                             }
                                                                         @endphp
                                                                         <div class="col-12 mt-2 produt-main-image">
-                                                                            <label for="product_main_image"
-                                                                                class="form-label">Upload Main
-                                                                                Image</label>
-                                                                            <div class="d-flex align-items-center"
-                                                                                style="gap: 20px; justify-content: space-between;">
-                                                                                <input type="file"
-                                                                                    class="form-control w-100"
-                                                                                    id="product_main_image"
-                                                                                    name="main_image"
-                                                                                    value="{{ $product['main_image'] ?? null ? 'required' : '' }}"
-                                                                                    onchange="previewMainImage(this)">
-                                                                                <label for="product_main_image"
-                                                                                    class=" d-block ">
-                                                                                    <img id="mainImage_preview"
-                                                                                        src="{{ $path ?? '' }}"
-                                                                                        class="rounded-circle"
-                                                                                        alt="no image"
-                                                                                        style="width: 45px; height: 45px;  cursor:pointer;   object-fit: cover;">
+                                                                            <label for="product_main_image" class="form-label">Upload Main Image</label>
+                                                                            <div class="d-flex align-items-center" style="gap: 20px; justify-content: space-between;">
+                                                                                <input type="file" class="form-control w-100" id="product_main_image" name="main_image" onchange="previewMainImage(this)">
+                                                                                <label for="product_main_image" class="d-block">
+                                                                                    <img id="mainImage_preview" src="{{ $path ?? '' }}" class="rounded-circle" alt="no image" style="width: 45px; height: 45px; cursor: pointer; object-fit: cover;">
                                                                                 </label>
                                                                             </div>
-                                                                            <div class="invalid-feedback">* Upload product
-                                                                                main Image!</div>
+                                                                            <div class="invalid-feedback">* Upload product main Image!</div>
                                                                         </div>
+
                                                                         <div class="col-9 select-product-category">
                                                                             <label for="category_id"
                                                                                 class="form-label">Select Product
@@ -1797,6 +1780,20 @@
 
 @pushOnce('scripts')
     <script>
+        
+        function previewMainImage(input) {
+                var preview = document.getElementById('mainImage_preview');
+                var file = input.files[0];
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                };
+
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            }
+
         var currentStep = 1;
 
         function handleDraft(isDraft) {
@@ -1814,7 +1811,7 @@
                         currentStep = 1;
 
                         $.ajax({
-                            url: '{{ route('compaign.delete', $compaign->id) }}',
+                            url: "{{ route('compaign.delete', $compaign->id) }}",
                             type: 'DELETE',
                             data: {
                                 _token: '{{ csrf_token() }}'
@@ -1886,7 +1883,6 @@
                             if (response.status === 'success') {
                                 submitButton.prop('disabled', false);
                                 let campaignId = response.campaign_id;
-                                alert(campaignId);
                                 $('.campaign_id').each(function() {
                                     $(this).val(campaignId);
                                 });
@@ -2180,20 +2176,6 @@
 
             }
 
-            function previewMainImage(input) {
-                var preview = $('#mainImage_preview');
-                var file = input.files[0];
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    preview.attr('src', e.target.result);
-                };
-
-                if (file) {
-                    reader.readAsDataURL(file);
-                }
-            }
-
             // new row add
             var new_row = `<div class="row bg-white rounded-3  mb-4 py-2">
                         <div class="col-12">
@@ -2468,12 +2450,7 @@
                             0
                         ]);
                     }
-
                 }
-
-
-
-
             });
         });
     </script>

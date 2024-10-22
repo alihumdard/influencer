@@ -9,7 +9,7 @@ use App\Models\Reel;
 use App\Models\Story;
 use App\Models\Video;
 use App\Models\Compaign;
-use App\Models\Categorie;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\CompaignProduct;
 use Illuminate\Support\Str;
@@ -20,7 +20,7 @@ class CompaignController extends Controller
     public function create_compaign()
     {
         $userId = Auth::user()->id;
-        $categories = Categorie::all();
+        $categories = Category::all();
         $compaign = Compaign::where('is_draft', 1)->where('created_by', $userId)->with('products')->first();
 
         return view('pages.compaign.create_compaign', compact('categories', 'compaign'));
@@ -404,7 +404,7 @@ class CompaignController extends Controller
 
         $slug = Str::slug($request->name);
 
-        $category = Categorie::create([
+        $category = Category::create([
             'title' => $request->name,
             'slug' => $slug,
         ]);

@@ -8,6 +8,7 @@ use App\Http\Controllers\InfluencerController;
 use App\Http\Controllers\SocialAccountController;
 use App\Http\Controllers\CompaignController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SettingController;
 
 // Routes for admin with authentication check
 Route::prefix('portal')->middleware('auth')->group(function () {
@@ -48,4 +49,7 @@ Route::prefix('portal')->middleware('auth')->group(function () {
     Route::post('/store-compaign-video', [CompaignController::class, 'store_compaign_video'])->name('store.compaign.video');
     Route::post('/store-compaign-post', [CompaignController::class, 'store_compaign_post'])->name('store.compaign.post');
     Route::post('/store-compaign-logo', [CompaignController::class, 'store_compaign_logo'])->name('store.compaign.logo');
+
+    Route::match(['get', 'post'], '/settings', [SettingController::class, 'inbox'])->name('admin.settings');
+    Route::match(['get', 'post'], '/storeSetting', [SettingController::class, 'store_product'])->name('admin.store.setting');
 });
