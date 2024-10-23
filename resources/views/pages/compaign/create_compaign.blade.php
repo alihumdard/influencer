@@ -602,7 +602,7 @@
                                                                 value="{{ $product['id'] ?? '' }}">
                                                             <input type="hidden" name="duplicate"
                                                                 value="{{ $duplicate ?? 'no' }}">
-                                                            <input type="hidden" name="campaign_id"
+                                                            <input type="hidden" name="campaign_id" class="campaign_id"
                                                                 value="{{ $compaign ? $compaign->id : '' }}">
                                                             <input type="hidden" name="product_id" id="product_id">
                                                             <div class="row gy-4">
@@ -2375,7 +2375,7 @@
                                 window.location.href = "{{ route('admin.prodcuts') }}";
                             } else if (response.status === 'error') {
 
-                                console.log(response.message);
+                                console.log("sssss",response.message);
                                 $('.error-label').remove();
 
                                 $.each(response.message, function(field, errorMessages) {
@@ -2391,11 +2391,19 @@
                                     });
                                 });
                             }
+
+                            $.ajax({
+                                url: '{{ route("admin.single_product_layout", ["id" => ":id"]) }}'.replace(':id', response.product.id),
+                                success: function(response) {
+                                    $("#product_card_list").prepend(response);
+                                }
+                            });
+
                             toastr.success('Product saved Successful');
                             document.getElementById('product_detail_from').reset();
                         },
                         error: function(error) {
-                            if (error.status === 422) { // Unprocessable Entity
+                            if (error.status === 422) {
                                 const errors = error.responseJSON.errors;
                                 displayErrors(errors);
                             } else {
