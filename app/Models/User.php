@@ -49,6 +49,10 @@ class User extends Authenticatable
         ];
     }
 
+    public function InfluencerDetail(){
+        return $this->hasOne(InfluencerDetail::class);
+    }
+
     public function socialAccounts()
     {
         return $this->hasMany(SocialAccount::class);
