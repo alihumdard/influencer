@@ -439,7 +439,7 @@
             .btn-custom-secondary:hover {
                 background-color: #d199bb;
             }
-           
+
             /* Social Card Css Ends Here */
 
             /* Payment Card Css starts Here*/
@@ -781,7 +781,7 @@
                                 class="img-fluid" />
                         </div>
                         <div class="user-info">
-                            <h2>Welcome, User</h2>
+                            <h2>Welcome{{ $user->name }}</h2>
                             <p>Your profile completion progress</p>
                             <!-- Progress Bar -->
                             <div class="progress-container">
@@ -803,7 +803,7 @@
                             <span>About You</span>
                             <span class="edit-link" id="editButton">EDIT</span>
                         </div>
-                        <p class="mb-0">Phone: 9118761726</p>
+                        <p class="mb-0"></p>
                         {{-- ---------------- Hiden Foam ------------------------------------- --}}
                         <div class="container form-container mt-3">
                             <!-- Header -->
@@ -819,17 +819,18 @@
                                 </div>
                             </div>
                             <!-- Form Section -->
-                            <form>
+                            <form method="POST" action="{{route('admin.store.setting')}}">
+                            @csrf
                                 <!-- Name -->
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" id="name" class="form-control"
-                                        placeholder="Enter your name" />
+                                        placeholder="Enter your name" name="name" value="{{ $user->name }}" />
                                 </div>
                                 <!-- Primary Mobile Number (Disabled) -->
                                 <div class="form-group">
                                     <label for="primary-mobile">Primary Mobile Number</label>
-                                    <input type="text" id="primary-mobile" class="form-control" value="+91 9118761726" />
+                                    <input type="text" id="primary-mobile" value="{{ $user->InfluencerDetail->phone ?? '' }}" class="form-control" value="+91 9118761726" name="phone" />
                                     <small class="text-light">This number is used for login and cannot be edited</small>
                                 </div>
                                 <!-- WhatsApp Number -->
@@ -837,7 +838,7 @@
                                     <label for="whatsapp">WhatsApp Number</label>
                                     <div class="d-flex align-items-center">
                                         <input type="text" id="whatsapp" class="form-control me-3"
-                                            value="+91 9118761726" />
+                                            value="+91 9118761726"  />
                                         <button type="button" class="btn btn-change">CHANGE</button>
                                     </div>
                                 </div>
@@ -849,53 +850,50 @@
                                 </div>
                                 <!-- Gender Selection -->
                                 <div class="form-group gender-buttons d-flex gap-1">
-                                    <div class="checkbox-button" data-index="0">
+                                    <input type="hidden" name="gender" id="gender-input" value="{{ $user->InfluencerDetail->gender }}">
+                                    <div class="checkbox-button {{ $user->InfluencerDetail->gender == 'Male' ? 'selected' : '' }}" data-index="0" onclick="setGender('Male',this)">
                                         Male
                                         <div class="checkmark">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                <path d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <div class="checkbox-button" data-index="1">
+
+                                    <div class="checkbox-button {{ $user->InfluencerDetail->gender == 'Female' ? 'selected' : '' }}" data-index="1" onclick="setGender('Female',this)">
                                         Female
                                         <div class="checkmark">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                <path d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <div class="checkbox-button" data-index="2">
+                                    <div class="checkbox-button {{ $user->InfluencerDetail->gender == 'Other' ? 'selected' : '' }}" data-index="2" onclick="setGender('Other',this)">
                                         Other
                                         <div class="checkmark">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
+                                                <path d="M20.285 6.709a1 1 0 00-1.414-1.414L9 15.167l-3.871-3.871a1 1 0 00-1.414 1.414l4.578 4.578a1 1 0 001.414 0l10.578-10.578z" />
                                             </svg>
                                         </div>
                                     </div>
-                                    {{-- <button type="button" class="btn btn-primary">Male</button>
-                                    <button type="button" class="btn btn-outline-secondary">Female</button>
-                                    <button type="button" class="btn btn-outline-secondary">Other</button> --}}
                                 </div>
+
                                 <!-- Date of Birth -->
                                 <div class="form-group">
                                     <label for="dob">Date of Birth</label>
-                                    <input type="date" id="dob" class="form-control" />
+                                    <input type="date" id="dob" class="form-control" name="dob"  value="{{ $user->InfluencerDetail->dob ?? ''}}"/>
                                 </div>
                                 <!-- E-Mail -->
                                 <div class="form-group">
                                     <label for="primary-mobile">E-Mail</label>
                                     <input type="text" id="E-Mail" class="form-control"
-                                        placeholder="Enter Your E-mail" />
+                                        placeholder="Enter Your E-mail" value="{{ $user->InfluencerDetail->email ?? ''}}" name="email" />
                                 </div>
                                 <!-- Location -->
                                 <div class="form-group">
                                     <label for="primary-mobile">Location</label>
                                     <input type="text" id="E-Mail" class="form-control"
-                                        placeholder="Enter Your E-mail" />
+                                        placeholder="Enter Your E-mail" name="location"/>
                                 </div>
                                 <!-- Profile Type -->
                                 <div class="form-group">
@@ -1199,17 +1197,21 @@
                             <span>Social Accounts</span>
                             <span class="edit-link" id="editButton_1">EDIT</span>
                         </div>
-                        <p class="mb-0">Instagram: alihumdard.dev</p>
+                        <p class="mb-0"></p>
                         <!-- Social Accounts Section Ends Here-->
 
                         <!-- Social Card Section -->
                         <div class="social-card mt-4">
+
                             <div class="social-header text-center mb-4">
                                 <h2>Social Channels</h2>
                                 <p>Link your social accounts to collaborate and grow</p>
                             </div>
 
                             <!-- Instagram Account Section -->
+                            {{-- @foreach ( as )
+
+                            @endforeach --}}
                             <div class="social-item">
                                 <div class="d-flex align-items-center">
                                     <img src="https://placehold.co/40?text=📷" alt="Instagram" />
@@ -1367,6 +1369,23 @@
 
 @pushOnce('scripts')
     <script>
+
+        // Gender slection JS
+
+        function setGender(gender, element) {
+            // Update the hidden input value to the selected gender
+            document.getElementById('gender-input').value = gender;
+
+            // Remove 'selected' class from all buttons
+            document.querySelectorAll('.checkbox-button').forEach(function(button) {
+                button.classList.remove('selected');
+            });
+
+            setTimeout(() => {
+                element.classList.add('selected');
+            }, 200)
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const editButton = document.getElementById('editButton');
             const myForm = document.getElementsByClassName('form-container')[0];
