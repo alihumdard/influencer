@@ -46,7 +46,7 @@ class ProductController extends Controller
         // Validate the request
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
-            'category_id' => 'nullable|integer',
+            'category_id' => 'required|integer',
             'cut_price' => 'required|numeric',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
@@ -57,7 +57,7 @@ class ProductController extends Controller
             'short_description' => 'nullable|string',
             'description' => 'nullable|string',
 
-            'main_image' => 'nullable',
+            'main_image' => 'required|image|mimes:jpeg,png,jpg,gif,webm,svg,webp|max:2048',
             'images.*' => 'nullable',
             // 'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webm,svg,webp|max:2048',
             // 'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webm,svg,webp|max:2048',
@@ -101,11 +101,11 @@ class ProductController extends Controller
                 $product->main_image = $mainImagePath;
                 $product->product_images = $imagePaths; // Store image paths as JSON
                 $product->updated_by = auth()->id();
-            
+
                 // Save the updated product
                 $product->save();
             }
-            
+
         }else{
             $product = Product::create([
                 'title' => $validatedData['title'],
@@ -125,10 +125,11 @@ class ProductController extends Controller
             ]);
         }
 
+
         $campaign = Compaign::findOrFail($request->campaign_id);
         $campaign->products()->syncWithoutDetaching([$product->id]);
 
-        $product->variants()->whereNotIn('id',$request->variant_id)->delete();
+        $product->variants()->whereNotIn('id',$request->variant_id??[])->delete();
 
 
         // Create the variants
@@ -186,7 +187,7 @@ class ProductController extends Controller
     }
 
 
-    
+
         public function product_search(Request $request)
 {
     if ($request->ajax()) {
