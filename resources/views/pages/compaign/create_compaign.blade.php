@@ -311,7 +311,7 @@
                                                             <label class="form-label" for="campaign_name">Campaign
                                                                 Name:</label>
                                                             <input type="text" class="form-control" id="campaign_name"
-                                                                name="campaign_name" required />
+                                                                name="campaign_name" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -319,7 +319,7 @@
                                                             <label class="form-label" for="campaign_banner">Campaign
                                                                 Banner:</label>
                                                             <input type="file" class="form-control float-right"
-                                                                id="campaign_banner" name="campaign_banner" required />
+                                                                id="campaign_banner" name="campaign_banner" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -587,9 +587,12 @@
                                                 <div class="row">
                                                     <div class="col">
 
-                                                        <input type="search" class="form-control" placeholder="Search Product" id="search_product" autocomplete="off">
-                                                        <div id="product_list"></div> <!-- This is where the search results will be displayed -->
-                                                        
+                                                        <input type="search" class="form-control"
+                                                            placeholder="Search Product" id="search_product"
+                                                            autocomplete="off">
+                                                        <div id="product_list"></div>
+                                                        <!-- This is where the search results will be displayed -->
+
 
                                                         <form class=" g-3 mt-3 needs-validation" id="product_detail_from"
                                                             method="post" action="{{ route('admin.storeProduct') }}"
@@ -658,8 +661,8 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="invalid-feedback">Please select product
-                                                                        image!</div>
+                                                                    {{-- <div class="invalid-feedback">Please select product
+                                                                        image!</div> --}}
                                                                     @error('images')
                                                                         <div class="alert-danger text-danger ">
                                                                             {{ $message }}
@@ -672,12 +675,11 @@
                                                                             <label class="form-label">Product Title</label>
                                                                             <input class="form-control me-2"
                                                                                 type="text" name="title"
-                                                                                id="title"
-                                                                                value=""
+                                                                                id="title" value=""
                                                                                 placeholder="Product Title"
-                                                                                aria-label="Search" >
-                                                                            <div class="invalid-feedback">Please write
-                                                                                product title!</div>
+                                                                                aria-label="Search">
+                                                                            {{-- <div class="invalid-feedback">Please write
+                                                                                product title!</div> --}}
                                                                             @error('title')
                                                                                 <div class="alert-danger text-danger ">
                                                                                     {{ $message }}
@@ -685,20 +687,36 @@
                                                                             @enderror
                                                                         </div>
                                                                         @php
-                                                                            $path = url('assets/images/icons/upload_btn.png');
+                                                                            $path = url(
+                                                                                'assets/images/icons/upload_btn.png',
+                                                                            );
                                                                             if ($product['main_image'] ?? null) {
-                                                                                $path = asset('storage/' . $product['main_image']);
+                                                                                $path = asset(
+                                                                                    'storage/' . $product['main_image'],
+                                                                                );
                                                                             }
                                                                         @endphp
                                                                         <div class="col-12 mt-2 produt-main-image">
-                                                                            <label for="product_main_image" class="form-label">Upload Main Image</label>
-                                                                            <div class="d-flex align-items-center" style="gap: 20px; justify-content: space-between;">
-                                                                                <input type="file" class="form-control w-100" id="product_main_image" name="main_image" onchange="previewMainImage(this)">
-                                                                                <label for="product_main_image" class="d-block">
-                                                                                    <img id="mainImage_preview" src="{{ $path ?? '' }}" class="rounded-circle" alt="no image" style="width: 45px; height: 45px; cursor: pointer; object-fit: cover;">
+                                                                            <label for="product_main_image"
+                                                                                class="form-label">Upload Main
+                                                                                Image</label>
+                                                                            <div class="d-flex align-items-center"
+                                                                                style="gap: 20px; justify-content: space-between;">
+                                                                                <input type="file"
+                                                                                    class="form-control w-100"
+                                                                                    id="product_main_image"
+                                                                                    name="main_image"
+                                                                                    onchange="previewMainImage(this)">
+                                                                                <label for="product_main_image"
+                                                                                    class="d-block">
+                                                                                    <img id="mainImage_preview"
+                                                                                        src="{{ $path ?? '' }}"
+                                                                                        class="rounded-circle"
+                                                                                        alt="no image"
+                                                                                        style="width: 45px; height: 45px; cursor: pointer; object-fit: cover;">
                                                                                 </label>
                                                                             </div>
-                                                                            <div class="invalid-feedback">* Upload product main Image!</div>
+                                                                            {{-- <div class="invalid-feedback">* Upload product main Image!</div> --}}
                                                                         </div>
 
                                                                         <div class="col-9 select-product-category">
@@ -706,7 +724,7 @@
                                                                                 class="form-label">Select Product
                                                                                 Category</label>
                                                                             <select id="category_id" name="category_id"
-                                                                                class="form-select" >
+                                                                                class="form-select">
                                                                                 <option value="" selected>Choose...
                                                                                 </option>
                                                                                 @foreach ($categories ?? [] as $key => $value)
@@ -715,8 +733,8 @@
                                                                                     </option>
                                                                                 @endforeach
                                                                             </select>
-                                                                            <div class="invalid-feedback">* Please select
-                                                                                product category</div>
+                                                                            {{-- <div class="invalid-feedback">* Please select
+                                                                                product category</div> --}}
                                                                         </div>
                                                                         <div class="col-3" style="margin-top: 30px">
                                                                             <button type="button" class="btn btn-primary"
@@ -773,7 +791,7 @@
                                                                         value="{{ $product['cut_price'] ?? old('cut_price') }}"
                                                                         class="form-control" step="0.01"
                                                                         min="0">
-                                                                    <div class="invalid-feedback">Enter Cut Price!</div>
+                                                                    {{-- <div class="invalid-feedback">Enter Cut Price!</div> --}}
                                                                     @error('cut_price')
                                                                         <div class="alert-danger text-danger ">
                                                                             {{ $message }}
@@ -788,9 +806,9 @@
                                                                     <input type="number" name="price" id="price"
                                                                         value="{{ $product['price'] ?? old('price') }}"
                                                                         class="form-control" step="0.01"
-                                                                        min="0" >
-                                                                    <div class="invalid-feedback">Enter product price!
-                                                                    </div>
+                                                                        min="0">
+                                                                    {{-- <div class="invalid-feedback">Enter product price!
+                                                                    </div> --}}
                                                                     @error('price')
                                                                         <div class="alert-danger text-danger ">
                                                                             {{ $message }}
@@ -803,9 +821,9 @@
                                                                             Stock)</span></label>
                                                                     <input type="number" id="stock" name="stock"
                                                                         value="{{ $product['stock'] ?? old('stock') }}"
-                                                                        class="form-control" >
-                                                                    <div class="invalid-feedback">Enter product stock!
-                                                                    </div>
+                                                                        class="form-control">
+                                                                    {{-- <div class="invalid-feedback">Enter product stock!
+                                                                    </div> --}}
                                                                     @error('stock')
                                                                         <div class="alert-danger text-danger ">
                                                                             {{ $message }}
@@ -818,8 +836,8 @@
                                                                     <input type="text" name="SKU" id="SKU"
                                                                         value="{{ $product['SKU'] ?? old('SKU') }}"
                                                                         class="form-control">
-                                                                    <div class="invalid-feedback">Enter avialable stock!
-                                                                    </div>
+                                                                    {{-- <div class="invalid-feedback">Enter avialable stock!
+                                                                    </div> --}}
                                                                     @error('SKU')
                                                                         <div class="alert-danger text-danger ">
                                                                             {{ $message }}
@@ -832,7 +850,7 @@
                                                                     <input type="text" name="barcode" id="barcode"
                                                                         value="{{ $product['barcode'] ?? old('barcode') }}"
                                                                         class="form-control">
-                                                                    <div class="invalid-feedback">Enter GTIN number!</div>
+                                                                    {{-- <div class="invalid-feedback">Enter GTIN number!</div> --}}
                                                                     @error('barcode')
                                                                         <div class="alert-danger text-danger ">
                                                                             {{ $message }}
@@ -846,8 +864,8 @@
                                                                         value="{{ $product['weight'] ?? old('weight') }}"
                                                                         class="form-control" step="0.01"
                                                                         min="0">
-                                                                    <div class="invalid-feedback">Enter product weight!
-                                                                    </div>
+                                                                    {{-- <div class="invalid-feedback">Enter product weight!
+                                                                    </div> --}}
                                                                     @error('weight')
                                                                         <div class="alert-danger text-danger ">
                                                                             {{ $message }}
@@ -859,7 +877,7 @@
                                                                     <label for="stock_status" class="col-form-label">
                                                                         Stock Status </label>
                                                                     <select id="stock_status" name="stock_status"
-                                                                        class="form-select" >
+                                                                        class="form-select">
                                                                         <option value="IN"
                                                                             {{ isset($product['stock_status']) && $product['stock_status'] == 'IN' ? 'selected' : '' }}>
                                                                             IN</option>
@@ -867,8 +885,8 @@
                                                                             {{ isset($product['stock_status']) && $product['stock_status'] == 'OUT' ? 'selected' : '' }}>
                                                                             OUT</option>
                                                                     </select>
-                                                                    <div class="invalid-feedback">Select Stock Status!
-                                                                    </div>
+                                                                    {{-- <div class="invalid-feedback">Select Stock Status!
+                                                                    </div> --}}
                                                                     @error('stock_status')
                                                                         <div class="alert-danger text-danger ">
                                                                             {{ $message }}
@@ -880,8 +898,8 @@
                                                                 <div class="form-floating col-12  mt-3">
                                                                     <textarea class="form-control tinymce-editor" name="short_description" id="short_description"
                                                                         placeholder="Product short Description">{{ $product['short_description'] ?? '' }}</textarea>
-                                                                    <div class="invalid-feedback">Please write product
-                                                                        short desc!</div>
+                                                                    {{-- <div class="invalid-feedback">Please write product
+                                                                        short desc!</div> --}}
                                                                     @error('short_description')
                                                                         <div class="alert-danger text-danger ">
                                                                             {{ $message }}
@@ -893,8 +911,8 @@
                                                                 <div class="form-floating col-12  mt-3">
                                                                     <textarea class="form-control tinymce-editor" name="description" id="description"
                                                                         placeholder="Product main Description">{{ $product['desc'] ?? '' }}</textarea>
-                                                                    <div class="invalid-feedback">Please write product Main
-                                                                        desc!</div>
+                                                                    {{-- <div class="invalid-feedback">Please write product Main
+                                                                        desc!</div> --}}
                                                                     @error('description')
                                                                         <div class="alert-danger text-danger ">
                                                                             {{ $message }}
@@ -942,10 +960,10 @@
                                                                                             name="variant_price[]"
                                                                                             id=""
                                                                                             value="{{ $variant['price'] }}"
-                                                                                            required step="0.01"
+                                                                                             step="0.01"
                                                                                             min="0">
-                                                                                        <div class="invalid-feedback">Enter
-                                                                                            variant price!</div>
+                                                                                        {{-- <div class="invalid-feedback">Enter
+                                                                                            variant price!</div> --}}
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-4 col-sm-12">
@@ -961,8 +979,8 @@
                                                                                             id=""
                                                                                             value="{{ $variant['cut_price'] }}"
                                                                                             step="0.01" min="0">
-                                                                                        <div class="invalid-feedback">Enter
-                                                                                            variant cut price!</div>
+                                                                                        {{-- <div class="invalid-feedback">Enter
+                                                                                            variant cut price!</div> --}}
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-4 col-sm-12">
@@ -976,9 +994,9 @@
                                                                                             name="variant_name[]"
                                                                                             id=""
                                                                                             value="{{ $variant['title'] }}"
-                                                                                            required>
-                                                                                        <div class="invalid-feedback">Enter
-                                                                                            variant title!</div>
+                                                                                            >
+                                                                                        {{-- <div class="invalid-feedback">Enter
+                                                                                            variant title!</div> --}}
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-4 col-sm-12 product-md">
@@ -992,7 +1010,7 @@
                                                                                             name="variant_value[]"
                                                                                             id=""
                                                                                             value="{{ $variant['value'] }}"
-                                                                                            required>
+                                                                                            >
                                                                                         <div class="invalid-feedback">Enter
                                                                                             variant value!</div>
                                                                                     </div>
@@ -1009,9 +1027,9 @@
                                                                                             name="variant_inventory[]"
                                                                                             id=""
                                                                                             value="{{ $variant['inventory'] }}"
-                                                                                            required>
-                                                                                        <div class="invalid-feedback">Enter
-                                                                                            variant stock!</div>
+                                                                                            >
+                                                                                        {{-- <div class="invalid-feedback">Enter
+                                                                                            variant stock!</div> --}}
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-4 col-sm-12 ">
@@ -1025,8 +1043,8 @@
                                                                                             id=""
                                                                                             value="{{ $variant['weight'] }}"
                                                                                             step="0.01" min="0">
-                                                                                        <div class="invalid-feedback">Enter
-                                                                                            variant weight!</div>
+                                                                                        {{-- <div class="invalid-feedback">Enter
+                                                                                            variant weight!</div> --}}
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-4 col-sm-12">
@@ -1041,8 +1059,8 @@
                                                                                             name="variant_barcode[]"
                                                                                             id=""
                                                                                             value="{{ $variant['barcode'] }}">
-                                                                                        <div class="invalid-feedback">Enter
-                                                                                            variant barcode!</div>
+                                                                                        {{-- <div class="invalid-feedback">Enter
+                                                                                            variant barcode!</div> --}}
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-4 col-sm-12">
@@ -1056,8 +1074,8 @@
                                                                                             name="variant_sku[]"
                                                                                             id=""
                                                                                             value="{{ $variant['sku'] }}">
-                                                                                        <div class="invalid-feedback">Enter
-                                                                                            variant stock!</div>
+                                                                                        {{-- <div class="invalid-feedback">Enter
+                                                                                            variant stock!</div> --}}
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-4 col-sm-12 ">
@@ -1068,8 +1086,8 @@
                                                                                             class="form-control variant-image-exist"
                                                                                             name="variant_attr_image[]"
                                                                                             type="file" id="">
-                                                                                        <div class="invalid-feedback">Enter
-                                                                                            variant image!</div>
+                                                                                        {{-- <div class="invalid-feedback">Enter
+                                                                                            variant image!</div> --}}
                                                                                     </div>
                                                                                 </div>
                                                                                 <div
@@ -1106,12 +1124,13 @@
                                             </section>
                                         </div>
                                         <hr class="mb-5" />
-                                        <div class="row">
+                                        <div class="row" id="product_card_list">
                                             @if (!empty($compaign->products))
                                                 @if (count($compaign->products) > 0)
                                                     @foreach ($compaign->products as $item)
-                                                        <div class="col-md-4 single-note-item all-category">
-                                                            <div class="card card-body" id="product-card-{{ $item->id }}">
+                                                        <div class="col-md-4 single-note-item all-category"
+                                                            id="product-card-{{ $item->id }}">
+                                                            <div class="card card-body">
                                                                 <span class="side-stick"></span>
                                                                 <h6 class="note-title text-truncate w-75 mb-0"
                                                                     data-noteheading="Book a Ticket for Movie">
@@ -1126,7 +1145,9 @@
                                                                     {{-- <a href="javascript:void(0)" class="link me-1">
                                                                     <i class="ti ti-star fs-4 favourite-note"></i>
                                                                 </a> --}}
-                                                                    <a href="javascript:void(0)" type="button" class="link text-danger delete-product" data-id="{{ $item->id }}">
+                                                                    <a href="javascript:void(0)" type="button"
+                                                                        class="link text-danger delete-product"
+                                                                        data-id="{{ $item->id }}">
                                                                         <i class="ti ti-trash fs-4 remove-note"></i>
                                                                     </a>
                                                                     <div class="ms-auto">
@@ -1147,7 +1168,7 @@
                                                                             </a>
                                                                             <div
                                                                                 class="dropdown-menu dropdown-menu-right category-menu">
-                                                                                <a class="
+                                                                                {{-- <a class="
                                                                     note-business
                                                                     badge-group-item badge-business
                                                                     dropdown-item
@@ -1156,7 +1177,7 @@
                                                                     d-flex
                                                                     align-items-center
                                                                     "
-                                                                    href="javascript:void(0);">Edit</a>
+                                                                    href="javascript:void(0);">Edit</a> --}}
                                                                                 <a class="
                                                                     note-social
                                                                     badge-group-item badge-social
@@ -1166,9 +1187,10 @@
                                                                     d-flex
                                                                     align-items-center duplicate-product
                                                                     "
-                                                                                    href="javascript:void(0);" data-id="{{ $item->id }}">
+                                                                                    href="javascript:void(0);"
+                                                                                    data-id="{{ $item->id }}">
                                                                                     Duplicate</a>
-                                                                                <a class="
+                                                                                {{-- <a class="
                                                                     note-important
                                                                     badge-group-item badge-important
                                                                     dropdown-item
@@ -1178,7 +1200,7 @@
                                                                     align-items-center
                                                                     "
                                                                                     href="javascript:void(0);">
-                                                                                    Important</a>
+                                                                                    Important</a> --}}
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1692,7 +1714,7 @@
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             id="logo_name"
-                                                                                            name="logo_name" required />
+                                                                                            name="logo_name"  />
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -1703,7 +1725,7 @@
                                                                                         <input type="file"
                                                                                             class="form-control"
                                                                                             id="logo_file"
-                                                                                            name="logo_file" required />
+                                                                                            name="logo_file"  />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -1785,60 +1807,65 @@
 
 @pushOnce('scripts')
     <script>
-  $(document).ready(function(){
-        // Trigger live search on keyup event
-        $('#search_product').on('keyup', function(){
-            var query = $(this).val();
+        $(document).ready(function() {
+            // Trigger live search on keyup event
+            $('#search_product').on('keyup', function() {
+                var query = $(this).val();
 
-            // If query is not empty, make the AJAX call
-            if(query != '') {
-                $.ajax({
-                    url: "{{ route('product.liveSearch') }}", // Route for live search
-                    method: 'GET',
-                    data: {search: query},
-                    success: function(data){
-                        $('#product_list').html(data); // Populate results
-                    }
-                });
-            } else {
-                $('#product_list').html(''); // Clear results if query is empty
-            }
+                // If query is not empty, make the AJAX call
+                if (query != '') {
+                    $.ajax({
+                        url: "{{ route('product.liveSearch') }}", // Route for live search
+                        method: 'GET',
+                        data: {
+                            search: query
+                        },
+                        success: function(data) {
+                            $('#product_list').html(data); // Populate results
+                        }
+                    });
+                } else {
+                    $('#product_list').html(''); // Clear results if query is empty
+                }
+            });
+
+            // Make product title selectable
+            $(document).on('click', '.product-item', function() {
+                var title = $(this).data('title');
+                $('#search_product').val(title); // Set selected title in the input
+                $('#product_list').html(''); // Clear the search results dropdown
+            });
         });
 
-        // Make product title selectable
-        $(document).on('click', '.product-item', function(){
-            var title = $(this).data('title');
-            $('#search_product').val(title); // Set selected title in the input
-            $('#product_list').html(''); // Clear the search results dropdown
-        });
-    }); 
 
+        function getProduct(target) {
+            var productId = $(target).data('id');
+            $.ajax({
+                url: "{{ route('product.get') }}",
+                type: 'GET',
+                data: {
+                    product_id: productId
+                },
+                success: function(response) {
+                    console.log(response);
+                    $('#product_id').val(response.id);
+                    $('#title').val(response.title);
+                    $('#mainImage_preview').attr('src', '/storage/' + response
+                    .main_image); // Append base URL to main image path
+                    $('#category_id').val(response.category_id);
+                    $('#cut_price').val(response.cut_price);
+                    $('#price').val(response.price);
+                    $('#stock').val(response.stock);
+                    $('#SKU').val(response.sku);
+                    $('#stock_status').val(response.stock_status);
+                    $('#barcode').val(response.barcode);
+                    $('#weight').val(response.weight);
+                    $('#description').val(response.description);
+                    $('#short_description').val(response.short_description);
 
-function getProduct(target) {
-        var productId = $(target).data('id');
-        $.ajax({
-            url: "{{ route('product.get') }}",
-            type: 'GET',
-            data: { product_id: productId },
-            success: function(response) {
-                console.log(response);
-                $('#product_id').val(response.id);
-                $('#title').val(response.title);
-                $('#mainImage_preview').attr('src', '/storage/' + response.main_image); // Append base URL to main image path 
-                $('#category_id').val(response.category_id);
-                $('#cut_price').val(response.cut_price);
-                $('#price').val(response.price);
-                $('#stock').val(response.stock);
-                $('#SKU').val(response.sku);
-                $('#stock_status').val(response.stock_status);
-                $('#barcode').val(response.barcode);
-                $('#weight').val(response.weight);
-                $('#description').val(response.description);
-                $('#short_description').val(response.short_description);
-
-                if (response.variants.length > 0) {
-    response.variants.forEach(function(variant) {
-        var new_row = `<div class="row bg-white rounded-3 mb-4 py-2">
+                    if (response.variants.length > 0) {
+                        response.variants.forEach(function(variant) {
+                            var new_row = `<div class="row bg-white rounded-3 mb-4 py-2">
             <div class="col-12">
                 <hr class="">
             </div>
@@ -1846,7 +1873,7 @@ function getProduct(target) {
                 <div class="p-2">
                     <label for="" class="form-label">Variant Price <span class="extra-text">(Price in UK Pound)</span></label>
                     <input type="hidden" class="form-control" name="variant_id[]" value="${variant.id}">
-                    <input type="number" class="form-control" name="variant_price[]" value="${variant.variant_price}" step="0.01" min="0" required>
+                    <input type="number" class="form-control" name="variant_price[]" value="${variant.variant_price}" step="0.01" min="0" >
                     <div class="invalid-feedback">Enter variant price!</div>
                 </div>
             </div>
@@ -1860,21 +1887,21 @@ function getProduct(target) {
             <div class="col-md-4 col-sm-12">
                 <div class="p-2">
                     <label for="" class="form-label">Variant Name <span class="extra-text"></span></label>
-                    <input type="text" class="form-control" name="variant_name[]" value="${variant.variant_name}" required>
+                    <input type="text" class="form-control" name="variant_name[]" value="${variant.variant_name}" >
                     <div class="invalid-feedback">Enter variant title!</div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12 product-md">
                 <div class="p-2">
                     <label for="" class="form-label">Variant Value <span class="extra-text"></span></label>
-                    <input type="text" class="form-control" name="variant_value[]" value="${variant.variant_value}" required>
+                    <input type="text" class="form-control" name="variant_value[]" value="${variant.variant_value}" >
                     <div class="invalid-feedback">Enter variant value!</div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="p-2">
                     <label for="" class="form-label">Inventory <span class="extra-text">(Available Stock)</span></label>
-                    <input type="number" class="form-control" name="variant_inventory[]" value="${variant.variant_inventory}" required>
+                    <input type="number" class="form-control" name="variant_inventory[]" value="${variant.variant_inventory}" >
                     <div class="invalid-feedback">Enter variant stock!</div>
                 </div>
             </div>
@@ -1916,131 +1943,135 @@ function getProduct(target) {
             </div>
         </div>`;
 
-        // Append the new row with the prefilled data
-        $('#variant_row').append(new_row);
-    });
-}
+                            // Append the new row with the prefilled data
+                            $('#variant_row').append(new_row);
+                        });
+                    }
 
 
 
-                
-            },
-            error: function(xhr) {
-                console.error(xhr.responseText);
-            }
-        });
-    }
 
-
-
-$(document).on('click', '.delete-product', function () {
-    var productId = $(this).data('id'); // Get the product ID from the button
-
-    if (confirm('Are you sure you want to delete this product?')) {
-        $.ajax({
-            url: '{{ route('product.list.delete') }}',  // URL to your route
-            type: 'DELETE',                            // Use DELETE request
-            data: {
-                product_id: productId,                  // Pass the product ID
-                _token: '{{ csrf_token() }}'            // CSRF token
-            },
-            success: function (response) {
-                if (response.success) {
-                    $('#product-card-' + productId).fadeOut('slow');
-                    toastr.success('Product deleted successfully.');
-                } else {
-                    toastr.error('Something went wrong.');
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
                 }
-            },
-            error: function (xhr) {
-                alert('Error: ' + xhr.statusText);
-            }
-        });
-    }
-});
-$(document).on('click', '.duplicate-product', function () {
-    var productId = $(this).data('id'); // Get the product ID from the button
+            });
+        }
 
-    if (confirm('Are you sure you want to replicate this product?')) {
-        $.ajax({
-            url: '{{ route('product.duplicate') }}',  // URL to your route
-            type: 'get',
-            data: {
-                product_id: productId,                  // Pass the product ID
-                _token: '{{ csrf_token() }}'            // CSRF token
-            },
-            success: function (response) {
-                if (response.success) {
-                    $('#product-card-' + productId).fadeOut('slow');
-                    toastr.success('Product copied successfully.');
-                } else {
-                    toastr.error('Something went wrong.');
-                }
-            },
-            error: function (xhr) {
-                alert('Error: ' + xhr.statusText);
+
+
+        $(document).on('click', '.delete-product', function() {
+            var productId = $(this).data('id'); // Get the product ID from the button
+
+            if (confirm('Are you sure you want to delete this product?')) {
+                $.ajax({
+                    url: '{{ route('product.list.delete') }}', // URL to your route
+                    type: 'DELETE', // Use DELETE request
+                    data: {
+                        product_id: productId, // Pass the product ID
+                        _token: '{{ csrf_token() }}' // CSRF token
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            $('#product-card-' + productId).fadeOut('slow');
+                            toastr.success('Product deleted successfully.');
+                        } else {
+                            toastr.error('Something went wrong.');
+                        }
+                    },
+                    error: function(xhr) {
+                        alert('Error: ' + xhr.statusText);
+                    }
+                });
             }
         });
-    }
-});
+
+        // duplicate Product
+
+        $(document).on('click', '.duplicate-product', function() {
+            var productId = $(this).data('id');
+            var productCard = $('#product-card-' + productId).clone();
+
+            if (confirm('Are you sure you want to replicate this product?')) {
+                $.ajax({
+                    url: '{{ route('product.duplicate') }}',
+                    type: 'get',
+                    data: {
+                        product_id: productId,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            $('#product_card_list').append(productCard);
+                            toastr.success('Product copied successfully.');
+                        } else {
+                            toastr.error('Something went wrong.');
+                        }
+                    },
+                    error: function(xhr) {
+                        alert('Error: ' + xhr.statusText);
+                    }
+                });
+            }
+        });
 
         function previewMainImage(input) {
-                var preview = document.getElementById('mainImage_preview');
-                var file = input.files[0];
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                };
+            var preview = document.getElementById('mainImage_preview');
+            var file = input.files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            };
 
-                if (file) {
-                    reader.readAsDataURL(file);
-                }
+            if (file) {
+                reader.readAsDataURL(file);
             }
+        }
 
         var currentStep = 1;
 
         function handleDraft(isDraft) {
-                @if ($compaign)
-                    if (isDraft) {
-                        currentStep = @json($compaign->current_step);
-                        $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
-                        setTimeout(function() {
-                            $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
-                            $(".step-" + currentStep).show().addClass(
-                                "animate__animated animate__fadeInRight");
-                            updateProgressBar();
-                        }, 500);
-                    } else {
-                        currentStep = 1;
+            @if ($compaign)
+                if (isDraft) {
+                    currentStep = @json($compaign->current_step);
+                    $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
+                    setTimeout(function() {
+                        $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
+                        $(".step-" + currentStep).show().addClass(
+                            "animate__animated animate__fadeInRight");
+                        updateProgressBar();
+                    }, 500);
+                } else {
+                    currentStep = 1;
 
-                        $.ajax({
-                            url: "{{ route('compaign.delete', $compaign->id) }}",
-                            type: 'DELETE',
-                            data: {
-                                _token: '{{ csrf_token() }}'
-                            },
-                            success: function(response) {
-                                if (response.success) {
-                                    alert('Draft campaign deleted. You can start fresh.');
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                console.error('Error:', error);
+                    $.ajax({
+                        url: "{{ route('compaign.delete', $compaign->id) }}",
+                        type: 'DELETE',
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                alert('Draft campaign deleted. You can start fresh.');
                             }
-                        });
-                    }
-                @endif
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error:', error);
+                        }
+                    });
+                }
+            @endif
 
-                $('#draftAlert').hide();
-            }
+            $('#draftAlert').hide();
+        }
 
 
-            function updateProgressBar() {
-                var progressPercentage = ((currentStep - 1) / 3) * 100;
-                $(".progress-bar").css("width", progressPercentage + "%");
-                $(".step-circle").removeClass("step-circle-filled");
-                $(".step-circle-" + currentStep).addClass("step-circle-filled");
-            }
+        function updateProgressBar() {
+            var progressPercentage = ((currentStep - 1) / 3) * 100;
+            $(".progress-bar").css("width", progressPercentage + "%");
+            $(".step-circle").removeClass("step-circle-filled");
+            $(".step-circle-" + currentStep).addClass("step-circle-filled");
+        }
 
 
         $(document).ready(function() {
@@ -2126,20 +2157,7 @@ $(document).on('click', '.duplicate-product', function () {
                 }
             });
 
-            function displayErrors(errors) {
-                $('.error-label').remove();
-                $.each(errors, function(field, errorMessages) {
-                    var inputField = $('input[name="' + field + '"], select[name="' + field +
-                        '"], textarea[name="' + field + '"]');
-                    inputField.addClass('is-invalid');
 
-                    $.each(errorMessages, function(index, errorMessage) {
-                        var errorLabel = $('<label class="error-label text-danger">* ' +
-                            errorMessage + '</label>');
-                        inputField.after(errorLabel);
-                    });
-                });
-            }
 
             $(".prev-step").click(function() {
                 if (currentStep > 1) {
@@ -2297,6 +2315,33 @@ $(document).on('click', '.duplicate-product', function () {
 
                 $('body').on('submit', '#product_detail_from', function(e) {
                     e.preventDefault();
+
+                    let isValid = true;  // Flag to track form validity
+
+                    $('#variant_row_existing input, #variant_row input').each(function() {
+
+                        if ($(this).attr('type') === 'hidden') {
+                            return true; // Continue to the next iteration
+                        }
+                        if ($(this).val() == '') {
+                            console.log($(this));
+                            console.log($(this).val());
+
+                            isValid = false;
+                            $(this).addClass('is-invalid');
+                            $(this).siblings('.invalid-feedback').show();
+                        } else {
+                            $(this).removeClass('is-invalid');
+                            $(this).siblings('.invalid-feedback').hide();
+                        }
+                    });
+
+                    // If the form is invalid, prevent submission
+                    if (!isValid) {
+                        toastr.error("Please fill in all required variant fields!");  // Optional alert message
+                        return
+                    }
+
                     var formData = new FormData();
                     formData.append('main_image', $('#product_main_image')[0].files[0]);
                     $('.variant-image').each(function(index, element) {
@@ -2353,13 +2398,6 @@ $(document).on('click', '.duplicate-product', function () {
                             if (error.status === 422) { // Unprocessable Entity
                                 const errors = error.responseJSON.errors;
                                 displayErrors(errors);
-                                for (let field in errors) {
-                                    console.log('errors[field]', errors[field]);
-
-                                    toastr.error(errors[field][
-                                        0
-                                    ]); // Display the first error for each field
-                                }
                             } else {
                                 toastr.error(
                                     'An unexpected error occurred.'); // Handle other errors
@@ -2390,7 +2428,7 @@ $(document).on('click', '.duplicate-product', function () {
                                 <label for="" class="form-label">Variant Price <span class="extra-text">(Price in UK Pound)</span></label>
                                 <input type="hidden" class="form-control" name="variant_id[]" value="">
                                 <input type="number" class="form-control" name="variant_price[]" id="" step="0.01"
-                                                                        min="0" required>
+                                                                        min="0" >
                                 <div class="invalid-feedback">Enter variant price!</div>
                             </div>
                         </div>
@@ -2405,21 +2443,21 @@ $(document).on('click', '.duplicate-product', function () {
                         <div class="col-md-4 col-sm-12">
                             <div class="p-2">
                                 <label for="" class="form-label">Variant Name <span class="extra-text"></span></label>
-                                <input type="text" class="form-control" name="variant_name[]" id="" required>
+                                <input type="text" class="form-control" name="variant_name[]" id="" >
                                 <div class="invalid-feedback">Enter variant title!</div>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12 product-md">
                             <div class="p-2">
                                 <label for="" class="form-label">Variant Value <span class="extra-text"></span></label>
-                                <input type="text" class="form-control" name="variant_value[]" id="" required>
+                                <input type="text" class="form-control" name="variant_value[]" id="" >
                                 <div class="invalid-feedback">Enter variant value!</div>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12 ">
                             <div class="p-2">
                                 <label for="" class="form-label">Inventory <span class="extra-text">(Available Stock)</span></label>
-                                <input type="number" class="form-control" name="variant_inventory[]" id="" required>
+                                <input type="number" class="form-control" name="variant_inventory[]" id="" >
                                 <div class="invalid-feedback">Enter variant stock!</div>
                             </div>
                         </div>
@@ -2646,6 +2684,25 @@ $(document).on('click', '.duplicate-product', function () {
                     }
                 });
 
+
+
+            });
+
+            function displayErrors(errors) {
+                    $('.error-label').remove();
+                    $.each(errors, function(field, errorMessages) {
+                        var inputField = $('input[name="' + field + '"], select[name="' + field +
+                            '"], textarea[name="' + field + '"]');
+                        inputField.addClass('is-invalid');
+
+                        $.each(errorMessages, function(index, errorMessage) {
+                            var errorLabel = $('<label class="error-label text-danger">* ' +
+                                errorMessage + '</label>');
+                            inputField.after(errorLabel);
+                        });
+                    });
+                }
+
                 function toastValidationError(error) {
                     const errors = error.responseJSON.errors;
                     for (let field in errors) {
@@ -2656,7 +2713,6 @@ $(document).on('click', '.duplicate-product', function () {
                         ]);
                     }
                 }
-            });
         });
     </script>
 @endPushOnce
