@@ -16,3 +16,6 @@ Route::get('/logout', [WebController::class, 'logout'])->name('logout');
 
 include __DIR__ . '/admin.php';
 
+Route::get('/homepage-brand', function () {
+    return view('pages.homepage.homepage-brand');
+});
