@@ -57,7 +57,7 @@ class ProductController extends Controller
             'short_description' => 'nullable|string',
             'description' => 'nullable|string',
 
-            'main_image' => 'required|image|mimes:jpeg,png,jpg,gif,webm,svg,webp|max:2048',
+            'main_image' => 'required',
             'images.*' => 'nullable',
             // 'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webm,svg,webp|max:2048',
             // 'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webm,svg,webp|max:2048',
@@ -154,7 +154,13 @@ class ProductController extends Controller
             ]);
         }
 
-        return response()->json(['message' => 'Product and variants created successfully!'], 201);
+        return response()->json(['message' => 'Product and variants created successfully!','product' => $product], 201);
+    }
+
+    public function single_product_layout($id)
+    {
+        $item = Product::find($id);
+        return view('pages.compaign.product_list_card')->with(compact('item'));
     }
 
     public function product_list_delete(Request $request)

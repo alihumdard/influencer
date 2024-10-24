@@ -42,6 +42,7 @@ Route::prefix('portal')->middleware('auth')->group(function () {
     Route::delete('/campaign/delete-draft/{id}', [CompaignController::class, 'delete_draft_compaign'])->name('compaign.delete');
 
     Route::match(['get', 'post'], '/products', [ProductController::class, 'products'])->name('admin.prodcuts');
+    Route::match(['get'], '/single_product_layout/{id}', [ProductController::class, 'single_product_layout'])->name('admin.single_product_layout');
     Route::match(['get', 'post'], '/storeProduct', [ProductController::class, 'store_product'])->name('admin.storeProduct');
     Route::delete('/deleteVariant', [ProductController::class, 'delete_variant'])->name('admin.deleteVariant');
     Route::match(['get', 'post'], '/deleteProductAttribute', [ProductController::class, 'delete_product_attribute'])->name('admin.deleteProductAttribute');
