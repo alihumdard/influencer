@@ -111,8 +111,21 @@
             border: none;
             transition: background 0.3s, box-shadow 0.3s;
         }
-
         .size-button:hover {
+            background-color: #e8b2d0;
+            color: #3d2c3a;
+            box-shadow: 0 4px 12px rgba(213, 0, 109, 0.5);
+        }
+        .variant-size-button {
+            height: 50px;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            background-color: #ca5a98;
+            color: white;
+            border: none;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .variant-size-button:hover {
             background-color: #e8b2d0;
             color: #3d2c3a;
             box-shadow: 0 4px 12px rgba(213, 0, 109, 0.5);
@@ -335,6 +348,12 @@
                             A natural cleanser made with organic herbs to detoxify your skin and enhance its natural glow.
                         </span>
                     </div>
+                    <div class="details-item">
+                        <span>Variant Details:</span>
+                        <button class="btn variant-size-button" onclick="showVariantDetails()">
+                            <i class="fas fa-eye me-2"></i> View Variant Details
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -383,10 +402,16 @@
     <script>
         function showProductDetails() {
             const productDetails = document.getElementById('productDetails');
+            
+
+            // Toggle visibility of product details
+            productDetails.style.display = productDetails.style.display === 'none' ? 'block' : 'none';
+            
+        }
+        function showVariantDetails() {
             const variantDetails = document.getElementById('variantDetails');
 
-            // Toggle visibility of product and variant details
-            productDetails.style.display = productDetails.style.display === 'none' ? 'block' : 'none';
+            // Toggle visibility of variant details
             variantDetails.style.display = variantDetails.style.display === 'none' ? 'block' : 'none';
         }
     </script>
