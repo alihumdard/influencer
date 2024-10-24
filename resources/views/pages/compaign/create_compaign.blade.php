@@ -706,7 +706,7 @@
                                                                                     class="form-control w-100"
                                                                                     id="product_main_image"
                                                                                     name="main_image"
-                                                                                    onchange="previewMainImage(this)">
+                                                                                    onchange="previewMainImage(this, 'mainImage_preview')">
                                                                                 <label for="product_main_image"
                                                                                     class="d-block">
                                                                                     <img id="mainImage_preview"
@@ -1078,7 +1078,7 @@
                                                                                             variant stock!</div> --}}
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-md-4 col-sm-12 ">
+                                                                                <div class="col-md-3 col-sm-12 ">
                                                                                     <div class="p-2">
                                                                                         <label class="form-label">Select
                                                                                             Image</label>
@@ -1086,6 +1086,14 @@
                                                                                             class="form-control variant-image-exist"
                                                                                             name="variant_attr_image[]"
                                                                                             type="file" id="">
+                                                                                            <label for="product_main_image"
+                                                                                    class="d-block">
+                                                                                    <img id="mainImage_preview"
+                                                                                        src="{{ $path ?? '' }}"
+                                                                                        class="rounded-circle"
+                                                                                        alt="no image"
+                                                                                        style="width: 45px; height: 45px; cursor: pointer; object-fit: cover;">
+                                                                                </label>
                                                                                         {{-- <div class="invalid-feedback">Enter
                                                                                             variant image!</div> --}}
                                                                                     </div>
@@ -1214,8 +1222,8 @@
 
                                         <div class="d-flex justify-content-end mt-2  ">
                                             <!-- <button type="button" class="btn px-4 btn-dark fw-bold mx-2 prev-step">Previous</button> -->
-                                            <button type="button" data-form="next_move"
-                                                class="btn px-5 btn-primary next-step mx-1 ">Next</button>
+                                            <button type="button" data-form="next_move" id="nextButton"
+                                                class="btn px-5 btn-primary next-step mx-1" disabled>Next-3</button>
                                         </div>
                                     </div>
 
@@ -1926,10 +1934,18 @@
                     <div class="invalid-feedback">Enter variant SKU!</div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-3 col-sm-12">
                 <div class="p-2">
                     <label class="form-label">Select Image</label>
                     <input class="form-control variant-image" name="variant_attr_image[]" type="file">
+                         <label for="product_main_image"
+                                                                                    class="d-block">
+                                                                                    <img id="mainImage_preview"
+                                                                                        src="{{ $path ?? '' }}"
+                                                                                        class="rounded-circle"
+                                                                                        alt="no image"
+                                                                                        style="width: 45px; height: 45px; cursor: pointer; object-fit: cover;">
+                                                                                </label>
                     <div class="invalid-feedback">Enter variant image!</div>
                 </div>
             </div>
@@ -2014,10 +2030,11 @@
                 });
             }
         });
-
-        function previewMainImage(input) {
-            var preview = document.getElementById('mainImage_preview');
+            // Varient Image Preview
+        function previewMainImage(input, previewElId) {
+            var preview = document.getElementById(previewElId);
             var file = input.files[0];
+
             var reader = new FileReader();
             reader.onload = function(e) {
                 preview.src = e.target.result;
@@ -2337,10 +2354,10 @@
                     });
 
                     // If the form is invalid, prevent submission
-                    if (!isValid) {
-                        toastr.error("Please fill in all required variant fields!");  // Optional alert message
-                        return
-                    }
+                    // if (!isValid) {
+                    //     toastr.error("Please fill in all required variant fields!");  // Optional alert message
+                    //     return
+                    // }
 
                     var formData = new FormData();
                     formData.append('main_image', $('#product_main_image')[0].files[0]);
@@ -2396,11 +2413,21 @@
                                 url: '{{ route("admin.single_product_layout", ["id" => ":id"]) }}'.replace(':id', response.product.id),
                                 success: function(response) {
                                     $("#product_card_list").prepend(response);
+
+
                                 }
                             });
 
+                            function resetPreview(previewId, defaultImage = '') {
+                            const preview = document.getElementById(previewId);
+                            preview.src = defaultImage; // Reset to default image
+                        }
+
                             toastr.success('Product saved Successful');
                             document.getElementById('product_detail_from').reset();
+                            resetPreview('mainImage_preview', '{{ $path ?? '' }}');
+                                    // Next-3 button enable
+                                    document.getElementById('nextButton').disabled = false;
                         },
                         error: function(error) {
                             if (error.status === 422) {
@@ -2426,7 +2453,13 @@
 
             }
 
-            // new row add
+
+
+
+            $('#add_new_row').on('click', function() {
+                variant_uid = Math.floor(Math.random() * 100000)
+
+                // new row add
             var new_row = `<div class="row bg-white rounded-3  mb-4 py-2">
                         <div class="col-12">
                             <hr class="">
@@ -2494,8 +2527,14 @@
                         <div class="col-md-4 col-sm-12 ">
                             <div class="p-2">
                                 <label  class="form-label">Select Image</label>
-                                <input class="form-control variant-image" name="variant_attr_image[]" type="file" id="">
+                                <input class="form-control variant-image" name="variant_attr_image[]" type="file" id=""
+                                data-previewId="vImage_preview${variant_uid}" onchange="previewMainImage(this, 'vImage_preview${variant_uid}')">
                                 <div class="invalid-feedback">Enter variant image!</div>
+                                <img id="vImage_preview${variant_uid}"
+                                        src="{{ $path ?? '' }}"
+                                        class="rounded-circle"
+                                        alt="no image"
+                                        style="width: 45px; height: 45px; cursor: pointer; object-fit: cover;">
                             </div>
                         </div>
                         <div class="col-md-12 d-flex justify-content-end col-sm-12 mt-4 ">
@@ -2508,7 +2547,6 @@
                         </div>
                     </div>`;
 
-            $('#add_new_row').on('click', function() {
                 $('#variant_row').append(new_row);
             });
 
