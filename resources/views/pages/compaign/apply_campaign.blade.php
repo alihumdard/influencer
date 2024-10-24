@@ -170,10 +170,13 @@
         }
 
         .product-detail-image {
-            width: 100%;
-            height: 350px;
+            display: flex;
+            width: 20%;
+            height: 200px;
             object-fit: cover;
             transition: transform 0.3s;
+            flex-wrap: wrap;
+            margin-right: 10px;
         }
 
         /* Variant Card Styles */
@@ -336,7 +339,7 @@
             </div>
 
             <!-- Variant Details Card -->
-            <div class="card"  id="variantDetails" style="display:none;">
+            <div class="card" id="variantDetails" style="display:none;">
                 <div class="variant-card">
                     <div class="variant-title">Variant Details</div>
                     <div class="details-item">
