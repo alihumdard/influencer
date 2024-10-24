@@ -23,3 +23,7 @@ Route::get('/homepage-brand', function () {
 Route::get('/chat', function () {
     return view('pages.chat.chat');
 });
+
+Route::get('/apply_campaign', function () {
+    return view('pages.compaign.apply_campaign');
+});
